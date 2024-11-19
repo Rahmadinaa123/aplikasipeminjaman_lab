@@ -1,0 +1,15 @@
+$labName = $request->query('lab'); // Menangkap parameter lab dari URL
+
+// Tentukan jam kerja (misalnya, 08:00 - 17:00)
+$startWorkHour = 8; // Jam 08:00
+$endWorkHour = 17; // Jam 17:00
+
+$currentHour = now()->hour; // Mengambil jam saat ini
+
+if ($currentHour < $startWorkHour || $currentHour >= $endWorkHour) {
+    // Jika di luar jam kerja, arahkan ke halaman upload file
+    return redirect()->route('uploadFilePage'); // Ganti 'uploadFilePage' dengan nama rute halaman upload file Anda
+}
+
+// Jika dalam jam kerja, tampilkan halaman pinjamLab
+return view('mahasiswa.pinjamLab', compact('labName'));
