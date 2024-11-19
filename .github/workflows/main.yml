@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
@@ -21,15 +20,14 @@ jobs:
           MYSQL_DATABASE: test_db
         ports:
           - 3306:3306
-        options: >
-          --health-cmd "mysqladmin ping -h localhost -u root --password=root --silent"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 3
+        options: --health-cmd "mysqladmin ping --silent" --health-interval 10s
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -52,6 +50,9 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
 
+      - name: Check existing tables
+        run: |
+          mysql -h 127.0.0.1 -u root -proot -e "USE test_db; SHOW TABLES;"
       - name: Run Laravel migrations
         run: php artisan migrate --env=testing
         env:
@@ -83,7 +84,18 @@ jobs:
       - name: Install lftp
         run: sudo apt-get install -y lftp
 
-      - name: Deploy to server via FTP
+      - name: Print environment variables for debugging
+        run: |
+          echo "FTP_SERVER:"
+          echo "FTP_USERNAME:"
+        env:
+          FTP_SERVER: ubuntu
+          FTP_USERNAME:
+
+      - name: Test FTP Connection
+        run: |
+          nc -zv ftp.siforta.my.id 21
+      - name: Deploy to server via FTP #tess
         run: |
           lftp -f "
           set ftp:ssl-allow no
@@ -93,6 +105,6 @@ jobs:
           bye
           "
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER:
+          FTP_USERNAME: 
+          FTP_PASSWORD:
