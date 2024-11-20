@@ -13,7 +13,7 @@
             <strong>Berhasil!</strong> {{ Session::get('success') }}
         </div>
     @endif
-    <h3>Data Jadwal</h3>
+    <h3>Data Jadwal Lab</h3>
     <br>
     <a class="btn btn-outline-success"href="{{ route('laboran.jadwal_lab.tambah') }}">Tambah Data</a>
     <div>
