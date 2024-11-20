@@ -83,6 +83,9 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
 Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
    Route::get('kalab/home', [kalabController::class, 'index'])->name('kalab.home');
    Route::get('kalab/profil', [KalabController::class, 'profil'])->name('kalab.profil');
+
+   //peminjaman lab
+   Route::get('kalab/peminjaman_lab', [KalabPeminjamanLabController::class, 'index'])->name('kalab.peminjaman_lab');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
