@@ -21,7 +21,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Request::is('Kalab/index') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('kalab/home') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('kalab.home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
