@@ -13,7 +13,7 @@
             <strong>Berhasil!</strong> {{ Session::get('success') }}
         </div>
     @endif
-    <h3>Data Peminjaman Inventaris</h3>
+    <h3>Data Peminjaman Inventaris lab</h3>
     <br>
     <a class="btn btn-outline-success" href="/tambah">Tambah Data</a>
     <div>
