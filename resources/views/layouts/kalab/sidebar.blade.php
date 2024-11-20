@@ -44,7 +44,6 @@
         </a>
     </li>
 
-    <!-- Nav Item - Data Peminjaman Inventaris -->
     <li class="nav-item">
         <a class="nav-link" href="">
             <i class="fas fa-fw fa-archive"></i>
@@ -53,14 +52,31 @@
     </li>
     </li>
 
-    <!-- Nav Item - Data Peminjaman Lab -->
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-book-open"></i>
-            <span>Data Inventaris Lab</span>
+            <span>Data Inventaris</span>
         </a>
 
-        <!-- Nav Item - Data Laporan Akhir -->
+    </li>
+
+    <!-- Nav Item - Data Peminjaman -->
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Data Peminjaman Laboran</span>
+        </a>
+
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Data Peminjaman Inventaris</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Data Laporan Akhir -->
     <li class="nav-item">
         <a class="nav-link dropdown-toggle" href="#" id="laporanDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -79,7 +95,7 @@
 
     <!-- Nav Item - Logout -->
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+        <a class="nav-link" href="/logout" data-toggle="modal" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
             <span>Logout</span>
         </a>
