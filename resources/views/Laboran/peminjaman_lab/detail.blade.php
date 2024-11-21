@@ -1,13 +1,12 @@
 @extends('layouts.laboran.app', [
-    'title' => 'Detail Data PeminjamanLab',
+    'title' => 'Detail Data Peminjaman Lab',
 ])
 @section('konten')
     <div class="row">
         <div class="col d-flex justify-content-center">
             <div class="card mt-4 mb-5" style="width: 800px">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Detail Data
-                        User</h5>
+                    <h5 class="card-title text-center">Detail Data Peminjaman Lab</h5>
                     <table class="table" style="border: 0;">
                         <tbody>
                             <tr>
@@ -15,7 +14,7 @@
                                 <td>{{ $data->username }}</td>
                             </tr>
                             <tr>
-                                <th>Nim</th>
+                                <th>NIM</th>
                                 <td>{{ $data->nim }}</td>
                             </tr>
                             <tr>
@@ -27,23 +26,37 @@
                                 <td>{{ $data->semester }}</td>
                             </tr>
                             <tr>
-                                <th>No.HP</th>
-                                <td>{{ $data->no_hp }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>{{ $data->email }}</td>
-                            </tr>
-                            <tr>
                                 <th>Nama Lab</th>
                                 <td>{{ $data->nama_lab }}</td>
                             </tr>
                             <tr>
-                                <th>Level</th>
-                                <td>{{ $data->level }}</td>
+                                <th>Keperluan</th>
+                                <td>{{ $data->keperluan }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Mulai</th>
+                                <td>{{ $data->tanggal_mulai }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Selesai</th>
+                                <td>{{ $data->tanggal_selesai }}</td>
+                            </tr>
+                            <tr>
+                                <th>Jam Mulai</th>
+                                <td>{{ $data->jam_mulai }}</td>
+                            </tr>
+                            <tr>
+                                <th>Jam Selesai</th>
+                                <td>{{ $data->jam_selesai }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ $data->status }}</td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-            @endsection
+            </div>
+        </div>
+    </div>
+@endsection
