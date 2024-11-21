@@ -118,9 +118,9 @@ class PeminjamanLabController extends Controller
         $user = peminjaman::find($id);
         $user->delete();
         if ($user) {
-            return back()->with('success', 'Data User berhasil di hapus!');
+            return back()->with('success', 'Data Peminjaman Lab berhasil di hapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus data User!');
+            return back()->with('failed', 'Gagal menghapus data Peminjaman Lab!');
         }
     }
 
