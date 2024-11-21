@@ -109,7 +109,7 @@ class PeminjamanLabController extends Controller
         }
     }
      public function detail($id) {
-        $data = PeminjamanLab::find($id);
+        $data = peminjaman::find($id);
         return view('laboran.peminjaman_lab.detail', compact('data'));
     }
 
