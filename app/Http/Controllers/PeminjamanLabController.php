@@ -86,26 +86,29 @@ class PeminjamanLabController extends Controller
             'status' => 'required'
         ]);
 
-        dd($request->all());
+        //dd($request->all());
 
-        $user = User::find($id);
+        $peminjaman_lab = peminjaman::find($id);
 
-        $user->username = $request->username;
-        $user->nim = $request->nim;
-        $user->prodi = $request->prodi;
-        $user->semester = $request->semester;
-        $user->no_hp = $request->no_hp;
-        $user->email = $request->email;
-        $user->nama_lab = $request->nama_lab;
-        $user->level = $request->level;
+        $peminjaman_lab->username = $request->username;
+        $peminjaman_lab->nim = $request->nim;
+        $peminjaman_lab->prodi = $request->prodi;
+        $peminjaman_lab->semester = $request->semester;
+        $peminjaman_lab->nama_lab = $request->nama_lab;
+        $peminjaman_lab->tanggal_mulai = $request->tanggal_mulai;
+        $peminjaman_lab->tanggal_selesai = $request->tanggal_selesai;
+        $peminjaman_lab->jam_mulai = $request->jam_mulai;
+        $peminjaman_lab->jam_selesai = $request->jam_selesai;
+        $peminjaman_lab->keperluan = $request->keperluan;
+        $peminjaman_lab->status = $request->status;
 
-        $user->save();
+        $peminjaman_lab->save();
 
 
-        if ($user) {
-            return redirect('/laboran/user')->with('success', 'User berhasil diupdate!');
+        if ($peminjaman_lab) {
+            return redirect('/laboran/peminjaman_lab')->with('success', 'Data Peminjaman Lab berhasil diupdate!');
         } else {
-            return back()->with('failed', 'User gagal diupdate!');
+            return back()->with('failed', 'Data gagal diupdate!');
         }
     }
      public function detail($id) {
@@ -115,9 +118,9 @@ class PeminjamanLabController extends Controller
 
     public function deletePeminjamanLab($id)
     {
-        $user = peminjaman::find($id);
-        $user->delete();
-        if ($user) {
+        $peminjaman_lab = peminjaman::find($id);
+        $peminjaman_lab->delete();
+        if ($peminjaman_lab) {
             return back()->with('success', 'Data Peminjaman Lab berhasil di hapus!');
         } else {
             return back()->with('failed', 'Gagal menghapus data Peminjaman Lab!');
