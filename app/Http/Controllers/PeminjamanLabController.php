@@ -113,4 +113,15 @@ class PeminjamanLabController extends Controller
         return view('laboran.peminjaman_lab.detail', compact('data'));
     }
 
+    public function deletePeminjamanLab($id)
+    {
+        $user = peminjaman::find($id);
+        $user->delete();
+        if ($user) {
+            return back()->with('success', 'Data User berhasil di hapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus data User!');
+        }
+    }
+
 }
