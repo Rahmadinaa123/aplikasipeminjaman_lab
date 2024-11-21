@@ -101,11 +101,16 @@ class PeminjamanLabController extends Controller
 
         $user->save();
 
+
         if ($user) {
             return redirect('/laboran/user')->with('success', 'User berhasil diupdate!');
         } else {
             return back()->with('failed', 'User gagal diupdate!');
         }
+    }
+     public function detail($id) {
+        $data = PeminjamanLab::find($id);
+        return view('laboran.peminjaman_lab.detail', compact('data'));
     }
 
 }
