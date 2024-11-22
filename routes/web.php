@@ -14,6 +14,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KalabController;
 use App\Http\Controllers\KalabPeminjamanLabController;
 use App\Http\Controllers\KalabInventarisLabController;
+use App\Http\Controllers\KalabJadwalLabController;
 
 Route::get('/', function () {
     return view('index');
@@ -91,6 +92,9 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
 
    //peminjaman inventaris
    Route::get('kalab/peminjaman_inventaris', [KalabInventarisLabController::class, 'index'])->name('kalab.peminjaman_inventaris');
+
+   //jadwal lab
+   Route::get('kalab/jadwal_lab', [KalabJadwalLabController::class, 'index'])->name('kalab.jadwal_lab');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
