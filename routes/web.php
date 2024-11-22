@@ -12,6 +12,7 @@ use App\Http\Controllers\LaporanAkhirController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KalabController;
+use App\Http\Controllers\KalabPeminjamaLabController;
 
 Route::get('/', function () {
     return view('index');

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\peminjaman;
-
 use Illuminate\Http\Request;
 
 class KalabPeminjamanLabController extends Controller
