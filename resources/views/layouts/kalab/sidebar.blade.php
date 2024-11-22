@@ -36,8 +36,8 @@
         Interface
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item {{ Request::is('kalab/jadwal_lab') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('kalab.jadwal_lab') }}">
             <i class="fas fa-fw fa-archive"></i>
             <span>Data Jadwal</span>
         </a>
