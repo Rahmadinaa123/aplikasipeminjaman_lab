@@ -40,7 +40,7 @@
     }
 </style>
 
-@extends('layouts.laboran.app', [
+@extends('layouts.kalab.app', [
     'title' => 'Data peminjaman Lab',
 ])
 @section('konten')
