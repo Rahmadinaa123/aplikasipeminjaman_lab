@@ -57,7 +57,6 @@
     @endif
     <h3>Data Peminjaman {{ Auth::user()->nama_lab }}</h3>
     <br>
-    <a class="btn btn-outline-success" href="">Tambah Data</a>
 
     <div>
         <table class="table" style="margin-top: 10px">
@@ -95,7 +94,6 @@
                             <td>
                                 <a class="btn btn-outline-success" href="/detail/">Detail</a>
                                 <a class="btn btn-outline-warning" href="/editPeminjamanLab/{{ $item->id }}">Edit</a>
-                                <a class="btn btn-outline-danger" href="/deleteUser/">Delete</a>
                             </td>
                         </tr>
                     @endif
