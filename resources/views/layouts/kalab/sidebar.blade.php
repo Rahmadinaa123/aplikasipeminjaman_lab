@@ -36,14 +36,6 @@
         Interface
     </div>
 
-    <!-- Nav Item - User -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-user"></i>
-            <span>User</span>
-        </a>
-    </li>
-
     <li class="nav-item">
         <a class="nav-link" href="">
             <i class="fas fa-fw fa-archive"></i>
