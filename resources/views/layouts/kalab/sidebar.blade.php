@@ -53,7 +53,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('kalab.peminjaman_inventaris') }}">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Data Inventaris</span>
         </a>
