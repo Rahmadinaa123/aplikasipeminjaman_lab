@@ -44,8 +44,8 @@
     </li>
     </li>
 
-    <li class="nav-item {{ Request::is('kalab/peminjaman_inventaris') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('kalab.peminjaman_inventaris') }}">
+    <li class="nav-item {{ Request::is('kalab/inventaris_lab') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('kalab.inventaris_lab') }}">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Data Inventaris</span>
         </a>
@@ -61,8 +61,8 @@
 
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ Request::is('kalab/peminjaman_inventaris') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('kalab.peminjaman_inventaris') }}">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Data Peminjaman Inventaris</span>
         </a>
