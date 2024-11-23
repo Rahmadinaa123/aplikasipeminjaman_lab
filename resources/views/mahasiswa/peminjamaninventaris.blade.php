@@ -18,8 +18,7 @@
             <!-- Nama Lab -->
             <div class="mb-3">
                 <label for="nama_lab" class="form-label">Nama Lab</label>
-                <input type="text" class="form-control" id="nama_lab" name="nama_lab" value="{{ $labName }}"
-                    readonly>
+                <input type="text" class="form-control" id="nama_lab" name="nama_lab" value="" readonly>
             </div>
 
             <!-- Nama Peminjam -->
