@@ -15,6 +15,7 @@ use App\Http\Controllers\KalabController;
 use App\Http\Controllers\KalabPeminjamanLabController;
 use App\Http\Controllers\KalabInventarisLabController;
 use App\Http\Controllers\KalabJadwalLabController;
+use App\Http\Controllers\KalabPeminjamanInventarisController;
 
 Route::get('/', function () {
     return view('index');
@@ -70,6 +71,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    //laporan akhir
    Route::get('laboran/laporan_akhir', [LaporanAkhirController::class, 'index'])->name('laboran.laporan_akhir');
    Route::get('laboran/laporan_akhir/inventaris', [LaporanAkhirController::class, 'inventaris'])->name('laboran.laporan_akhir.invetaris');
+
    
 });
 
@@ -95,6 +97,9 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
 
    //jadwal lab
    Route::get('kalab/jadwal_lab', [KalabJadwalLabController::class, 'index'])->name('kalab.jadwal_lab');
+
+   //peminjaman inventaris
+   Route::get('kalab/peminjaman_inventaris', [KalabPeminjamanInventarisController::class, 'index'])->name('kalab.peminjaman_inventaris');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
