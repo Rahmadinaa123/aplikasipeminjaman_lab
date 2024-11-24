@@ -79,12 +79,20 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
 Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/home', [MahasiswaController::class, 'index'])->name('mahasiswa.home');
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
-   Route::get('mahasiswa/pinjamLab', [MahasiswaController::class, 'pinjamLab'])->name('mahasiswa.pinjamLab');
-   Route::get('mahasiswa/pinjaminventaris', [MahasiswaPeminjamanInventarisLabController::class, 'index'])->name('mahasiswa.pinjamaninventaris');
-   Route::post('/postPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'postPeminjamanLab'])->name('mahasiswa.postPeminjamanLab');
    Route::get('mahasiswa/profil', [MahasiswaController::class, 'profil'])->name('mahasiswa.profil');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
    Route::get('mahasiswa/riwayatPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'peminjamanLab'])->name('mahasiswa.riwayatPeminjamanLab');
+
+   //peminjaman lab
+   Route::get('mahasiswa/pinjamLab', [MahasiswaController::class, 'pinjamLab'])->name('mahasiswa.pinjamLab');
+   Route::post('/postPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'postPeminjamanLab'])->name('mahasiswa.postPeminjamanLab');
+
+   //peminjaman Inventaris lab
+   Route::get('mahasiswa/pinjaminventaris', [MahasiswaPeminjamanInventarisLabController::class, 'index'])->name('mahasiswa.pinjamaninventaris');
+   Route::post('/postPeminjamanInventarisLab', [MahasiswaPeminjamanInventarisLabController::class, 'postPeminjamanInventarisLab'])->name('mahasiswa.postPeminjamanInventarisLab');
+
+
+   
 });
 
 Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
