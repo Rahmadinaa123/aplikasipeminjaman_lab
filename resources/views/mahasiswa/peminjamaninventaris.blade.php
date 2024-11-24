@@ -12,7 +12,7 @@
     </div>
     @endif
     <h1>Peminjaman Inventaris Lab</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('mahasiswa.postPeminjamanInventarisLab') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- Nama Lab -->
