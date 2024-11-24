@@ -21,6 +21,7 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
         'prodi' => 'required',
         'semester' => 'required|integer|min:1|max:14',
         'nama_lab' => 'required',
+        'nama_barang' => 'required',
         'tanggal_pinjam' => 'required|date',    // Tanggal mulai peminjaman
         'tanggal_kembali' => 'required|date',  // Tanggal selesai peminjaman
         'jam_pinjam' => 'required|date_format:H:i',    // Jam mulai pemakaian
@@ -28,7 +29,7 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
         'keperluan' => 'required',
     ]);
 
-    dd($request->all());
+    //dd($request->all());
 
     // Membuat instance baru dari model Peminjaman
     $peminjamaninventarislab = new peminjamanInventarisLab;
@@ -40,10 +41,11 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
     $peminjamaninventarislab->prodi = $request->prodi;
     $peminjamaninventarislab->semester = $request->semester;
     $peminjamaninventarislab->nama_lab = $request->nama_lab;
-    $peminjamaninventarislab->tanggal_mulai = $request->tanggal_pinjam; // Sesuaikan dengan nama form
-    $peminjamaninventarislab->tanggal_selesai = $request->tanggal_kembali; // Sesuaikan dengan nama form
-    $peminjamaninventarislab->jam_mulai = $request->jam_pinjam; // Sesuaikan dengan nama form
-    $peminjamaninventarislab->jam_selesai = $request->jam_kembali; // Sesuaikan dengan nama form
+    $peminjamaninventarislab->nama_barang = $request->nama_barang;
+    $peminjamaninventarislab->tanggal_pinjam = $request->tanggal_pinjam; // Sesuaikan dengan nama form
+    $peminjamaninventarislab->tanggal_kembali = $request->tanggal_kembali; // Sesuaikan dengan nama form
+    $peminjamaninventarislab->jam_pinjam = $request->jam_pinjam; // Sesuaikan dengan nama form
+    $peminjamaninventarislab->jam_kembali = $request->jam_kembali; // Sesuaikan dengan nama form
     $peminjamaninventarislab->keperluan = $request->keperluan;
 
     // Menyimpan data ke database
@@ -51,7 +53,7 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
 
     // Mengecek apakah proses simpan berhasil
     if ($peminjamaninventarislab) {
-        return redirect('/mahasiswa/daftarLab')->with('success', 'Data berhasil disimpan!');
+        return redirect('/mahasiswa/daftarLab')->with('success', 'Data Peminjaman Inventaris berhasil disimpan!');
     } else {
         return back()->with('failed', 'Maaf, terjadi kesalahan, coba kembali beberapa saat!');
     }
