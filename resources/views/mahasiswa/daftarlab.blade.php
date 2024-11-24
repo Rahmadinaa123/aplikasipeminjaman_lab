@@ -51,7 +51,7 @@
                     <p class="card-text">Lab Artificial Intelligence adalah fasilitas untuk mempelajari dan
                         mengembangkan.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Artificial Intelligence') }}"
+                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Artificial Intelligence') }}"
                             class="btn btn-primary">Pinjam Lab</a>
                         <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Artificial Intelligence') }}"
                             class="btn btn-success">Pinjam
