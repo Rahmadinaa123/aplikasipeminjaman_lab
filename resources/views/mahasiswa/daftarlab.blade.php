@@ -36,8 +36,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Testing') }}" class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Testing') }}"
-                            class="btn btn-success">Pinjam
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Testing') }}" class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
                 </div>
@@ -51,9 +50,9 @@
                     <p class="card-text">Lab Artificial Intelligence adalah fasilitas untuk mempelajari dan
                         mengembangkan.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Artificial Intelligence') }}"
+                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Artificial Intelligence') }}"
                             class="btn btn-primary">Pinjam Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Artificial Intelligence') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Artificial Intelligence') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -68,10 +67,10 @@
                     <h5 class="card-title">Lab Jaringan Komputer</h5>
                     <p class="card-text">Lab Jaringan Komputer adalah fasilitas untuk mempelajari dan mengembangkan.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Jaringan Komputer') }}"
+                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Jaringan Komputer') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Jaringan Komputer') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Jaringan Komputer') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -86,10 +85,10 @@
                     <p class="card-text">Lab Pemrograman Lanjut adalah fasilitas untuk mempelajari dan mengembangkan
                         aplikasi.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Pemrograman Lanjut') }}"
+                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Pemrograman Lanjut') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Pemrograman Lanjut') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Pemrograman Lanjut') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -108,7 +107,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Software Development') }}"
                             class="btn btn-primary">Pinjam Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Software Development') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Software Development') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -125,7 +124,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Multimedia') }}" class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Multimedia') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Multimedia') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -142,7 +141,7 @@
                     <div class="d-flex justify-content-center gap-2">
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Basis Data') }}" class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Basis Data') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Basis Data') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -160,7 +159,7 @@
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Sistem Informasi') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Sistem Informasi') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Sistem Informasi') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -178,7 +177,7 @@
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Internet Of Things') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Internet Of Things') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Internet Of Things') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
@@ -197,15 +196,13 @@
                         <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Sistem Keamanan') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
-                        <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Sistem Keamanan') }}"
+                        <a href="{{ url('mahasiswa/pinjaminventaris?lab=Lab Sistem Keamanan') }}"
                             class="btn btn-success">Pinjam
                             Inventaris</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Tambahkan lab lainnya jika diperlukan -->
     </div>
 </div>
 
