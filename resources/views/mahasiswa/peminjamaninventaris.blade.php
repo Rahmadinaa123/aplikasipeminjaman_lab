@@ -68,11 +68,11 @@
         <!-- Jam Pemakaian -->
         <div class="row mb-3">
             <div class="col">
-                <label for="jam_pinjam" class="form-label">Jam Mulai</label>
+                <label for="jam_pinjam" class="form-label">Jam Pinjam</label>
                 <input name="jam_pinjam" type="time" class="form-control" id="jam_pinjam" required>
             </div>
             <div class="col">
-                <label for="jam_kembali" class="form-label">Jam Selesai</label>
+                <label for="jam_kembali" class="form-label">Jam Kembali</label>
                 <input name="jam_kembali" type="time" class="form-control" id="jam_kembali" required>
             </div>
         </div>
@@ -86,9 +86,6 @@
 
         <!-- ID User -->
         <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
-
-        <!-- Status (Opsional: Dapat ditambahkan sebagai hidden field jika status defaultnya ditentukan oleh sistem) -->
-        <!-- <input type="hidden" name="status" value="pending"> -->
 
         <!-- Buttons -->
         <div class="d-flex justify-content-end">
