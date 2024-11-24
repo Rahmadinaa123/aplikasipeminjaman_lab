@@ -68,7 +68,7 @@
                     <h5 class="card-title">Lab Jaringan Komputer</h5>
                     <p class="card-text">Lab Jaringan Komputer adalah fasilitas untuk mempelajari dan mengembangkan.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Jaringan Komputer') }}"
+                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Jaringan Komputer') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
                         <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Jaringan Komputer') }}"
@@ -86,7 +86,7 @@
                     <p class="card-text">Lab Pemrograman Lanjut adalah fasilitas untuk mempelajari dan mengembangkan
                         aplikasi.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Pemrograman Lanjut') }}"
+                        <a href="{{ url('mahasiswa/pinjamaninventaris?lab=Lab Pemrograman Lanjut') }}"
                             class="btn btn-primary">Pinjam
                             Lab</a>
                         <a href="{{ url('mahasiswa/pinjamInventaris?lab=Lab Pemrograman Lanjut') }}"
