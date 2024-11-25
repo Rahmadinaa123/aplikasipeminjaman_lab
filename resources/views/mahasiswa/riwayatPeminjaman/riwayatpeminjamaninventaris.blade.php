@@ -5,8 +5,10 @@
 
 @section('konten')
 <div>
-    <table class="table" style="margin-top: 10px">
-        <thead>
+    <h2 class="text-center">Riwayat Peminjaman Inventaris Lab</h2>
+    <br>
+    <table class="table table table-striped table-hover table-bordered" style="margin-top: 10px">
+        <thead class="table-primary">
             <tr>
             <tr class="col-md-12">
                 <th class="" scope="col">No</th>
