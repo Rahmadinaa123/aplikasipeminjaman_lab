@@ -59,7 +59,7 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
     }
 }
 
-public function riwayatpeminjamanLab() {
+public function riwayatpeminjamanInventarisLab() {
         $data=peminjamanInventarisLab::all();
         return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamaninventaris', compact('data'));
    }
