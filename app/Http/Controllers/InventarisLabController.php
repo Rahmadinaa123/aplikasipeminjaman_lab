@@ -31,7 +31,7 @@ class InventarisLabController extends Controller
         'kondisi' => 'required',              // Kondisi barang
     ]);
 
-    dd($request->all());
+    //dd($request->all());
 
     // Membuat instance baru dari model InventarisLab
     $inventaris_lab = new InventarisLab;
