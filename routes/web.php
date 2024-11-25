@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
    Route::get('mahasiswa/profil', [MahasiswaController::class, 'profil'])->name('mahasiswa.profil');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
-   Route::get('mahasiswa/riwayatPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'peminjamanLab'])->name('mahasiswa.riwayatPeminjamanLab');
+   Route::get('mahasiswa/riwayatPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'riwayatpeminjamanLab'])->name('mahasiswa.riwayatPeminjamanLab');
 
    //peminjaman lab
    Route::get('mahasiswa/pinjamLab', [MahasiswaController::class, 'pinjamLab'])->name('mahasiswa.pinjamLab');
