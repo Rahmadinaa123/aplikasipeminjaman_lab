@@ -13,7 +13,7 @@
     <strong>Berhasil!</strong> {{ Session::get('success') }}
 </div>
 @endif
-<h3>Data Inventaris lab </h3>
+<h3>Data Inventaris lab {{ Auth::user()->nama_lab }} </h3>
 <br>
 <a class="btn btn-outline-success" href="{{ route('laboran.inventaris_lab.tambah') }}">Tambah Data</a>
 <div>
@@ -37,7 +37,6 @@
             <tr>
                 <td class="">{{ $no++ }}</td>
                 <td>{{ $item->nama_barang }}</td>
-                <td>{{ $item->nama_lab }}</td>
                 <td>{{ $item->kode_barang }}</td>
                 <td>{{ $item->kategori }}</td>
                 <td>{{ $item->jumlah }}</td>
