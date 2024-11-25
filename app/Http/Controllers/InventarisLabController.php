@@ -20,50 +20,39 @@ class InventarisLabController extends Controller
         return view('Laboran.inventaris_lab.tambahdata', compact('users'));
    }
 
-   public function postInventarisLab(Request $request) {
-     $request->validate([
-    'username' => 'required',              // Nama peminjam
-    'id_user'=> 'required',               
-    'nim' => 'required',
-    'prodi' => 'required',
-    'semester' => 'required|integer|min:1|max:14',
-    'nama_lab' => 'required',
-    'tanggal_mulai' => 'required|date',    // Tanggal mulai peminjaman
-    'tanggal_selesai' => 'required|date',  // Tanggal selesai peminjaman
-    'jam_mulai' => 'required|date_format:H:i',    // Jam mulai pemakaian
-    'jam_selesai' => 'required|date_format:H:i',  // Jam selesai pemakaian
-    'keperluan' => 'required',
-    'status' => ''
+   public function postInventarisLab(Request $request)
+{
+    $request->validate([
+        'nama_barang' => 'required',          // Nama barang
+        'nama_lab' => 'required',             // Nama lab (readonly di form)
+        'kode_barang' => 'required',          // Kode barang
+        'kategori' => 'required',             // Kategori barang
+        'jumlah' => 'required|integer|min:1', // Jumlah barang
+        'kondisi' => 'required',              // Kondisi barang
     ]);
 
-    //dd($request->all());
-    
-     $peminjaman_lab = new Peminjaman;
+    dd($request->all());
 
-    // Mengambil data dari form
-    $peminjaman_lab->id_user = $request->id_user; // Menambahkan id_user
-    $peminjaman_lab->username = $request->username; // Menggunakan username sebagai nama peminjam
-    $peminjaman_lab->nim = $request->nim;
-    $peminjaman_lab->prodi = $request->prodi;
-    $peminjaman_lab->semester = $request->semester;
-    $peminjaman_lab->nama_lab = $request->nama_lab;
-    $peminjaman_lab->tanggal_mulai = $request->tanggal_mulai;
-    $peminjaman_lab->tanggal_selesai = $request->tanggal_selesai;
-    $peminjaman_lab->jam_mulai = $request->jam_mulai;
-    $peminjaman_lab->jam_selesai = $request->jam_selesai;
-    $peminjaman_lab->keperluan = $request->keperluan;
-    $peminjaman_lab->status = $request->status;
+    // Membuat instance baru dari model InventarisLab
+    $inventaris_lab = new InventarisLab;
+
+    // Mengisi data berdasarkan input dari form
+    $inventaris_lab->nama_barang = $request->nama_barang;
+    $inventaris_lab->nama_lab = $request->nama_lab; // Diambil dari Auth::user()->nama_lab
+    $inventaris_lab->kode_barang = $request->kode_barang;
+    $inventaris_lab->kategori = $request->kategori;
+    $inventaris_lab->jumlah = $request->jumlah;
+    $inventaris_lab->kondisi = $request->kondisi;
 
     // Menyimpan data ke database
-    $peminjaman_lab->save();
+    $inventaris_lab->save();
 
     // Mengecek apakah proses simpan berhasil
-    if ($peminjaman_lab) {
-        return redirect('/laboran/peminjaman_lab')->with('success', 'Data berhasil disimpan!');
+    if ($inventaris_lab) {
+        return redirect()->route('laboran.inventaris_lab')->with('success', 'Data berhasil ditambahkan!');
     } else {
-        return back()->with('failed', 'Maaf, terjadi kesalahan, coba kembali beberapa saat!');
+        return back()->with('failed', 'Terjadi kesalahan, coba lagi nanti.');
     }
-
-    }
+}
 
 }
