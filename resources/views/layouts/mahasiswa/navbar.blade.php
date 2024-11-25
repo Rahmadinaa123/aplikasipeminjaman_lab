@@ -27,7 +27,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('mahasiswa.riwayatPeminjamanLab') }}">Riwayat
                                 Peminjaman Lab</a></li>
-                        <li><a class="dropdown-item" href="#">Riwayat Peminjaman Inventaris</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('mahasiswa.riwayatPeminjamanInventarisLab') }}">Riwayat
+                                Peminjaman Inventaris</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
