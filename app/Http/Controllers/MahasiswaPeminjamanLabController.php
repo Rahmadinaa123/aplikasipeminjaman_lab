@@ -51,7 +51,7 @@ class MahasiswaPeminjamanLabController extends Controller
 
     }
 
-    public function peminjamanLab() {
+    public function riwayatpeminjamanLab() {
         $data=peminjaman::all();
         return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamanlab', compact('data'));
    }
