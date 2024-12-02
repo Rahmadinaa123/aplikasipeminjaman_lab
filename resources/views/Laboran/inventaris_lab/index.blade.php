@@ -44,7 +44,8 @@
                 <td>
                     <a class="btn btn-outline-success" href="/laboran/inventaris_lab/detail/{{$item->id}}">Detail</a>
                     <a class="btn btn-outline-warning" href="/laboran/inventaris_lab/editInventarisLab/{{$item->id}}">Edit</a>
-                    <a class="btn btn-outline-danger" href="/deleteUser/">Delete</a>
+                    <a class="btn btn-outline-danger" href="/deleteInventarisLab/{{ $item->id }}"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                 </td>
             </tr>
             @endif
