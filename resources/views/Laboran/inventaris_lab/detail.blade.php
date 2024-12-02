@@ -2,61 +2,47 @@
     'title' => 'Detail Data Inventaris',
 ])
 
+@extends('layouts.app')
+
 @section('konten')
     <div class="row">
         <div class="col d-flex justify-content-center">
             <div class="card mt-4 mb-5" style="width: 800px">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Detail Data Peminjaman Inventaris</h5>
+                    <h5 class="card-title text-center">Detail Data Inventaris {{ Auth::user()->nama_lab }}</h5>
                     <table class="table" style="border: 0;">
                         <tbody>
                             <tr>
-                                <th>Username</th>
-                                <td>{{ $data->username }}</td>
-                            </tr>
-                            <tr>
-                                <th>NIM</th>
-                                <td>{{ $data->nim }}</td>
-                            </tr>
-                            <tr>
-                                <th>Prodi</th>
-                                <td>{{ $data->prodi }}</td>
-                            </tr>
-                            <tr>
-                                <th>Semester</th>
-                                <td>{{ $data->semester }}</td>
+                                <th>Nama Barang</th>
+                                <td>{{ $data->nama_barang }}</td>
                             </tr>
                             <tr>
                                 <th>Nama Lab</th>
                                 <td>{{ $data->nama_lab }}</td>
                             </tr>
                             <tr>
-                                <th>Nama Barang</th>
-                                <td>{{ $data->nama_barang }}</td>
+                                <th>Kode Barang</th>
+                                <td>{{ $data->kode_barang }}</td>
                             </tr>
                             <tr>
-                                <th>Tanggal Pinjam</th>
-                                <td>{{ $data->tanggal_pinjam }}</td>
+                                <th>Kategori</th>
+                                <td>{{ $data->kategori }}</td>
                             </tr>
                             <tr>
-                                <th>Tanggal Kembali</th>
-                                <td>{{ $data->tanggal_kembali }}</td>
+                                <th>Jumlah</th>
+                                <td>{{ $data->jumlah }}</td>
                             </tr>
                             <tr>
-                                <th>Jam Pinjam</th>
-                                <td>{{ $data->jam_pinjam }}</td>
+                                <th>Kondisi</th>
+                                <td>{{ $data->kondisi }}</td>
                             </tr>
                             <tr>
-                                <th>Jam Kembali</th>
-                                <td>{{ $data->jam_kembali }}</td>
+                                <th>Dibuat Pada</th>
+                                <td>{{ $data->created_at->format('d-m-Y H:i') }}</td>
                             </tr>
                             <tr>
-                                <th>Keperluan</th>
-                                <td>{{ $data->keperluan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>{{ $data->status }}</td>
+                                <th>Diperbarui Pada</th>
+                                <td>{{ $data->updated_at->format('d-m-Y H:i') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -65,3 +51,4 @@
         </div>
     </div>
 @endsection
+
