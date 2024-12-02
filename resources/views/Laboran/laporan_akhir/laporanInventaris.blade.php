@@ -17,8 +17,8 @@
     <br>
     <a class="btn btn-outline-warning" href="/editUser/">Cetak</a>
     <div>
-        <table class="table" style="margin-top: 10px">
-            <thead>
+        <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
+            <thead class="table-primary">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
