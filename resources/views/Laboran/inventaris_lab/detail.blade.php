@@ -8,6 +8,7 @@
         <div class="col d-flex justify-content-center">
             <div class="card mt-4 mb-5" style="width: 800px">
                 <div class="card-body">
+                <a class="btn btn-outline-warning" href="{{ route('laboran.inventaris_lab') }}">Kembali</a>
                     <h5 class="card-title text-center">Detail Data Inventaris {{ Auth::user()->nama_lab }}</h5>
                     <table class="table" style="border: 0;">
                         <tbody>
