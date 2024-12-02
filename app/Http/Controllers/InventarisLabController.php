@@ -55,4 +55,9 @@ class InventarisLabController extends Controller
     }
 }
 
+public function editInventarisLab($id) {
+    $data = InventarisLab::find($id);
+    return view('laboran.inventaris_lab.edit', compact('data'));
+}
+
 }
