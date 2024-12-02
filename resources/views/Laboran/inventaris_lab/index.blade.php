@@ -42,7 +42,7 @@
                 <td>{{ $item->jumlah }}</td>
                 <td>{{ $item->kondisi }}</td>
                 <td>
-                    <a class="btn btn-outline-success" href="/editUser/">Detail</a>
+                    <a class="btn btn-outline-success" href="/laboran/inventaris_lab/detail/{{$item->id}}">Detail</a>
                     <a class="btn btn-outline-warning" href="/laboran/inventaris_lab/editInventarisLab/{{$item->id}}">Edit</a>
                     <a class="btn btn-outline-danger" href="/deleteUser/">Delete</a>
                 </td>
