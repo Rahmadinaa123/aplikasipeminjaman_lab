@@ -2,7 +2,6 @@
     'title' => 'Detail Data Inventaris',
 ])
 
-@extends('layouts.app')
 
 @section('konten')
     <div class="row">
