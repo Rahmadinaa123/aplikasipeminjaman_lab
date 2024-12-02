@@ -11,7 +11,7 @@
                         <a class="btn btn-outline-warning" href="{{ route('laboran.inventaris_lab') }}">Kembali</a>
                         <h5 class="card-title text-center mt-3">Edit Data Inventaris Lab</h5>
 
-                        <form action="" method="POST"
+                        <form action="/postEditInventarisLab/{{ $inventaris->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
