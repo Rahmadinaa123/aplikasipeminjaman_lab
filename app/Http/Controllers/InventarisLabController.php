@@ -93,5 +93,10 @@ public function postEditInventarisLab(Request $request, $id)
     }
 }
 
+public function detail($id) {
+    $data = InventarisLab::find($id);
+    return view('laboran.inventaris_lab.detail', compact('data'));
+}
+
 
 }
