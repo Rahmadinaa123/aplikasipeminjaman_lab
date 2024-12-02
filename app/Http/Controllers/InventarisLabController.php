@@ -98,5 +98,15 @@ public function detail($id) {
     return view('laboran.inventaris_lab.detail', compact('data'));
 }
 
+public function deleteInventarisLab($id)
+    {
+        $peminjaman_lab = InventarisLab::find($id);
+        $peminjaman_lab->delete();
+        if ($peminjaman_lab) {
+            return back()->with('success', 'Data Inventaris Lab berhasil di hapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus data Inventaris Lab!');
+        }
+    }
 
 }
