@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('laboran/peminjaman_lab/edit/{id}', [PeminjamanLabController::class, 'updatePeminjamanLab'])->name('laboran.PeminjamanLab.edit');
    Route::get('/editPeminjamanLab/{id}', [PeminjamanLabController::class, 'editPeminjamanLab'])->name('editPeminjamanLab');
    Route::post('/postEditPeminjamanLab/{id}', [PeminjamanLabController::class, 'postEditPeminjamanLab'])->name('postEditPeminjamanLab');
-   Route::get('/laboran/peminjaman_lab/detail/{id}', [PeminjamanLabController::class, 'detail'])->name('laboran.peminjaman_lab.detail');
+   Route::get('laboran/peminjaman_lab/detail/{id}', [PeminjamanLabController::class, 'detail'])->name('laboran.peminjaman_lab.detail');
    Route::get('/deletePeminjamanLab/{id}', [PeminjamanLabController::class, 'deletePeminjamanLab'])->name('deletePeminjamanLab');
    
    //inventarislab 
