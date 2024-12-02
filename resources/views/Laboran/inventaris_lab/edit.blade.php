@@ -8,7 +8,7 @@
             <div class="col d-flex justify-content-center">
                 <div class="card mt-4" style="width: 800px;">
                     <div class="card-body">
-                        <a class="btn btn-outline-warning" href="">Kembali</a>
+                        <a class="btn btn-outline-warning" href="{{ route('laboran.inventaris_lab') }}">Kembali</a>
                         <h5 class="card-title text-center mt-3">Edit Data Inventaris Lab</h5>
 
                         <form action="" method="POST"
