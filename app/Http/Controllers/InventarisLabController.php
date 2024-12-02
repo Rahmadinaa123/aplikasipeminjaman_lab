@@ -60,4 +60,38 @@ public function editInventarisLab($id) {
     return view('laboran.inventaris_lab.edit', compact('inventaris'));
 }
 
+public function postEditInventarisLab(Request $request, $id)
+{
+    $request->validate([
+        'nama_barang' => 'required',          // Nama barang
+        'nama_lab' => 'required',             // Nama lab (readonly di form)
+        'kode_barang' => 'required',          // Kode barang
+        'kategori' => 'required',             // Kategori barang
+        'jumlah' => 'required|integer|min:1', // Jumlah barang
+        'kondisi' => 'required',              // Kondisi barang
+    ]);
+
+    // Mencari data inventaris berdasarkan ID
+    $inventaris_lab = InventarisLab::find($id);
+
+    // Memperbarui data inventaris
+    $inventaris_lab->nama_barang = $request->nama_barang;
+    $inventaris_lab->nama_lab = $request->nama_lab; // Tetap diambil dari input (readonly di form)
+    $inventaris_lab->kode_barang = $request->kode_barang;
+    $inventaris_lab->kategori = $request->kategori;
+    $inventaris_lab->jumlah = $request->jumlah;
+    $inventaris_lab->kondisi = $request->kondisi;
+
+    // Menyimpan perubahan ke database
+    $inventaris_lab->save();
+
+    // Mengecek apakah proses simpan berhasil
+    if ($inventaris_lab) {
+        return redirect()->route('laboran.inventaris_lab')->with('success', 'Data inventaris berhasil diperbarui!');
+    } else {
+        return back()->with('failed', 'Terjadi kesalahan, data gagal diperbarui!');
+    }
+}
+
+
 }
