@@ -47,7 +47,7 @@
                 <td>{{ $item->dosen }}</td>
                 <td>
                     <a class="btn btn-outline-success" href="">Detail</a>
-                    <a class="btn btn-outline-warning" href="/laboran/inventaris_lab/editJadwalLab/{{$item->id}}">Edit</a>
+                    <a class="btn btn-outline-warning" href="/laboran/jadwal_lab/editJadwalLab/{{$item->id}}">Edit</a>
                     <a class="btn btn-outline-danger" href="">Delete</a>
                 </td>
             </tr>
