@@ -8,7 +8,7 @@
         </div>
 
     </a>
-    <div class="profile">
+    <div class="profile mt-3">
         <img src="/assets/img/icon-user.png" alt="Profile Picture" class="profile-icon">
         <div class="profile-info">
             <div>Welcome,</div>
