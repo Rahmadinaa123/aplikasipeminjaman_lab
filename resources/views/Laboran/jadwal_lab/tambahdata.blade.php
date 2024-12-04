@@ -59,9 +59,14 @@
                             </div>
 
                             <!-- Program Studi (Prodi) -->
-                            <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Program Studi (Prodi)</label>
-                                <input type="text" class="form-control border-secondary" name="prodi" required>
+                            <div class="form-group mt-1">
+                                <label class="text-secondary mb-2">Prodi</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="prodi">
+                                    <option value="D3-Teknik Informatika">D3-Teknik Informatika</option>
+                                    <option value="D4-Rekayasa Perangkat Lunak">D4-Rekayasa Perangkat Lunak</option>
+                                    <option value="D4-Keamanan Sistem Informasi">D4-Keamanan Sistem Informasi</option>
+                                    <option value="D2-Administrasi Jaringan Komputer">D2-Administrasi Jaringan Komputer</option>
+                                </select>
                                 <span class="text-danger">
                                     @error('prodi')
                                         {{ $message }}
