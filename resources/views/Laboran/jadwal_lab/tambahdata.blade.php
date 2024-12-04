@@ -11,7 +11,7 @@
                         <a class="btn btn-outline-warning" href="{{ route('laboran.jadwal_lab') }}">Kembali</a>
                         <h5 class="card-title text-center mt-3">Tambah Data Jadwal Lab</h5>
 
-                        <form action="" method="POST">
+                        <form action="{{ route('laboran.postjadwal_lab') }}" method="POST">
                             @csrf
 
                             <!-- Hari -->
