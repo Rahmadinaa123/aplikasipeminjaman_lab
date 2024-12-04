@@ -72,4 +72,9 @@ public function postJadwalLab(Request $request)
         return back()->with('failed', 'Terjadi kesalahan, coba lagi nanti.');
     }
 }
+
+public function editJadwalLab($id) {
+    $data = JadwalLab::find($id);
+    return view('laboran.jadwal_lab.edit', compact('data'));
+}
 }
