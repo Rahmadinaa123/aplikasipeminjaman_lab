@@ -8,9 +8,9 @@
         <div class="col d-flex justify-content-center">
             <div class="card mt-4" style="width: 800px">
                 <div class="card-body">
-                    <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_lab') }}">Kembali</a>
+                    <a class="btn btn-outline-warning" href="{{ route('laboran.jadwal_lab') }}">Kembali</a>
                     <h5 class="card-title text-center">Edit Data Peminjaman</h5>
-                    <form action="{{ route('laboran.postEditJadwalLab', $data->id) }}" method="POST"
+                    <form action="" method="POST"
                         enctype="multipart/form-data">
                         @csrf
 
