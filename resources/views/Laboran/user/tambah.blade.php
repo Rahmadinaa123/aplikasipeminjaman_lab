@@ -50,7 +50,7 @@
                                     <option value="D3-Teknik Informatika">D3-Teknik Informatika</option>
                                     <option value="D4-Rekayasa Perangkat Lunak">D4-Rekayasa Perangkat Lunak</option>
                                     <option value="D4-Keamanan Sistem Informasi">D4-Keamanan Sistem Informasi</option>
-                                    <option value="D2-Administrasi Jaringan Komputer">D4-Keamanan Sistem Informasi</option>
+                                    <option value="D2-Administrasi Jaringan Komputer">D2-Administrasi Jaringan Komputer</option>
                                 </select>
                                 <span class="text-danger">
                                     @error('prodi')
