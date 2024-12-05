@@ -48,7 +48,8 @@
                 <td>
                     <a class="btn btn-outline-success" href="">Detail</a>
                     <a class="btn btn-outline-warning" href="/laboran/jadwal_lab/editJadwalLab/{{$item->id}}">Edit</a>
-                    <a class="btn btn-outline-danger" href="">Delete</a>
+                    <a class="btn btn-outline-danger" href="/deleteJadwalLab/{{ $item->id }}"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                 </td>
             </tr>
             @endif
