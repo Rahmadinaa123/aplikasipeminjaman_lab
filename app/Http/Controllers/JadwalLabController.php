@@ -120,4 +120,15 @@ public function postEditJadwalLab(Request $request, $id)
     }
 }
 
+public function deleteJadwalLab($id)
+    {
+        $jadwal_lab = JadwalLab::find($id);
+        $jadwal_lab->delete();
+        if ($jadwal_lab) {
+            return back()->with('success', 'Data Jadwal Lab berhasil di hapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus data Jadwal Lab!');
+        }
+    }
+
 }
