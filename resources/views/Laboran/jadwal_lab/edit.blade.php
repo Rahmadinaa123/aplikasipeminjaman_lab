@@ -10,9 +10,10 @@
                 <div class="card-body">
                     <a class="btn btn-outline-warning" href="{{ route('laboran.jadwal_lab') }}">Kembali</a>
                     <h5 class="card-title text-center">Edit Data Peminjaman</h5>
-                    <form action="" method="POST"
+                    <form action="/postEditJadwalLab/{{ $data->id }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         <!-- Hari -->
                         <div class="form-group mt-4">
