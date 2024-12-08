@@ -24,7 +24,7 @@
                         <div class="form-group mb-3">
                             <label for="nim">NIM:</label>
                             <input type="text" name="nim" id="nim" class="form-control"
-                                value="{{ Auth::user()->nim }}" readonly>
+                                value="{{ Auth::user()->nim }}">
                         </div>
 
                         <div class="form-group mb-3">
