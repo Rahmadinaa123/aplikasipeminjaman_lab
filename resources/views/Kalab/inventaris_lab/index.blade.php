@@ -17,8 +17,8 @@
     <br>
     <a class="btn btn-outline-success" href="{{ route('laboran.inventaris_lab.tambah') }}">Tambah Data</a>
     <div>
-        <table class="table" style="margin-top: 10px">
-            <thead>
+        <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
+            <thead class="table-primary">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Barang</th>
@@ -37,15 +37,13 @@
                         <tr>
                             <td class="">{{ $no++ }}</td>
                             <td>{{ $item->nama_barang }}</td>
-                            <td>{{ $item->nama_lab }}</td>
                             <td>{{ $item->kode_barang }}</td>
                             <td>{{ $item->kategori }}</td>
                             <td>{{ $item->jumlah }}</td>
                             <td>{{ $item->kondisi }}</td>
                             <td>
                                 <a class="btn btn-outline-success" href="/editUser/">Detail</a>
-                                <a class="btn btn-outline-warning" href="/editUser/">Edit</a>
-                                <a class="btn btn-outline-danger" href="/deleteUser/">Delete</a>
+
                             </td>
                         </tr>
                     @endif
