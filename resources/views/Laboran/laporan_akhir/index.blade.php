@@ -1,5 +1,6 @@
-@extends('layouts.laboran.app', ['title' => 'Data Laporan Akhir'])
-
+@extends('layouts.laboran.app', [
+    'title' => 'Data Laporan Akhir',
+])
 @section('konten')
     @if (Session::has('failed'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -7,7 +8,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
     @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Berhasil:</strong> {{ Session::get('success') }}
@@ -16,7 +16,9 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h3>Data Laporan Peminjaman Lab</h3>
-        <a class="btn btn-primary" href="/editUser/"><i class="bi bi-printer"></i> Cetak</a>
+        <a class="btn btn-primary" href="/editUser/">
+            <i class="bi bi-printer"></i> Cetak
+        </a>
     </div>
     <br>
 
@@ -61,32 +63,4 @@
             </tbody>
         </table>
     </div>
-
-    <div class="chart-container mt-5">
-        <canvas id="peminjamanLabChart"></canvas>
-    </div>
-
-    <script>
-        var ctx = document.getElementById('peminjamanLabChart').getContext('2d');
-        var peminjamanLabChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: @json($bulan), // array nama bulan
-                datasets: [{
-                    label: 'Jumlah Peminjaman',
-                    data: @json($jumlah_peminjaman), // array jumlah peminjaman
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
 @endsection
