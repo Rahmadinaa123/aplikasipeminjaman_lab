@@ -11,7 +11,7 @@
                     <h4>Edit Profil Mahasiswa</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('mahasiswa.updateProfil') }}" method="POST">
                         @csrf
                         @method('PUT')
 
