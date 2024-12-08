@@ -81,7 +81,7 @@
             <!-- Buttons -->
             <div class="d-flex justify-content-end">
                 <input type="submit" value="Pinjam" class="btn btn-success me-2">
-                <button type="button" class="btn btn-warning">Kembali</button>
+                <a href="/mahasiswa/daftarLab" type="button" class="btn btn-warning">Kembali</a>
             </div>
         </form>
     </div>
