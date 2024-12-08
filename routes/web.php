@@ -86,7 +86,6 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
 Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/home', [MahasiswaController::class, 'index'])->name('mahasiswa.home');
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
-   Route::get('mahasiswa/profil', [ProfilMahasiswaController::class, 'profil'])->name('mahasiswa.profil');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
 
    //peminjaman lab
@@ -98,6 +97,11 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/pinjaminventaris', [MahasiswaPeminjamanInventarisLabController::class, 'index'])->name('mahasiswa.pinjamaninventaris');
    Route::post('/postPeminjamanInventarisLab', [MahasiswaPeminjamanInventarisLabController::class, 'postPeminjamanInventarisLab'])->name('mahasiswa.postPeminjamanInventarisLab');
    Route::get('mahasiswa/riwayatPeminjamaninventarisLab', [MahasiswaPeminjamanInventarisLabController::class, 'riwayatpeminjamanInventarisLab'])->name('mahasiswa.riwayatPeminjamanInventarisLab');
+   
+   //profil
+   Route::get('mahasiswa/profil', [ProfilMahasiswaController::class, 'profil'])->name('mahasiswa.profil');
+   Route::get('mahasiswa/profil/edit', [ProfilMahasiswaController::class, 'editprofil'])->name('mahasiswa.profil.edit');
+   
    
 });
 
