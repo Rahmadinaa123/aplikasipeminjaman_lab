@@ -58,7 +58,7 @@
 
                     <!-- Tombol Kembali ke Dashboard -->
                     <a href="/mahasiswa/home" class="btn btn-secondary">Kembali ke Dashboard</a>
-                    <a href="/mahasiswa/home" class="btn btn-primary">Edit Profil</a>
+                    <a href="{{ route('mahasiswa.profil.edit') }}" class="btn btn-primary">Edit Profil</a>
                 </div>
             </div>
         </div>

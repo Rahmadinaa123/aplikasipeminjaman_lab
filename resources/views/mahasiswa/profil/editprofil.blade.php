@@ -69,12 +69,6 @@
                                 value="{{ Auth::user()->email }}" required>
                         </div>
 
-                        <div class="form-group mb-3">
-                            <label for="nama_lab">Nama Lab:</label>
-                            <input type="text" name="nama_lab" id="nama_lab" class="form-control"
-                                value="{{ Auth::user()->nama_lab }}" required>
-                        </div>
-
                         <div class="form-group text-end">
                             <a href="/mahasiswa/profil" class="btn btn-secondary">Batal</a>
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
