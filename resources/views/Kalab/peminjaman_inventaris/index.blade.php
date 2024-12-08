@@ -16,8 +16,8 @@
     <h3>Data Peminjaman Inventaris lab</h3>
     <br>
     <div>
-        <table class="table" style="margin-top: 10px">
-            <thead>
+        <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
+            <thead class="table-primary">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
