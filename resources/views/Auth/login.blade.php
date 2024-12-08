@@ -19,7 +19,7 @@
 
         .login-box {
             width: 600px;
-            height: 400px;
+            height: 450px;
             margin-top: 40px;
             margin-bottom: 40px;
             padding: 40px;
@@ -70,6 +70,9 @@
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="login-box">
+            <a class="btn btn-outline-primary" href="/"">
+                <i class="bi bi-arrow-left"></i> Kembali
+            </a>
             <!-- Floating Alert for Failed Session -->
             @if (Session::get('failed'))
                 <div class="alert alert-danger alert-dismissible fade show floating-alert" role="alert">
@@ -87,7 +90,8 @@
             @endif
 
             <h2 class="text-center mb-4" style="color: #8A7FCB;">LOGIN</h2>
-            <form action="{{ route('postLogin') }}" method="POST" id="login-form">
+
+            <form action="{{ route('postLogin') }}" method="POST" id="login-form" style="margin-bottom:20px">
                 {{ csrf_field() }}
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
