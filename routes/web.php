@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    //profil
    Route::get('mahasiswa/profil', [ProfilMahasiswaController::class, 'profil'])->name('mahasiswa.profil');
    Route::get('mahasiswa/profil/edit', [ProfilMahasiswaController::class, 'editprofil'])->name('mahasiswa.profil.edit');
+   Route::post('/postUpdateProfilMahasiswa', [ProfilMahasiswaController::class, 'postUpdateProfil'])->name('mahasiswa.updateProfil');
    
    
 });
