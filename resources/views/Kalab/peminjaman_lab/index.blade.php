@@ -23,10 +23,6 @@
         width: 100px;
     }
 
-    table tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
     .button-edit {
         margin-right: 10px;
         background-color: #f0ad4e;
@@ -59,8 +55,8 @@
     <br>
 
     <div>
-        <table class="table" style="margin-top: 10px">
-            <thead>
+        <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
+            <thead class="table-primary">
                 <tr>
                 <tr class="col-md-12">
                     <th class="" scope="col">No</th>
