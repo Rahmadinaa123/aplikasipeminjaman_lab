@@ -25,7 +25,7 @@ class MahasiswaController extends Controller
    
    public function profil() {
         $data=User::all();
-        return view('Mahasiswa.profil', compact('data'));
+        return view('Mahasiswa.profil.profil', compact('data'));
    }
     public function jadwal() {
         $data=User::all();
