@@ -82,6 +82,12 @@
                     Laporan Peminjaman Lab
                 </a>
             </li>
+            <li>
+                <a class="dropdown-item {{ Request::is('laboran/laporan_akhir/lab') ? 'active' : '' }}"
+                    href="{{ route('laboran.laporan_akhir') }}">
+                    Laporan Peminjaman Inventaris Lab
+                </a>
+            </li>
         </ul>
     </li>
 
