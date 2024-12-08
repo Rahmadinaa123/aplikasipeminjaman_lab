@@ -55,6 +55,9 @@
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="login-box">
+            <a class="btn btn-outline-primary" href="/"">
+                <i class="bi bi-arrow-left"></i> Kembali
+            </a>
             @if (Session::get('failed'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Login Gagal!</strong> {{ Session::get('failed') }}
