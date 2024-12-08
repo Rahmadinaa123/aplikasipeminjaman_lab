@@ -17,6 +17,7 @@ use App\Http\Controllers\KalabPeminjamanLabController;
 use App\Http\Controllers\KalabInventarisLabController;
 use App\Http\Controllers\KalabJadwalLabController;
 use App\Http\Controllers\KalabPeminjamanInventarisController;
+use App\Http\Controllers\ProfilMahasiswaController;
 
 Route::get('/', function () {
     return view('index');
@@ -85,7 +86,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
 Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/home', [MahasiswaController::class, 'index'])->name('mahasiswa.home');
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
-   Route::get('mahasiswa/profil', [MahasiswaController::class, 'profil'])->name('mahasiswa.profil');
+   Route::get('mahasiswa/profil', [ProfilMahasiswaController::class, 'profil'])->name('mahasiswa.profil');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
 
    //peminjaman lab
