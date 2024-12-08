@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilMahasiswaController extends Controller
 {
@@ -16,7 +17,7 @@ class ProfilMahasiswaController extends Controller
         $data=User::all();
         return view('Mahasiswa.profil.editprofil', compact('data'));
    }
-   public function update(Request $request)
+   public function postUpdateProfil(Request $request)
     {
         // Validasi data yang diterima dari form
         $request->validate([
