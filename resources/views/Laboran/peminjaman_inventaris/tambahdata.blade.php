@@ -11,7 +11,7 @@
                         <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_lab') }}">Kembali</a>
                         <h5 class="card-title text-center mt-3">Tambah Data Inventaris Lab</h5>
 
-                        <form action="{{ route('laboran.postpeminjamanLab') }}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Nama Barang -->
