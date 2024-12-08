@@ -11,7 +11,8 @@
                         <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_lab') }}">Kembali</a>
                         <h5 class="card-title text-center mt-3">Tambah Data Inventaris Lab</h5>
 
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('laboran.postpeminjaman_inventaris') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <!-- Nama Barang -->
@@ -37,63 +38,71 @@
                                 </span>
                             </div>
 
-                            <!-- Kode Barang -->
+                            <!-- Tanggal Pinjam -->
                             <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Kode Barang</label>
-                                <input type="text" class="form-control border-secondary" name="kode_barang" required>
+                                <label class="text-secondary mb-2">Tanggal Pinjam</label>
+                                <input type="date" class="form-control border-secondary" name="tanggal_pinjam" required>
                                 <span class="text-danger">
-                                    @error('kode_barang')
+                                    @error('tanggal_pinjam')
                                         {{ $message }}
                                     @enderror
                                 </span>
                             </div>
 
-                            <!-- Kategori -->
+                            <!-- Tanggal Kembali -->
                             <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Kategori</label>
-                                <select class="form-control border-secondary" name="kategori" required>
-                                    <option value="">Pilih Kategori</option>
-                                    <option value="komputer">Komputer</option>
-                                    <option value="perangkat input">Perangkat Input</option>
-                                    <option value="perangkat output">Perangkat Output</option>
-                                    <option value="jaringan">Jaringan</option>
-                                    <option value="perangkat listrik">Perangkat Listrik</option>
-                                    <option value="aksesoris">Aksesoris</option>
-                                    <option value="lainnya">Lainnya</option>
+                                <label class="text-secondary mb-2">Tanggal Kembali</label>
+                                <input type="date" class="form-control border-secondary" name="tanggal_kembali">
+                                <span class="text-danger">
+                                    @error('tanggal_kembali')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Jam Pinjam -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Jam Pinjam</label>
+                                <input type="time" class="form-control border-secondary" name="jam_pinjam" required>
+                                <span class="text-danger">
+                                    @error('jam_pinjam')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Jam Kembali -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Jam Kembali</label>
+                                <input type="time" class="form-control border-secondary" name="jam_kembali">
+                                <span class="text-danger">
+                                    @error('jam_kembali')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Keperluan -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Keperluan</label>
+                                <textarea class="form-control border-secondary" name="keperluan" required></textarea>
+                                <span class="text-danger">
+                                    @error('keperluan')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Status</label>
+                                <select class="form-control border-secondary" name="status" required>
+                                    <option value="pending">Pending</option>
+                                    <option value="ditolak">Ditolak</option>
+                                    <option value="pinjam">Pinjam</option>
+                                    <option value="selesai">Selesai</option>
                                 </select>
                                 <span class="text-danger">
-                                    @error('kategori')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
-                            </div>
-
-
-
-                            <!-- Jumlah -->
-                            <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Jumlah</label>
-                                <input type="number" class="form-control border-secondary" name="jumlah" required>
-                                <span class="text-danger">
-                                    @error('jumlah')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
-                            </div>
-
-                            <!-- Kondisi -->
-                            <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Kondisi</label>
-                                <select class="form-control border-secondary" name="kondisi" required>
-                                    <option value="baik">Baik</option>
-                                    <option value="rusak">Rusak</option>
-                                    <option value="kurang baik">Kurang Baik</option>
-                                    <option value="dalam perbaikan">Dalam Perbaikan</option>
-                                    <option value="hilang">Hilang</option>
-                                </select>
-
-                                <span class="text-danger">
-                                    @error('kondisi')
+                                    @error('status')
                                         {{ $message }}
                                     @enderror
                                 </span>
@@ -102,6 +111,7 @@
                             <!-- Button Submit -->
                             <input type="submit" value="Tambah Data" class="btn btn-success mt-3">
                         </form>
+
                     </div>
                 </div>
             </div>
