@@ -1,67 +1,92 @@
-@extends('layouts.laboran.app', [
-    'title' => 'Data laporan akhir',
-])
+@extends('layouts.laboran.app', ['title' => 'Data Laporan Akhir'])
+
 @section('konten')
-    @if (Session::get('failed'))
+    @if (Session::has('failed'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Login Gagal!</strong> {{ Session::get('failed') }}
-            <button type="button" class="btn-close" data-bs- dismiss="alert" aria-label="Close"></button>
+            <strong>Gagal:</strong> {{ Session::get('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    @if (Session::get('success'))
+
+    @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Berhasil!</strong> {{ Session::get('success') }}
+            <strong>Berhasil:</strong> {{ Session::get('success') }}
         </div>
     @endif
-    <h3>Data Laporan Peminjaman Lab</h3>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Data Laporan Peminjaman Lab</h3>
+        <a class="btn btn-primary" href="/editUser/"><i class="bi bi-printer"></i> Cetak</a>
+    </div>
     <br>
-    <a class="btn btn-outline-warning" href="/editUser/">Cetak</a>
+
     <div>
-        <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
+        <table class="table table-bordered table-hover">
             <thead class="table-primary">
                 <tr>
-                <tr class="col-md-12">
-                    <th class="" scope="col">No</th>
-                    <th class="" scope="col">Nama Peminjam</th>
-                    <th scope="col">NIM</th>
-                    <th scope="col-md-3">Tanggal Peminjaman</th>
-                    <th scope="col-md-3">Jam Pemakaian</th>
-                    <th scope="col">Keperluan</th>
-                    <th scope="col">Status</th>
-                    <th class="col-md-2" scope="col">Aksi</th>
-                </tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>NIM</th>
+                    <th>Tanggal</th>
+                    <th>Jam</th>
+                    <th>Keperluan</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
+            <tbody>
                 @php $no = 1; @endphp
                 @foreach ($data as $item)
-                    <!-- menampilkan mahasiswa saja -->
                     @if ($item->nama_lab == Auth::user()->nama_lab)
                         <tr>
-                            <td class="">{{ $no++ }}</td> <!-- Nomor urut -->
-                            <td>{{ $item->username }}</td> <!-- Nama peminjam -->
-                            <td>{{ $item->nim }}</td> <!-- NIM peminjam -->
-                            <td>{{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }} -
-                                {{ \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}</td>
-                            <!-- Tanggal mulai -->
-                            <td>{{ \Carbon\Carbon::parse($item->jam_mulai)->format('H:i') }} -
-                                {{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }}</td>
-                            <!-- Jam pemakaian -->
-                            <td>{{ $item->keperluan }}</td> <!-- Keperluan -->
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }} -
+                                {{ \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}
+                            </td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($item->jam_mulai)->format('H:i') }} -
+                                {{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }}
+                            </td>
+                            <td>{{ $item->keperluan }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a class="btn btn-outline-success" href="/editUser/">Detail</a>
+                                <a class="btn btn-info btn-sm" href="/editUser/"><i class="bi bi-eye"></i> Detail</a>
                             </td>
                         </tr>
                     @endif
                 @endforeach
             </tbody>
-
-        </table><br>
-
+        </table>
     </div>
 
-    <!-- Content Row -->
+    <div class="chart-container mt-5">
+        <canvas id="peminjamanLabChart"></canvas>
     </div>
-    </div>
+
+    <script>
+        var ctx = document.getElementById('peminjamanLabChart').getContext('2d');
+        var peminjamanLabChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($bulan), // array nama bulan
+                datasets: [{
+                    label: 'Jumlah Peminjaman',
+                    data: @json($jumlah_peminjaman), // array jumlah peminjaman
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
