@@ -67,6 +67,15 @@
                         </div>
                     </div>
 
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <h5>No Hp:</h5>
+                        </div>
+                        <div class="col-md-9">
+                            <p>{{ Auth::user()->no_hp }}</p>
+                        </div>
+                    </div>
+
                     <!-- Tombol Kembali ke Dashboard -->
                     <a href="/mahasiswa/home" class="btn btn-secondary">Kembali ke Dashboard</a>
                     <a href="{{ route('mahasiswa.profil.edit') }}" class="btn btn-primary">Edit Profil</a>
