@@ -26,9 +26,9 @@
                     <th scope="col">Jam Selesai</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Prodi</th>
-                    <th scope="col">Mata Kuliah</th>
+                    <th class="col-md-2" scope="col">Mata Kuliah</th>
                     <th scope="col">Dosen</th>
-                    <th class="col-md-3" scope="col">Aksi</th>
+                    <th class="col-md-2" scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
