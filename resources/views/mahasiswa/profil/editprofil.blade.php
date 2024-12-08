@@ -28,9 +28,27 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="prodi">Program Studi:</label>
-                            <input type="text" name="prodi" id="prodi" class="form-control"
-                                value="{{ Auth::user()->prodi }}" required>
+                            <label class="text-secondary mb-2">Prodi</label>
+                            <select class="form-control border-secondary" name="prodi" required>
+                                <option value="D3-Teknik Informatika"
+                                    {{ Auth::user()->prodi == 'D3-Teknik Informatika' ? 'selected' : '' }}>D3-Teknik
+                                    Informatika</option>
+                                <option value="D4-Rekayasa Perangkat Lunak"
+                                    {{ Auth::user()->prodi == 'D4-Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4-Rekayasa
+                                    Perangkat Lunak</option>
+                                <option value="D4-Keamanan Sistem Informasi"
+                                    {{ Auth::user()->prodi == 'D4-Keamanan Sistem Informasi' ? 'selected' : '' }}>
+                                    D4-Keamanan
+                                    Sistem Informasi</option>
+                                <option value="D2-Administrasi Jaringan Komputer"
+                                    {{ Auth::user()->prodi == 'D2-Administrasi Jaringan Komputer' ? 'selected' : '' }}>
+                                    D2-Administrasi Jaringan Komputer</option>
+                            </select>
+                            <span class="text-danger">
+                                @error('prodi')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
 
                         <div class="form-group mb-3">
@@ -58,7 +76,7 @@
                         </div>
 
                         <div class="form-group text-end">
-                            <a href="mahasiswa/profil" class="btn btn-secondary">Batal</a>
+                            <a href="/mahasiswa/profil" class="btn btn-secondary">Batal</a>
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </div>
                     </form>
