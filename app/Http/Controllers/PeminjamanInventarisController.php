@@ -23,6 +23,10 @@ class PeminjamanInventarisController extends Controller
 {
     // Validasi data dari form
     $request->validate([
+        'username' => 'required',              // Nama peminjam
+        'id_user'=> 'required',               
+        'nim' => 'required',
+        'prodi' => 'required',
         'nama_barang' => 'required',                // Nama barang yang dipinjam
         'nama_lab' => 'required',                  // Nama laboratorium
         'tanggal_pinjam' => 'required|date',       // Tanggal peminjaman
@@ -36,6 +40,11 @@ class PeminjamanInventarisController extends Controller
     $peminjaman = new peminjamanInventarisLab;
 
     // Mengambil data dari request dan memasukkannya ke dalam model
+    $peminjaman_lab->id_user = $request->id_user; // Menambahkan id_user
+    $peminjaman_lab->username = $request->username; // Menggunakan username sebagai nama peminjam
+    $peminjaman_lab->nim = $request->nim;
+    $peminjaman_lab->prodi = $request->prodi;
+    $peminjaman_lab->semester = $request->semester;
     $peminjaman->nama_barang = $request->nama_barang; 
     $peminjaman->nama_lab = $request->nama_lab;
     $peminjaman->tanggal_pinjam = $request->tanggal_pinjam;
