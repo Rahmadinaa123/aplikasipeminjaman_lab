@@ -112,5 +112,16 @@ class PeminjamanInventarisController extends Controller
     }
 }
 
+public function deletePeminjamanInventaris($id)
+    {
+        $peminjaman_inventaris = peminjamanInventarisLab::find($id);
+        $peminjaman_inventaris->delete();
+        if ($peminjaman_inventaris) {
+            return back()->with('success', 'Data Peminjaman Inventaris Lab berhasil di hapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus data Peminjaman Lab!');
+        }
+    }
+
 
 }

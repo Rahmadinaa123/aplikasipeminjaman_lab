@@ -50,7 +50,8 @@
                         <a class="btn btn-outline-success" href="">Detail</a>
                         <a class="btn btn-outline-warning"
                             href="/laboran/peminjaman_inventaris/edit/{{ $item->id }}">Edit</a>
-                        <a class="btn btn-outline-danger" href="/deleteUser/">Delete</a>
+                        <a class="btn btn-outline-danger" href="/deletePeminjamanInventarisLab/{{ $item->id }}"
+                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                     </td>
                 </tr>
                 @endif
