@@ -86,7 +86,7 @@ class PeminjamanInventarisController extends Controller
     ]);
 
     // Cari data peminjaman inventaris berdasarkan ID
-    $peminjaman_inventaris = PeminjamanInventaris::find($id);
+    $peminjaman_inventaris = peminjamanInventarisLab::find($id);
 
     // Update data dengan input dari form
     $peminjaman_inventaris->username = $request->username;
