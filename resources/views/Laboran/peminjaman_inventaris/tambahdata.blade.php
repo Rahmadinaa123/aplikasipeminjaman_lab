@@ -72,7 +72,6 @@
                             </div>
 
                             <!-- Nama Lab -->
-                            <!-- Nama Lab -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Lab</label>
                                 <input type="text" class="form-control border-secondary" name="nama_lab" id="semester"
