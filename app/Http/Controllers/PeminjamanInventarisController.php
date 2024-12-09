@@ -55,4 +55,9 @@ class PeminjamanInventarisController extends Controller
     }
 }
 
+ public function editPeminjamanInventaris($id) {
+        $data = peminjamanInventarisLab::find($id);
+        return view('laboran.peminjaman_inventaris.edit', compact('data'));
+    }
+
 }
