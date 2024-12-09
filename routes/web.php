@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('laboran/peminjaman_inventaris', [PeminjamanInventarisController::class, 'index'])->name('laboran.peminjaman_inventaris');
    Route::get('laboran/peminjaman_inventaris/tambah', [PeminjamanInventarisController::class, 'addPeminjamanInventaris'])->name('laboran.peminjaman_inventaris.tambah');
    Route::post('/postpeminjaman_inventaris', [PeminjamanInventarisController::class, 'postPeminjamanInventaris'])->name('laboran.postpeminjaman_inventaris');
+   Route::get('laboran/peminjaman_inventaris/edit/{id}', [PeminjamanInventarisController::class, 'editJadwalLab'])->name('editJadwalLab');
    
    //jadwal lab
    Route::get('laboran/jadwal_lab', [JadwalLabController::class, 'index'])->name('laboran.jadwal_lab');
