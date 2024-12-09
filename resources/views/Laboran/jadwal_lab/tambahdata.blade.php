@@ -17,61 +17,71 @@
                             <!-- Hari -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Hari</label>
-                                <input type="text" class="form-control border-secondary" name="hari" required>
-                                <span class="text-danger">
-                                    @error('hari')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <select class="form-control" id="exampleFormControlSelect1" name="hari">
+                                    <option value="">Pilih hari</option>
+                                    <option value="senin" {{ old('hari') == 'senin' ? 'selected' : '' }}>senin</option>
+                                    <option value="selasa" {{ old('hari') == 'selasa' ? 'selected' : '' }}>selasa</option>
+                                    <option value="rabu" {{ old('hari') == 'rabu' ? 'selected' : '' }}>rabu</option>
+                                    <option value="kamis" {{ old('hari') == 'kamis' ? 'selected' : '' }}>kamis</option>
+                                    <option value="jumat" {{ old('hari') == 'jumat' ? 'selected' : '' }}>jumat</option>
+                                    <option value="sabtu" {{ old('hari') == 'sabtu' ? 'selected' : '' }}>sabtu</option>
+                                    <option value="minggu" {{ old('hari') == 'minggu' ? 'selected' : '' }}>minggu</option>
+                                </select>
+                                @error('hari')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Jam Mulai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Mulai</label>
-                                <input type="time" class="form-control border-secondary" name="jam_mulai" required>
-                                <span class="text-danger">
-                                    @error('jam_mulai')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <input type="time" class="form-control border-secondary" name="jam_mulai"
+                                    value="{{ old('jam_mulai') }}" required>
+                                @error('jam_mulai')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Jam Selesai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Selesai</label>
-                                <input type="time" class="form-control border-secondary" name="jam_selesai" required>
-                                <span class="text-danger">
-                                    @error('jam_selesai')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <input type="time" class="form-control border-secondary" name="jam_selesai"
+                                    value="{{ old('jam_selesai') }}" required>
+                                @error('jam_selesai')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Kelas -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Kelas</label>
-                                <input type="text" class="form-control border-secondary" name="kelas" required>
-                                <span class="text-danger">
-                                    @error('kelas')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <input type="text" class="form-control border-secondary" name="kelas"
+                                    value="{{ old('kelas') }}" required>
+                                @error('kelas')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Program Studi (Prodi) -->
                             <div class="form-group mt-1">
                                 <label class="text-secondary mb-2">Prodi</label>
                                 <select class="form-control" id="exampleFormControlSelect1" name="prodi">
-                                    <option value="D3-Teknik Informatika">D3-Teknik Informatika</option>
-                                    <option value="D4-Rekayasa Perangkat Lunak">D4-Rekayasa Perangkat Lunak</option>
-                                    <option value="D4-Keamanan Sistem Informasi">D4-Keamanan Sistem Informasi</option>
-                                    <option value="D2-Administrasi Jaringan Komputer">D2-Administrasi Jaringan Komputer</option>
+                                    <option value="D3-Teknik Informatika"
+                                        {{ old('prodi') == 'D3-Teknik Informatika' ? 'selected' : '' }}>D3-Teknik
+                                        Informatika</option>
+                                    <option value="D4-Rekayasa Perangkat Lunak"
+                                        {{ old('prodi') == 'D4-Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4-Rekayasa
+                                        Perangkat Lunak</option>
+                                    <option value="D4-Keamanan Sistem Informasi"
+                                        {{ old('prodi') == 'D4-Keamanan Sistem Informasi' ? 'selected' : '' }}>D4-Keamanan
+                                        Sistem Informasi</option>
+                                    <option value="D2-Administrasi Jaringan Komputer"
+                                        {{ old('prodi') == 'D2-Administrasi Jaringan Komputer' ? 'selected' : '' }}>
+                                        D2-Administrasi Jaringan Komputer</option>
                                 </select>
-                                <span class="text-danger">
-                                    @error('prodi')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                @error('prodi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Nama Lab -->
@@ -79,38 +89,35 @@
                                 <label class="text-secondary mb-2">Nama Lab</label>
                                 <input type="text" class="form-control border-secondary" name="nama_lab" readonly
                                     value="{{ Auth::user()->nama_lab }}">
-                                <span class="text-danger">
-                                    @error('nama_lab')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                @error('nama_lab')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Mata Kuliah -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Mata Kuliah</label>
-                                <input type="text" class="form-control border-secondary" name="mata_kuliah" required>
-                                <span class="text-danger">
-                                    @error('mata_kuliah')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <input type="text" class="form-control border-secondary" name="mata_kuliah"
+                                    value="{{ old('mata_kuliah') }}" required>
+                                @error('mata_kuliah')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Dosen -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Dosen</label>
-                                <input type="text" class="form-control border-secondary" name="dosen" required>
-                                <span class="text-danger">
-                                    @error('dosen')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
+                                <input type="text" class="form-control border-secondary" name="dosen"
+                                    value="{{ old('dosen') }}" required>
+                                @error('dosen')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Button Submit -->
                             <input type="submit" value="Tambah Data" class="btn btn-success mt-3">
                         </form>
+
                     </div>
                 </div>
             </div>
