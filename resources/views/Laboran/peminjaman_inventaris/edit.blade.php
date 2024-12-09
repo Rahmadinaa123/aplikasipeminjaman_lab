@@ -7,11 +7,10 @@
             <div class="col d-flex justify-content-center">
                 <div class="card mt-4" style="width: 800px">
                     <div class="card-body">
-                        <a class="btn btn-outline-warning"
-                            href="/postEditPeminjaman/iventaris{{ $peminjaman->id }}">Kembali</a>
+                        <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_inventaris') }}">Kembali</a>
                         <h5 class="card-title text-center">Edit Data
                             User</h5>
-                        <form action="/postEditPeminjaman/{{ $peminjaman->id }}" method="POST"
+                        <form action="/postEditPeminjaman/iventaris/{{ $peminjaman->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
