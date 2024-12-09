@@ -110,7 +110,7 @@
             'Lab Testing',
             'Lab Jaringan Komputer',
             'Lab
-                                    Artificial Intelligence',
+                                            Artificial Intelligence',
             'Lab Pemrograman',
         ] as $lab)
                                         <option value="{{ $lab }}"
