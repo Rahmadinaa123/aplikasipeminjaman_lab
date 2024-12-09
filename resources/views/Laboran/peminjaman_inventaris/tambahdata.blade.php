@@ -9,11 +9,85 @@
                 <div class="card mt-4" style="width: 800px;">
                     <div class="card-body">
                         <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_lab') }}">Kembali</a>
-                        <h5 class="card-title text-center mt-3">Tambah Data Inventaris Lab</h5>
+                        <h5 class="card-title text-center mt-3">Tambah Data Peminjaman Inventaris Lab</h5>
 
                         <form action="{{ route('laboran.postpeminjaman_inventaris') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            <!-- Nama Peminjam (Dropdown) -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Nama Peminjam</label>
+                                <select name="username" id="nama_peminjam" class="form-control border-secondary" required>
+                                    <option value="">Pilih Nama Peminjam</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->username }}" data-nim="{{ $user->nim }}"
+                                            data-prodi="{{ $user->prodi }}" data-semester="{{ $user->semester }}"
+                                            data-id="{{ $user->id }}"> <!-- Menambahkan data-id -->
+                                            {{ $user->username }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="hidden" name="id_user" id="id_user" value="{{ old('id_user') }}">
+                                <!-- hidden input untuk id_user -->
+                                <span class="text-danger">
+                                    @error('id_user')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- NIM (Readonly) -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">NIM</label>
+                                <input type="text" class="form-control border-secondary" name="nim" id="nim"
+                                    readonly value="{{ old('nim') }}">
+                                <span class="text-danger">
+                                    @error('nim')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Prodi (Readonly) -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Prodi</label>
+                                <input type="text" class="form-control border-secondary" name="prodi" id="prodi"
+                                    readonly value="{{ old('prodi') }}">
+                                <span class="text-danger">
+                                    @error('prodi')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Semester (Readonly) -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Semester</label>
+                                <input type="number" class="form-control border-secondary" name="semester" id="semester"
+                                    readonly value="{{ old('semester') }}">
+                                <span class="text-danger">
+                                    @error('semester')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <!-- Nama Lab -->
+                            <!-- Nama Lab -->
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Nama Lab</label>
+                                <input type="text" class="form-control border-secondary" name="nama_lab" id="semester"
+                                    readonly value="{{ Auth::user()->nama_lab }}">
+                                <span class="text-danger">
+                                    @error('nama_lab')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                                <span class="text-danger">
+                                    @error('nama_lab')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
 
                             <!-- Nama Barang -->
                             <div class="form-group mt-4">
@@ -21,18 +95,6 @@
                                 <input type="text" class="form-control border-secondary" name="nama_barang" required>
                                 <span class="text-danger">
                                     @error('nama_barang')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
-                            </div>
-
-                            <!-- Nama Lab -->
-                            <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Nama Lab</label>
-                                <input type="text" class="form-control border-secondary" name="nama_lab" readonly
-                                    value="{{ Auth::user()->nama_lab }}">
-                                <span class="text-danger">
-                                    @error('nama_lab')
                                         {{ $message }}
                                     @enderror
                                 </span>
@@ -117,4 +179,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Mengatur nilai id_user, nim, prodi, dan semester berdasarkan pilihan nama peminjam
+        document.getElementById('nama_peminjam').addEventListener('change', function() {
+            var selectedUserId = this.value;
+            var selectedNim = this.options[this.selectedIndex].getAttribute('data-nim');
+            var selectedProdi = this.options[this.selectedIndex].getAttribute('data-prodi');
+            var selectedSemester = this.options[this.selectedIndex].getAttribute('data-semester');
+            var selectedId = this.options[this.selectedIndex].getAttribute('data-id'); // Menyimpan id_user
+
+            document.getElementById('id_user').value = selectedId; // Isi id_user
+            document.getElementById('nim').value = selectedNim;
+            document.getElementById('prodi').value = selectedProdi;
+            document.getElementById('semester').value = selectedSemester;
+        });
+    </script>
 @endsection
