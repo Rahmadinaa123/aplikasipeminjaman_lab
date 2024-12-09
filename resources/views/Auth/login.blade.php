@@ -36,7 +36,7 @@
         }
 
         footer {
-            position: absolute;
+            position: relative;
             text-align: center;
             padding: 20px;
             background-color: #56bae4;
