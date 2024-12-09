@@ -7,15 +7,16 @@
             <div class="col d-flex justify-content-center">
                 <div class="card mt-4" style="width: 800px">
                     <div class="card-body">
-                        <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_inventaris) }}">Kembali</a>
+                        <a class="btn btn-outline-warning" href="{{ route('laboran.peminjaman_inventaris') }}">Kembali</a>
                         <h5 class="card-title text-center">Edit Data
                             User</h5>
-                        <form action="/postEditpeminjaman_inventaris/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/postEditpeminjaman_inventaris/{{ $data->id }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Username</label>
                                 <input type="text" class="form-controlborder border-secondary form-control"
-                                    name="username" required value="{{ $data->username }}">
+                                    name="username" required value="{{ $data->username }}" readonly>
                                 <span class="text-danger">
                                     @error('username')
                                         {{ $message }}
@@ -25,7 +26,7 @@
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nim</label>
                                 <input type="text" class="form-controlborder border-secondary form-control"
-                                    name="nim" required value="{{ $data->nim }}">
+                                    name="nim" required value="{{ $data->nim }}" readonly>
                                 <span class="text-danger">
                                     @error('nim')
                                         {{ $message }}
@@ -34,21 +35,8 @@
                             </div>
                             <div class="form-group mt-1">
                                 <label class="text-secondary mb-2">Prodi</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="prodi">
-                                    <option value="D3-Teknik Informatika"
-                                        {{ $data->nama_lab == 'D3-Teknik Informatika' ? 'selected' : '' }}>D3-Teknik
-                                        Informatika</option>
-                                    <option value="D4-Rekayasa Perangkat Lunak"
-                                        {{ $data->nama_lab == 'D4-Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4-Rekayasa
-                                        Perangkat Lunak</option>
-                                    <option value="D4-Keamanan Sistem Informasi"
-                                        {{ $data->nama_lab == 'D4-Keamanan Sistem Informasi' }}</option>D4-Keamanan Sistem
-                                        Informasi
-                                    <option value="D2-Administrasi Jaringan Komputer"
-                                        {{ $data->nama_lab == 'D2-Administrasi Jaringan Komputer' }}>D2-Administrasi
-                                        Jaringan Komputer
-                                    </option>
-                                </select>
+                                <input type="text" class="form-controlborder border-secondary form-control"
+                                    name="prodi" required value="{{ $data->prodi }}" readonly>
                                 <span class="text-danger">
                                     @error('prodi')
                                         {{ $message }}
@@ -58,7 +46,7 @@
                             <div class="form-group mt-1">
                                 <label class="text-secondary mb-2">Semester</label>
                                 <input type="text" class="form-controlborder border-secondary form-control"
-                                    name="semester" required value="{{ $data->semester }}">
+                                    name="semester" required value="{{ $data->semester }}" readonly>
                                 <span class="text-danger">
                                     @error('semester')
                                         {{ $message }}
