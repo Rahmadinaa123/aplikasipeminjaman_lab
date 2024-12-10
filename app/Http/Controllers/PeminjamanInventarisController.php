@@ -68,7 +68,8 @@ class PeminjamanInventarisController extends Controller
 
  public function editPeminjamanInventaris($id) {
         $peminjaman = peminjamanInventarisLab::find($id);
-        return view('laboran.peminjaman_inventaris.edit', compact('peminjaman'));
+        $inventaris=inventarisLab::all();
+        return view('laboran.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
     }
 
     public function postEditPeminjamanInventaris(Request $request, $id)

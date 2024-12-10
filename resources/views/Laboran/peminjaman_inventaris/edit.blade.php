@@ -54,15 +54,18 @@
                             <!-- Nama Barang -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Barang</label>
-                                <input type="text" class="form-control border-secondary" name="nama_barang" required
-                                    value="{{ old('nama_barang', $peminjaman->nama_barang) }}">
+                                <select class="form-control border-secondary" name="nama_barang" required>
+                                    <option value="" disabled selected>Pilih Nama Barang</option>
+                                    @foreach ($inventaris as $barang)
+                                        <option value="{{ $barang->nama_barang }}">{{ $barang->nama_barang }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger">
                                     @error('nama_barang')
                                         {{ $message }}
                                     @enderror
                                 </span>
                             </div>
-
                             <!-- Nama Lab -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Lab</label>
