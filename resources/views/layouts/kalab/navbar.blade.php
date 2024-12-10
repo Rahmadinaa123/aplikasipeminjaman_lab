@@ -15,6 +15,13 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
+        <!-- Icon Bell -->
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-bell text-dark"></i>
+            </a>
+        </li>
+
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
