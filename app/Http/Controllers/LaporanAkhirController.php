@@ -30,4 +30,10 @@ public function cetaklaporanpeminjamanlab() {
     $data = peminjaman::where('status', 'selesai')->get();
     return view('Laboran.laporan_akhir.cetaklaporanpeminjamanlab', compact('data'));
 }
+
+public function cetaklaporanpeminjamaninventaris() {
+    // Ambil data peminjaman yang hanya memiliki status 'selesai'
+    $data = peminjamanInventarisLab::where('status', 'selesai')->get();
+    return view('Laboran.laporan_akhir.cetaklaporanpeminjamaninventaris', compact('data'));
+}
 }

@@ -86,10 +86,11 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('laboran/laporan_akhir/inventaris', [LaporanAkhirController::class, 'inventaris'])->name('laboran.laporan_akhir.invetaris'); 
    Route::get('laboran/laporan_akhir/detail/{id}', [LaporanAkhirController::class, 'detail'])->name('laboran.laporan_akhir.detail');
    Route::get('laboran/laporan_akhir/laporanpeminjamanlab/cetak', [LaporanAkhirController::class, 'cetaklaporanpeminjamanlab'])->name('laboran.cetak.laporan_akhir');
+   Route::get('laboran/laporan_akhir/laporanpeminjamaninventaris/cetak', [LaporanAkhirController::class, 'cetaklaporanpeminjamaninventaris'])->name('laboran.cetak.laporan_akhir');
    
 });
 
-Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
+   Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/home', [MahasiswaController::class, 'index'])->name('mahasiswa.home');
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
@@ -112,7 +113,7 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    
 });
 
-Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
+   Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
    Route::get('kalab/home', [kalabController::class, 'index'])->name('kalab.home');
    Route::get('kalab/profil', [KalabController::class, 'profil'])->name('kalab.profil');
 

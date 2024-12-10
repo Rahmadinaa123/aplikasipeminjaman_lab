@@ -15,8 +15,8 @@
     @endif
 
     <div class="d-flex justify-content-between align-items-center">
-        <h3>Data Laporan Peminjaman Lab</h3>
-        <a class="btn btn-primary" href="/laboran/laporan_akhir/laporanpeminjamanlab/cetak">
+        <h3>Data Laporan Peminjaman Inventaris</h3>
+        <a class="btn btn-primary" href="/laboran/laporan_akhir/laporanpeminjamaninventaris/cetak">
             <i class="bi bi-printer"></i> Cetak
         </a>
     </div>
@@ -29,6 +29,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>NIM</th>
+                    <th>Nama Barang</th>
                     <th>Tanggal</th>
                     <th>Jam</th>
                     <th>Keperluan</th>
@@ -44,6 +45,7 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->nim }}</td>
+                            <td>{{ $item->nama_barang }}</td>
                             <td>
                                 {{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }} -
                                 {{ \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}
