@@ -25,4 +25,9 @@ public function detail($id) {
         return view('laboran.laporan_akhir.detail', compact('data'));
     }
 
+public function cetaklaporanpeminjamanlab() {
+    // Ambil data peminjaman yang hanya memiliki status 'selesai'
+    $data = peminjaman::where('status', 'selesai')->get();
+    return view('Laboran.laporan_akhir.cetaklaporanpeminjamanlab', compact('data'));
+}
 }

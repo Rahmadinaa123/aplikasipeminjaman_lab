@@ -16,7 +16,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h3>Data Laporan Peminjaman Lab</h3>
-        <a class="btn btn-primary" href="/editUser/">
+        <a class="btn btn-primary" href="/laboran/laporan_akhir/laporanpeminjamanlab/cetak">
             <i class="bi bi-printer"></i> Cetak
         </a>
     </div>
