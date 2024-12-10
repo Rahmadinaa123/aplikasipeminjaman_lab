@@ -52,9 +52,14 @@
             <!-- Nama Barang -->
             <div class="mb-3">
                 <label for="nama_barang" class="form-label">Nama Barang</label>
-                <input name="nama_barang" type="text" class="form-control" id="nama_barang"
-                    placeholder="Masukkan nama barang yang dipinjam" required>
+                <select name="nama_barang" id="nama_barang" class="form-control" required>
+                    <option value="" disabled selected>Pilih Nama Barang</option>
+                    @foreach ($inventaris as $barang)
+                        <option value="{{ $barang->nama_barang }}">{{ $barang->nama_barang }}</option>
+                    @endforeach
+                </select>
             </div>
+
 
             <!-- Tanggal Peminjaman -->
             <div class="row mb-3">
