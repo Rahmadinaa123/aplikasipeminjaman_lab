@@ -76,6 +76,7 @@
                             <a href="{{ route('laboran.peminjaman_inventaris') }}"
                                 class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Data Laporan Akhir</a>
+                            <h4>{{ number_format($laporan) }}</h4>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>

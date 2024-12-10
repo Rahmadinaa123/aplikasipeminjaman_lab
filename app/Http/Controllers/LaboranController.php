@@ -15,7 +15,8 @@ class LaboranController extends Controller
         $peminjaman = peminjaman::count();
         $peminjamanInventarisLab = peminjamanInventarisLab::count();
         $data=User::all();
-        return view('Laboran.Index', compact('data','user','peminjaman','peminjamanInventarisLab'));
+        $laporan=peminjaman::where('status', 'selesai')->count();
+        return view('Laboran.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan'));
    }
     public function profil() {
         $data=User::all();
