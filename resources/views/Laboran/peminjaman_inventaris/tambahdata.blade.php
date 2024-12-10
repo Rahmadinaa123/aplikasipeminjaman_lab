@@ -26,7 +26,7 @@
                                             {{ $user->username }}</option>
                                     @endforeach
                                 </select>
-                                <input type="hidden" name="id_user" id="id_user" value="{{ old('id_user') }}">
+                                <input type="text" name="id_user" id="id_user" value="{{ old('id_user') }}">
                                 <!-- hidden input untuk id_user -->
                                 <span class="text-danger">
                                     @error('id_user')
@@ -91,13 +91,19 @@
                             <!-- Nama Barang -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Barang</label>
-                                <input type="text" class="form-control border-secondary" name="nama_barang" required>
+                                <select class="form-control border-secondary" name="nama_barang" required>
+                                    <option value="" disabled selected>Pilih Nama Barang</option>
+                                    @foreach ($inventaris as $barang)
+                                        <option value="{{ $barang->nama_barang }}">{{ $barang->nama_barang }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger">
                                     @error('nama_barang')
                                         {{ $message }}
                                     @enderror
                                 </span>
                             </div>
+
 
                             <!-- Tanggal Pinjam -->
                             <div class="form-group mt-4">

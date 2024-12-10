@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\peminjamanInventarisLab;
 use App\Models\User;
+use App\Models\inventarisLab;
 use Illuminate\Http\Request;
 
 class PeminjamanInventarisController extends Controller
@@ -16,7 +17,8 @@ class PeminjamanInventarisController extends Controller
     //halaman Peminjaman Inventaris Lab
     public function addPeminjamanInventaris() {
         $users=User::all();
-        return view('Laboran.peminjaman_inventaris.tambahdata', compact('users'));
+        $inventaris=inventarisLab::all();
+        return view('Laboran.peminjaman_inventaris.tambahdata', compact('users','inventaris'));
    }
 
    public function postPeminjamanInventaris(Request $request)
@@ -40,11 +42,11 @@ class PeminjamanInventarisController extends Controller
     $peminjaman = new peminjamanInventarisLab;
 
     // Mengambil data dari request dan memasukkannya ke dalam model
-    $peminjaman_lab->id_user = $request->id_user; // Menambahkan id_user
-    $peminjaman_lab->username = $request->username; // Menggunakan username sebagai nama peminjam
-    $peminjaman_lab->nim = $request->nim;
-    $peminjaman_lab->prodi = $request->prodi;
-    $peminjaman_lab->semester = $request->semester;
+    $peminjaman->id_user = $request->id_user; // Menambahkan id_user
+    $peminjaman->username = $request->username; // Menggunakan username sebagai nama peminjam
+    $peminjaman->nim = $request->nim;
+    $peminjaman->prodi = $request->prodi;
+    $peminjaman->semester = $request->semester;
     $peminjaman->nama_barang = $request->nama_barang; 
     $peminjaman->nama_lab = $request->nama_lab;
     $peminjaman->tanggal_pinjam = $request->tanggal_pinjam;
