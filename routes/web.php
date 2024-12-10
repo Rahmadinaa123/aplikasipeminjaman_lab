@@ -84,6 +84,8 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    //laporan akhir
    Route::get('laboran/laporan_akhir', [LaporanAkhirController::class, 'index'])->name('laboran.laporan_akhir');
    Route::get('laboran/laporan_akhir/inventaris', [LaporanAkhirController::class, 'inventaris'])->name('laboran.laporan_akhir.invetaris'); 
+   Route::get('laboran/laporan_akhir/detail/{id}', [LaporanAkhirController::class, 'detail'])->name('laboran.laporan_akhir.detail');
+   
 });
 
 Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {

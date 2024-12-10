@@ -20,5 +20,9 @@ class LaporanAkhirController extends Controller
     $data = peminjamanInventarisLab::where('status', 'selesai')->get();
     return view('Laboran.laporan_akhir.laporanInventaris', compact('data'));
 }
+public function detail($id) {
+        $data = peminjaman::find($id);
+        return view('laboran.laporan_akhir.detail', compact('data'));
+    }
 
 }

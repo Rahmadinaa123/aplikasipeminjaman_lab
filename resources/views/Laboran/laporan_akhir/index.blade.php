@@ -55,7 +55,8 @@
                             <td>{{ $item->keperluan }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="/editUser/"><i class="bi bi-eye"></i> Detail</a>
+                                <a class="btn btn-info btn-sm" href="/laboran/laporan_akhir/detail/{{ $item->id }}"><i
+                                        class="bi bi-eye"></i> Detail</a>
                             </td>
                         </tr>
                     @endif
