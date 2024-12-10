@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -10,7 +11,7 @@ class UserController extends Controller
 {
      //halaman dashboard laboran
     public function index() {
-        $data=User::all();
+        $data=User::where('nama_lab', Auth::user()->nama_lab)->get();
         return view('Laboran.user.Index', compact('data'));
    }
 
