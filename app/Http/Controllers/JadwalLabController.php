@@ -22,7 +22,7 @@ class JadwalLabController extends Controller
 
    public function mahasiswajadwal(Request $request) {
      $selectedLab = $request->input('lab'); // Get selected lab from request
-    $labs = ['Lab Testing', 'Lab Artificial Intelligence', 'Lab Jaringan Komputer', 'Lab Pemrograman Lanjut'];
+    $labs = ['Lab Testing', 'Lab Artificial Intelligence', 'Lab Jaringan Komputer', 'Lab Pemrograman Lanjut', 'Lab Software Development'];
 
     $query = JadwalLab::orderByRaw("FIELD(hari, 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu')")
                       ->orderBy('jam_mulai');
