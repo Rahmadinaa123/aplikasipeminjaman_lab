@@ -15,7 +15,7 @@
     @endif
     <h3>Data Inventaris lab </h3>
     <br>
-    <a class="btn btn-outline-success" href="{{ route('laboran.inventaris_lab.tambah') }}">Tambah Data</a>
+    <a class="btn btn-outline-success" href="">Tambah Data</a>
     <div>
         <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
             <thead class="table-primary">
@@ -42,7 +42,8 @@
                             <td>{{ $item->jumlah }}</td>
                             <td>{{ $item->kondisi }}</td>
                             <td>
-                                <a class="btn btn-outline-success" href="/editUser/">Detail</a>
+                                <a class="btn btn-outline-success"
+                                    href="/kalab/inventaris_lab/detail/{{ $item->id }}">Detail</a>
 
                             </td>
                         </tr>

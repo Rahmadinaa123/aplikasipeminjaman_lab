@@ -122,6 +122,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
 
   //inventarislab 
    Route::get('kalab/inventaris_lab', [KalabInventarisLabController::class, 'index'])->name('kalab.inventaris_lab');
+   Route::get('kalab/inventaris_lab/detail/{id}', [KalabInventarisLabController::class, 'detail'])->name('kalab.inventaris_lab.detail');
 
    //jadwal lab
    Route::get('kalab/jadwal_lab', [KalabJadwalLabController::class, 'index'])->name('kalab.jadwal_lab');
