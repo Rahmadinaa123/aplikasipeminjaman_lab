@@ -47,7 +47,8 @@
                     <td>{{ $item->keperluan }}</td> <!-- Keperluan -->
                     <td>{{ $item->status }}</td>
                     <td>
-                        <a class="btn btn-outline-success" href="">Detail</a>
+                        <a class="btn btn-outline-success"
+                            href="/laboran/peminjaman_inventaris/detail/{{ $item->id }}">Detail</a>
                         <a class="btn btn-outline-warning"
                             href="/laboran/peminjaman_inventaris/edit/{{ $item->id }}">Edit</a>
                         <a class="btn btn-outline-danger" href="/deletePeminjamanInventarisLab/{{ $item->id }}"

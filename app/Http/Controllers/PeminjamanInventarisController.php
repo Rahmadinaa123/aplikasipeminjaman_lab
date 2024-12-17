@@ -113,6 +113,7 @@ class PeminjamanInventarisController extends Controller
     } else {
         return back()->with('failed', 'Data gagal diupdate!');
     }
+
 }
 
 public function deletePeminjamanInventaris($id)
@@ -125,6 +126,9 @@ public function deletePeminjamanInventaris($id)
             return back()->with('failed', 'Gagal menghapus data Peminjaman Lab!');
         }
     }
-
+public function detail($id) {
+    $data = PeminjamanInventarisLab::find($id);
+    return view('laboran.peminjaman_inventaris.detail', compact('data'));
+}
 
 }
