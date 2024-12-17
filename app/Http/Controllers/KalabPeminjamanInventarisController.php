@@ -8,7 +8,11 @@ class KalabPeminjamanInventarisController extends Controller
 {
      //halaman Peminjaman Inventaris 
     public function index() {
-        $data=peminjamanInventarisLab::all();
+        $data=PeminjamanInventarisLab::all();
         return view('Kalab.peminjaman_inventaris.Index', compact('data'));
    }
+    public function detail($id) {
+        $data = PeminjamanInventarisLab::find($id);
+        return view('kalab.peminjaman_inventaris.detail', compact('data'));
+    }
 }
