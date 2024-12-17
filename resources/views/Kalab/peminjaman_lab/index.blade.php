@@ -88,7 +88,8 @@
                             <td>{{ $item->keperluan }}</td> <!-- Keperluan -->
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a class="btn btn-outline-success" href="/detail/">Detail</a>
+                                <a class="btn btn-outline-success"
+                                    href="/kalab/peminjaman_lab/detail/{{ $item->id }}">Detail</a>
                                 <a class="btn btn-outline-warning" href="/editPeminjamanLab/{{ $item->id }}">Edit</a>
                             </td>
                         </tr>

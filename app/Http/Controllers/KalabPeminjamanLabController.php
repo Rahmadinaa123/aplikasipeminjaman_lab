@@ -11,4 +11,9 @@ class KalabPeminjamanLabController extends Controller
         $data=peminjaman::all();
         return view('kalab.peminjaman_lab.index', compact('data'));
    }
+
+   public function detail($id) {
+        $data = peminjaman::find($id);
+        return view('kalab.peminjaman_lab.detail', compact('data'));
+    }
 }

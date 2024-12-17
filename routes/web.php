@@ -119,6 +119,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
 
    //peminjaman lab
    Route::get('kalab/peminjaman_lab', [KalabPeminjamanLabController::class, 'index'])->name('kalab.peminjaman_lab');
+   Route::get('kalab/peminjaman_lab/detail/{id}', [KalabPeminjamanLabController::class, 'detail'])->name('kalab.peminjaman_lab.detail');
 
   //inventarislab 
    Route::get('kalab/inventaris_lab', [KalabInventarisLabController::class, 'index'])->name('kalab.inventaris_lab');
