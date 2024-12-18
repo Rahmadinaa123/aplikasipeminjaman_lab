@@ -11,8 +11,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Data Laporan Peminjaman</div>
+                        <a href="{{ route('laboran.peminjaman_inventaris') }}"
+                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Data Peminjaman Lab</a>
+                            <h4>{{ number_format($peminjaman) }}</h4>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>
@@ -30,8 +32,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jadwal Lab</div>
+                        <a href="#"
+                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Data Jadwal Lab</a>
+                            <h4>{{ number_format($jadwal) }}</h4>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>
@@ -48,9 +52,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Data Inventaris Lab</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <a href="#"
+                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Data Inventaris Lab</a>
+                            <h4>{{ number_format($inventaris) }}</h4>
                             </div>
                         </div>
                         <div class="col-auto">
