@@ -60,13 +60,13 @@
                 <tr>
                 <tr class="col-md-12">
                     <th class="" scope="col">No</th>
-                    <th class="col-md-" scope="col">Nama Peminjam</th>
+                    <th class="col-md-1" scope="col">Nama Peminjam</th>
                     <th scope="col">NIM</th>
                     <th scope="col-md-3">Tanggal Peminjaman</th>
                     <th scope="col">Jam Pemakaian</th>
-                    <th scope="col">Keperluan</th>
+                    <th class="col-md-5" scope="col">Keperluan</th>
                     <th scope="col">Status</th>
-                    <th class="col-md-3" scope="col">Aksi</th>
+                    <th class="col-md-2" scope="col">Aksi</th>
                 </tr>
                 </tr>
             </thead>
