@@ -91,7 +91,7 @@
                                 <a class="btn btn-outline-success"
                                     href="/kalab/peminjaman_lab/detail/{{ $item->id }}">Detail</a>
                                 <a class="btn btn-outline-warning"
-                                    href="/kalab/editPeminjamanLab/edit/{{ $item->id }}">Edit</a>
+                                    href="/kalab/editPeminjamanLab/{{ $item->id }}">Edit</a>
                             </td>
                         </tr>
                     @endif
