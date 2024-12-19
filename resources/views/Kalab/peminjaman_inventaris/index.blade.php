@@ -48,7 +48,8 @@
                     <td>
                         <a class="btn btn-outline-success"
                             href="/kalab/peminjaman_inventaris/detail/{{ $item->id }}">Detail</a>
-                        <a class="btn btn-outline-warning" href="/editUser/">Edit</a>
+                        <a class="btn btn-outline-warning"
+                            href="/kalab/peminjaman_inventaris/edit/{{ $item->id }}">Edit</a>
                     </td>
                 </tr>
                 @endif
