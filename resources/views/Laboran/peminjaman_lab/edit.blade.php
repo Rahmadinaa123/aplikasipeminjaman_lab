@@ -117,7 +117,7 @@
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Mulai</label>
                                 <input type="time" class="form-control border-secondary" name="jam_mulai" required
-                                    value="{{ old('jam_mulai', $data->jam_mulai) }}" >
+                                    value="{{ old('jam_mulai', $data->jam_mulai) }}">
                                 <span class="text-danger">
                                     @error('jam_mulai')
                                         {{ $message }}
@@ -129,7 +129,7 @@
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Selesai</label>
                                 <input type="time" class="form-control border-secondary" name="jam_selesai" required
-                                    value="{{ old('jam_selesai', $data->jam_selesai) }}" >
+                                    value="{{ old('jam_selesai', $data->jam_selesai) }}">
                                 <span class="text-danger">
                                     @error('jam_selesai')
                                         {{ $message }}

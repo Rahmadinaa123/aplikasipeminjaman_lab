@@ -123,7 +123,7 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
    Route::get('kalab/peminjaman_lab', [KalabPeminjamanLabController::class, 'index'])->name('kalab.peminjaman_lab');
    Route::get('kalab/peminjaman_lab/edit/{id}', [KalabPeminjamanLabController::class, 'updatePeminjamanLab'])->name('kalab.PeminjamanLab.edit');
    Route::get('kalab/editPeminjamanLab/{id}', [KalabPeminjamanLabController::class, 'editPeminjamanLab'])->name('editPeminjamanLab');
-   Route::post('/postEditPeminjamanLab/{id}', [KalabPeminjamanLabController::class, 'postEditPeminjamanLab'])->name('postEditPeminjamanLab');
+   Route::post('/posteditPeminjamanLab/{id}', [KalabPeminjamanLabController::class, 'postEditPeminjamanLab'])->name('postEditPeminjamanLab');
    Route::get('kalab/peminjaman_lab/detail/{id}', [KalabPeminjamanLabController::class, 'detail'])->name('kalab.peminjaman_lab.detail');
 
   //inventarislab 

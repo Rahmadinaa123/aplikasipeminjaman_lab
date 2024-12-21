@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <a class="btn btn-outline-warning" href="{{ route('kalab.peminjaman_lab') }}">Kembali</a>
                         <h5 class="card-title text-center">Edit Data Peminjaman</h5>
-                        <form action="/postEditPeminjamanLab/{{ $data->id }}" method="POST"
+                        <form action="/posteditPeminjamanLab/{{ $data->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
 
