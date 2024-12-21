@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\peminjamanInventarisLab;
+use App\Models\inventarisLab;
 use Illuminate\Http\Request;
 
 class KalabPeminjamanInventarisController extends Controller
@@ -17,7 +18,8 @@ class KalabPeminjamanInventarisController extends Controller
     }
     public function editpeminjamanInventaris($id) {
         $peminjaman = PeminjamanInventarisLab::find($id);
-        return view('kalab.peminjaman_inventaris.edit', compact('data'));
+        $inventaris=inventarisLab::all();
+        return view('kalab.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
     }
     public function postEditPeminjamanInventaris(Request $request, $id)
 {
