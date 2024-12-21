@@ -15,7 +15,6 @@
     @endif
     <h3>Data Inventaris lab </h3>
     <br>
-    <a class="btn btn-outline-success" href="">Tambah Data</a>
     <div>
         <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
             <thead class="table-primary">
