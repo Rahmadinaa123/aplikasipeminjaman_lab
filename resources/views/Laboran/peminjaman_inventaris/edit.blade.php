@@ -54,12 +54,8 @@
                             <!-- Nama Barang -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Barang</label>
-                                <select class="form-control border-secondary" name="nama_barang" required>
-                                    <option value="" disabled selected>Pilih Nama Barang</option>
-                                    @foreach ($inventaris as $barang)
-                                        <option value="{{ $barang->nama_barang }}">{{ $barang->nama_barang }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control border-secondary" name="nama_barang" readonly
+                                    value="{{ $peminjaman->nama_barang }}">
                                 <span class="text-danger">
                                     @error('nama_barang')
                                         {{ $message }}
