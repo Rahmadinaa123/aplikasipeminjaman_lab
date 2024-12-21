@@ -136,7 +136,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('kalab/peminjaman_inventaris', [KalabPeminjamanInventarisController::class, 'index'])->name('kalab.peminjaman_inventaris');
    Route::get('kalab/peminjaman_inventaris/edit/{id}', [KalabPeminjamanLabController::class, 'updatePeminjamanLab'])->name('kalab.PeminjamanLab.edit');
    Route::get('kalab/peminjaman_inventaris/edit/{id}', [KalabPeminjamanInventarisController::class, 'editPeminjamanInventaris'])->name('editPeminjamanInventaris');
-   Route::get('/postEditPeminjaman/inventaris/{id}', [KalabPeminjamanInventarisController::class, 'postEditPeminjamanInventaris'])->name('postEditPeminjamanInventaris');
+   Route::put('/postEditPeminjaman/inventaris/{id}', [KalabPeminjamanInventarisController::class, 'postEditPeminjamanInventaris'])->name('postEditPeminjamanInventaris');
    Route::get('kalab/peminjaman_inventaris/detail/{id}', [KalabPeminjamanInventarisController::class, 'detail'])->name('kalab.peminjaman_inventaris.detail');
 });
 
