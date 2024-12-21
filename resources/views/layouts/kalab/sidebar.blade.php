@@ -77,8 +77,8 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
             <li>
-                <a class="dropdown-item {{ Request::is('laboran/laporan_akhir/lab') ? 'active' : '' }}"
-                    href="{{ route('laboran.laporan_akhir') }}">
+                <a class="dropdown-item {{ Request::is('kalab/laporan_akhir/lab') ? 'active' : '' }}"
+                    href="{{ route('kalab.laporan_akhir') }}">
                     Laporan Peminjaman Lab
                 </a>
             </li>
