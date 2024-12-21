@@ -141,6 +141,7 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
    Route::get('kalab/peminjaman_inventaris/detail/{id}', [KalabPeminjamanInventarisController::class, 'detail'])->name('kalab.peminjaman_inventaris.detail');
 
    Route::get('kalab/laporan_akhir', [KalabLaporanAkhirController::class, 'index'])->name('kalab.laporan_akhir');
+   Route::get('kalab/laporan_akhir/kalabpeminjamaninventaris/cetak', [KalabLaporanAkhirController::class, 'inventaris'])->name('kalab.laporan_akhir_inventaris');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
