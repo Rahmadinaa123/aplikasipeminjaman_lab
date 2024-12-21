@@ -17,6 +17,7 @@ use App\Http\Controllers\KalabPeminjamanLabController;
 use App\Http\Controllers\KalabInventarisLabController;
 use App\Http\Controllers\KalabJadwalLabController;
 use App\Http\Controllers\KalabPeminjamanInventarisController;
+use App\Http\Controllers\KalabLaporanAkhirController;
 use App\Http\Controllers\ProfilMahasiswaController;
 
 Route::get('/', function () {
@@ -91,7 +92,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    
 });
 
-   Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
+Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::get('mahasiswa/home', [MahasiswaController::class, 'index'])->name('mahasiswa.home');
    Route::get('mahasiswa/daftarLab', [MahasiswaController::class, 'daftarLab'])->name('mahasiswa.daftarLab');
    Route::get('mahasiswa/jadwal', [jadwalLabController::class, 'mahasiswajadwal'])->name('mahasiswa.jadwal');
@@ -114,7 +115,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    
 });
 
-   Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
+Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function () {
    Route::get('kalab/home', [kalabController::class, 'index'])->name('kalab.home');
    Route::get('kalab/profil', [KalabController::class, 'profil'])->name('kalab.profil');
 
@@ -138,6 +139,8 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('kalab/peminjaman_inventaris/edit/{id}', [KalabPeminjamanInventarisController::class, 'editPeminjamanInventaris'])->name('editPeminjamanInventaris');
    Route::put('/postEditPeminjaman/inventaris/{id}', [KalabPeminjamanInventarisController::class, 'postEditPeminjamanInventaris'])->name('postEditPeminjamanInventaris');
    Route::get('kalab/peminjaman_inventaris/detail/{id}', [KalabPeminjamanInventarisController::class, 'detail'])->name('kalab.peminjaman_inventaris.detail');
+
+   Route::get('kalab/laporan_akhir', [KalabLaporanAkhirController::class, 'index'])->name('kalab.laporan_akhir');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
