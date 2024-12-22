@@ -66,7 +66,7 @@
                             <!-- Nama Lab -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Nama Lab</label>
-                                <select class="form-control border-secondary" name="nama_lab" required>
+                                <select class="form-control border-secondary" name="nama_lab" readonly>
                                     <option value="Lab Software Development"
                                         {{ $data->nama_lab == 'Lab Software Development' ? 'selected' : '' }}>Lab Software
                                         Development</option>
@@ -92,7 +92,7 @@
                             <!-- Tanggal Mulai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Tanggal Mulai</label>
-                                <input type="date" class="form-control border-secondary" name="tanggal_mulai" required
+                                <input type="date" class="form-control border-secondary" name="tanggal_mulai" readonly
                                     value="{{ old('tanggal_mulai', $data->tanggal_mulai) }}">
                                 <span class="text-danger">
                                     @error('tanggal_mulai')
@@ -104,7 +104,7 @@
                             <!-- Tanggal Selesai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Tanggal Selesai</label>
-                                <input type="date" class="form-control border-secondary" name="tanggal_selesai" required
+                                <input type="date" class="form-control border-secondary" name="tanggal_selesai" readonly
                                     value="{{ old('tanggal_selesai', $data->tanggal_selesai) }}">
                                 <span class="text-danger">
                                     @error('tanggal_selesai')
@@ -116,7 +116,7 @@
                             <!-- Jam Mulai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Mulai</label>
-                                <input type="time" class="form-control border-secondary" name="jam_mulai" required
+                                <input type="time" class="form-control border-secondary" name="jam_mulai" readonly
                                     value="{{ old('jam_mulai', $data->jam_mulai) }}">
                                 <span class="text-danger">
                                     @error('jam_mulai')
@@ -128,7 +128,7 @@
                             <!-- Jam Selesai -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Selesai</label>
-                                <input type="time" class="form-control border-secondary" name="jam_selesai" required
+                                <input type="time" class="form-control border-secondary" name="jam_selesai" readonly
                                     value="{{ old('jam_selesai', $data->jam_selesai) }}">
                                 <span class="text-danger">
                                     @error('jam_selesai')
@@ -140,7 +140,7 @@
                             <!-- Keperluan -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Keperluan</label>
-                                <input type="text" class="form-control border-secondary" name="keperluan" required
+                                <input type="text" class="form-control border-secondary" name="keperluan" readonly
                                     value="{{ old('keperluan', $data->keperluan) }}">
                                 <span class="text-danger">
                                     @error('keperluan')
