@@ -35,4 +35,8 @@ class MahasiswaController extends Controller
         $data=User::all();
         return view('Mahasiswa.riwayat', compact('data'));
    }
+
+   public function ceklab() {
+        return view('Mahasiswa.cekketersediaanlab');
+   }
 }

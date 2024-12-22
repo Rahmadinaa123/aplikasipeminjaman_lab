@@ -25,7 +25,8 @@
                 <strong>Berhasil!</strong> {{ Session::get('success') }}
             </div>
         @endif
-        <a style="margin-bottom: 20px" href="" class="btn btn-warning">Cek Ketersediaan Lab</a>
+        <a style="margin-bottom: 20px" href="{{ route('cek.ketersediaan.lab') }}" class="btn btn-warning">Cek Ketersediaan
+            Lab</a>
         <br>
         <div class="row">
 
