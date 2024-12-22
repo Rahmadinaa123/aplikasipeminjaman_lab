@@ -4,6 +4,32 @@
 ])
 
 @section('konten')
+    @if (session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <!-- Modal Peringatan -->
+    <div class="modal fade" id="modalKetersediaanLab" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title" id="modalLabel">Peringatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container">
         <!-- Menampilkan pesan error jika ada -->
         @if (session('error'))
@@ -89,4 +115,45 @@
 
     </div>
     </div>
+
+    <!-- Display pesan error -->
+    <div id="ketersediaanLab" class="text-danger"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#jamMulai, #jamSelesai, #tanggalDari').on('change', function() {
+                const namaLab = $('input[name="nama_lab"]').val();
+                const tanggalMulai = $('input[name="tanggal_mulai"]').val();
+                const jamMulai = $('#jamMulai').val();
+                const jamSelesai = $('#jamSelesai').val();
+
+                if (tanggalMulai && jamMulai && jamSelesai) {
+                    $.ajax({
+                        url: '{{ route('cek.ketersediaan.lab') }}',
+                        type: 'POST',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            nama_lab: namaLab,
+                            tanggal_mulai: tanggalMulai,
+                            jam_mulai: jamMulai,
+                            jam_selesai: jamSelesai
+                        },
+                        success: function(response) {
+                            if (!response.available) {
+                                // Tampilkan modal jika lab sudah dipinjam
+                                $('#modalMessage').text(response.message);
+                                $('#modalKetersediaanLab').modal('show');
+                            }
+                        },
+                        error: function() {
+                            // Tampilkan modal jika ada kesalahan
+                            $('#modalMessage').text('Terjadi kesalahan. Silakan coba lagi.');
+                            $('#modalKetersediaanLab').modal('show');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
