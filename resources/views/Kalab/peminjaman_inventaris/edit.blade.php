@@ -77,7 +77,7 @@
                             <!-- Tanggal Pinjam -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Tanggal Pinjam</label>
-                                <input type="date" class="form-control border-secondary" name="tanggal_pinjam" required
+                                <input type="date" class="form-control border-secondary" name="tanggal_pinjam" readonly
                                     value="{{ old('tanggal_pinjam', $peminjaman->tanggal_pinjam) }}">
                                 <span class="text-danger">
                                     @error('tanggal_pinjam')
@@ -89,7 +89,7 @@
                             <!-- Tanggal Kembali -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Tanggal Kembali</label>
-                                <input type="date" class="form-control border-secondary" name="tanggal_kembali"
+                                <input type="date" class="form-control border-secondary" name="tanggal_kembali" readonly
                                     value="{{ old('tanggal_kembali', $peminjaman->tanggal_kembali) }}">
                                 <span class="text-danger">
                                     @error('tanggal_kembali')
@@ -101,7 +101,7 @@
                             <!-- Jam Pinjam -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Pinjam</label>
-                                <input type="time" class="form-control border-secondary" name="jam_pinjam" required
+                                <input type="time" class="form-control border-secondary" name="jam_pinjam" readonly
                                     value="{{ old('jam_pinjam', $peminjaman->jam_pinjam) }}">
                                 <span class="text-danger">
                                     @error('jam_pinjam')
@@ -113,7 +113,7 @@
                             <!-- Jam Kembali -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Jam Kembali</label>
-                                <input type="time" class="form-control border-secondary" name="jam_kembali"
+                                <input type="time" class="form-control border-secondary" name="jam_kembali" readonly
                                     value="{{ old('jam_kembali', $peminjaman->jam_kembali) }}">
                                 <span class="text-danger">
                                     @error('jam_kembali')
@@ -125,7 +125,7 @@
                             <!-- Keperluan -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Keperluan</label>
-                                <textarea class="form-control border-secondary" name="keperluan" required>{{ old('keperluan', $peminjaman->keperluan) }}</textarea>
+                                <textarea class="form-control border-secondary" name="keperluan" readonly>{{ old('keperluan', $peminjaman->keperluan) }}</textarea>
                                 <span class="text-danger">
                                     @error('keperluan')
                                         {{ $message }}
@@ -136,7 +136,7 @@
                             <!-- Status -->
                             <div class="form-group mt-4">
                                 <label class="text-secondary mb-2">Status</label>
-                                <select class="form-control border-secondary" name="status" required>
+                                <select class="form-control border-secondary" name="status">
                                     <option value="pending" {{ $peminjaman->status == 'pending' ? 'selected' : '' }}>
                                         Pending</option>
                                     <option value="ditolak" {{ $peminjaman->status == 'ditolak' ? 'selected' : '' }}>
