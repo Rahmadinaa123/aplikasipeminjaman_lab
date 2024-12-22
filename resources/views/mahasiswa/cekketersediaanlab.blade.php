@@ -16,7 +16,11 @@
                 <label for="jam_mulai">Jam Mulai</label>
                 <input type="time" id="jam_mulai" name="jam_mulai" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Cek Ketersediaan</button>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary mt-3 me-2">Cek Ketersediaan</button>
+                <a href="/mahasiswa/daftarLab" class="btn btn-warning mt-3">Kembali</a>
+            </div>
+
         </form>
     </div>
 @endsection
