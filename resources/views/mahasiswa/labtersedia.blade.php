@@ -27,6 +27,6 @@
             <p>Tidak ada lab yang tersedia pada waktu tersebut.</p>
         @endif
 
-        <a href="{{ route('cek.ketersediaan.lab') }}" class="btn btn-secondary mt-3">Kembali</a>
+        <a href="{{ route('cek.lab') }}" class="btn btn-secondary mt-3">Kembali</a>
     </div>
 @endsection
