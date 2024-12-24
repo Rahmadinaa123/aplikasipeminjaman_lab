@@ -15,6 +15,10 @@
             margin: 0;
         }
 
+        body {
+            background-color: rgba(4, 222, 255, 0.107);
+        }
+
         .container {
             min-height: 100vh;
             /* Full viewport height */

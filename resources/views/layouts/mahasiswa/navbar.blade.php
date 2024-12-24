@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  #0f66a9">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: white">
     <div class="container-fluid">
         <a class="navbar-brand" href="/" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
