@@ -50,7 +50,8 @@
                                     <option value="D3-Teknik Informatika">D3-Teknik Informatika</option>
                                     <option value="D4-Rekayasa Perangkat Lunak">D4-Rekayasa Perangkat Lunak</option>
                                     <option value="D4-Keamanan Sistem Informasi">D4-Keamanan Sistem Informasi</option>
-                                    <option value="D2-Administrasi Jaringan Komputer">D2-Administrasi Jaringan Komputer</option>
+                                    <option value="D2-Administrasi Jaringan Komputer">D2-Administrasi Jaringan Komputer
+                                    </option>
                                 </select>
                                 <span class="text-danger">
                                     @error('prodi')
@@ -90,8 +91,14 @@
                             </div>
                             <div class="form-group mt-1">
                                 <label class="text-secondary mb-2">Password</label>
-                                <input type="password" class="form-controlborder border-secondary form-control"
-                                    name="password" required value="{{ old('password') }}">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" name="password" id="password"
+                                        placeholder="Password">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        onclick="togglePasswordVisibility()">
+                                        <i class="bi bi-eye" id="toggleIcon"></i>
+                                    </button>
+                                </div>
                                 <span class="text-danger">
                                     @error('password')
                                         {{ $message }}
@@ -102,8 +109,13 @@
                                 <label class="text-secondary mb-2">Nama Lab</label>
                                 <select class="form-control" id="exampleFormControlSelect1" name="nama_lab">
                                     <option value="None">None</option>
+                                    <option value="Lab Multimedia">Lab Multimedia</option>
+                                    <option value="Lab Basis Data">Lab Basis Data</option>
+                                    <option value="Lab Internet Of Things">Lab Internet Of Things</option>
+                                    <option value="Lab Sistem Informasi">Lab Sistem Informasi</option>
                                     <option value="Lab Software Development">Lab Software Development</option>
                                     <option value="Lab Testing">Lab Testing</option>
+                                    <option value="Lab Sistem Keamanan">Lab Sistem Keamanan</option>
                                     <option value="Lab Jaringan Komputer">Lab Jaringan Komputer</option>
                                     <option value="Lab Artificial Intelegence">Lab Artificial Intelegence</option>
                                     <option value="Lab Pemrograman">Lab Pemrograman</option>
@@ -135,3 +147,20 @@
         </div><br><br><br><br>
     </div>
 @endsection
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById("password");
+        const toggleIcon = document.getElementById("toggleIcon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.classList.remove("bi-eye");
+            toggleIcon.classList.add("bi-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleIcon.classList.remove("bi-eye-slash");
+            toggleIcon.classList.add("bi-eye");
+        }
+    }
+</script>
