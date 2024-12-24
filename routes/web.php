@@ -99,10 +99,12 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
 
    //peminjaman lab
    Route::get('mahasiswa/pinjamLab', [MahasiswaController::class, 'pinjamLab'])->name('mahasiswa.pinjamLab');
-   Route::post('/postPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'postPeminjamanLab'])->name('mahasiswa.postPeminjamanLab');
+   Route::post('/postPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'postPeminjamanLab'])->name('mahasiswa.postPeminjamanLab');   
    Route::get('mahasiswa/riwayatPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'riwayatpeminjamanLab'])->name('mahasiswa.riwayatPeminjamanLab');
-   Route::post('/labs/checkAvailability', [MahasiswaPeminjamanLabController::class, 'checkAvailability'])->name('labs.checkAvailability');
+   
    Route::post('/cek-ketersediaan-lab', [MahasiswaPeminjamanLabController::class, 'cekKetersediaanLab'])->name('cek.ketersediaan.lab');
+   
+   Route::post('/labs/checkAvailability', [MahasiswaPeminjamanLabController::class, 'checkAvailability'])->name('labs.checkAvailability');
    Route::get('mahasiswa/cek-ketersediaan-lab', [MahasiswaController::class, 'ceklab'])->name('cek.lab');
    
    //peminjaman Inventaris lab
