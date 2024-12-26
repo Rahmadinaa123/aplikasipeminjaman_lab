@@ -69,7 +69,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Lab Jaringan Komputer</h5>
-                        <p class="card-text">Lab Jaringan Komputer adalah fasilitas untuk mempelajari dan mengembangkan.</p>
+                        <p class="card-text">Lab Jaringan Komputer adalah fasilitas untuk mempelajari dan mengembangkan
+                            peragkat lunak.</p>
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Jaringan Komputer') }}"
                                 class="btn btn-primary">Pinjam
@@ -124,7 +125,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Lab Multimedia</h5>
                         <p class="card-text">Lab Multimedia adalah fasilitas untuk mempelajari dan mengembangkan perangkat
-                            lunak.</p>
+                            lunak, dilengkapi dengan perangkat keras.</p>
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Multimedia') }}" class="btn btn-primary">Pinjam
                                 Lab</a>
@@ -140,8 +141,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Lab Basis Data</h5>
-                        <p class="card-text">Lab Basis Data adalah fasilitas untuk mempelajari dan mengembangkan sistem
-                            pengelolaan data.</p>
+                        <p class="card-text">Lab Basis Data adalah fasilitas untuk mempelajari dan mengembangkan sistem dan
+                            implementasi teknologi basis data untuk kebutuhan .</p>
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Basis Data') }}" class="btn btn-primary">Pinjam
                                 Lab</a>
@@ -157,7 +158,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Lab Sistem Informasi</h5>
-                        <p class="card-text">Sistem Informasi adalah fasilitas untuk mengelola data dan informasi penting.
+                        <p class="card-text">Sistem Informasi adalah fasilitas untuk mengelola data dan informasi penting,
+                            dan distribusi informasi secara efisien.
                         </p>
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Sistem Informasi') }}"
