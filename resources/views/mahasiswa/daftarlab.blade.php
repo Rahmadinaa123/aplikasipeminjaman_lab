@@ -107,7 +107,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Lab Software Development</h5>
-                        <p class="card-text">Lab Software Development adalah fasilitas untuk mengembangkan perangkat lunak.
+                        <p class="card-text">Lab Software Development adalah fasilitas untuk mengembangkan perangkat lunak
+                            dan keamanan lainnya.
                         </p>
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ url('mahasiswa/pinjamLab?lab=Lab Software Development') }}"
