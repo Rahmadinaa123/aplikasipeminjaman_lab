@@ -6,13 +6,19 @@ use App\Models\peminjaman;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanLabController extends Controller
 {
+
      //halaman Peminjaman Lab
     public function index() {
         $data=peminjaman::all();
-        return view('Laboran.peminjaman_Lab.Index', compact('data'));
+        $peminjamanPending = Peminjaman::where([
+            ['nama_lab', '=', Auth::user()->nama_lab],
+            ['status', '=', 'pending']
+        ])->count();
+        return view('Laboran.peminjaman_Lab.Index', compact('data','peminjamanPending'));
    }
     //halaman Peminjaman Lab
     public function addPeminjaman() {

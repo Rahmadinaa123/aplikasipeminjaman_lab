@@ -14,6 +14,10 @@ class LaboranController extends Controller
     public function index() {
         $user = User::where('nama_lab', Auth::user()->nama_lab)->count();
         $peminjaman = peminjaman::where('nama_lab', Auth::user()->nama_lab)->count();
+        $peminjamanPending = Peminjaman::where([
+            ['nama_lab', '=', Auth::user()->nama_lab],
+            ['status', '=', 'pending']
+        ])->count();
         $peminjamanInventarisLab = peminjamanInventarisLab::where('nama_lab', Auth::user()->nama_lab)->count();
         $data=User::all();
         $laporan = Peminjaman::where([
@@ -21,7 +25,7 @@ class LaboranController extends Controller
             ['status', '=', 'selesai'],
         ])->count();
 
-        return view('Laboran.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan'));
+        return view('Laboran.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan', 'peminjamanPending'));
    }
     public function profil() {
         $data=User::all();

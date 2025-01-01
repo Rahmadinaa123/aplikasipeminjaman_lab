@@ -5,13 +5,18 @@ use App\Models\peminjamanInventarisLab;
 use App\Models\User;
 use App\Models\inventarisLab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanInventarisController extends Controller
 {
     //halaman Peminjaman Inventaris 
     public function index() {
         $data=peminjamanInventarisLab::all();
-        return view('Laboran.peminjaman_inventaris.Index', compact('data'));
+        $peminjamanPending = peminjamanInventarisLab::where([
+            ['nama_lab', '=', Auth::user()->nama_lab],
+            ['status', '=', 'pending']
+        ])->count();
+        return view('Laboran.peminjaman_inventaris.Index', compact('data', 'peminjamanPending'));
    }
 
     //halaman Peminjaman Inventaris Lab
