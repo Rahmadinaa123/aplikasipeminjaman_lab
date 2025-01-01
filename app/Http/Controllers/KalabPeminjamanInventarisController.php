@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\peminjamanInventarisLab;
 use App\Models\inventarisLab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KalabPeminjamanInventarisController extends Controller
 {
      //halaman Peminjaman Inventaris 
     public function index() {
         $data=PeminjamanInventarisLab::all();
-        return view('Kalab.peminjaman_inventaris.Index', compact('data'));
+        $peminjamanPending = PeminjamanInventarisLab::where([
+            ['nama_lab', '=', Auth::user()->nama_lab],
+            ['status', '=', 'pending']
+        ])->count();
+        return view('Kalab.peminjaman_inventaris.Index', compact('data','peminjamanPending'));
    }
     public function detail($id) {
         $data = PeminjamanInventarisLab::find($id);

@@ -16,6 +16,10 @@ class KalabController extends Controller
     public function index() {
         $user = User::where('nama_lab', Auth::user()->nama_lab)->count();
         $peminjaman = peminjaman::where('nama_lab', Auth::user()->nama_lab)->count();
+        $peminjamanPending = Peminjaman::where([
+            ['nama_lab', '=', Auth::user()->nama_lab],
+            ['status', '=', 'pending']
+        ])->count();
         $peminjamanInventarisLab = peminjamanInventarisLab::where('nama_lab', Auth::user()->nama_lab)->count();
         $jadwal = jadwalLab::where('nama_lab', Auth::user()->nama_lab)->count();
         $inventaris = inventarisLab::where('nama_lab', Auth::user()->nama_lab)->count();
@@ -24,7 +28,7 @@ class KalabController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'selesai'],
         ])->count();
-        return view('Kalab.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan','jadwal','inventaris'));
+        return view('Kalab.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan','jadwal','inventaris','peminjamanPending'));
    }
     public function profil() {
         $data=User::all();

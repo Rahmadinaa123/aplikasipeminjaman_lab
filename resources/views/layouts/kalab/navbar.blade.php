@@ -17,8 +17,19 @@
 
         <!-- Icon Bell -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-bell text-dark"></i>
+        <a class="nav-link notification-icon" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
+
+                @if(isset($peminjamanPending))
+                <span class="badge bg-danger rounded-pill">
+                    {{ number_format($peminjamanPending) }}
+                </span>
+
+                @else
+                <span class="badge bg-secondary rounded-pill">0</span>
+                @endif
+
             </a>
         </li>
 
