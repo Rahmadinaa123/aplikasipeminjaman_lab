@@ -101,27 +101,35 @@ class MahasiswaPeminjamanLabController extends Controller
 }
 
 public function checkAvailability(Request $request)
-    {
-        // Validasi input pengguna
-        $request->validate([
-            'tanggal_mulai' => 'required|date',
-            'jam_mulai' => 'required|date_format:H:i',
-        ]);
+{
+    // Validasi input pengguna
+    $request->validate([
+        'tanggal_mulai' => 'required|date',
+        'jam_mulai' => 'required|date_format:H:i',
+    ]);
 
-        // Kombinasikan tanggal dan jam
-        $tanggalMulai = $request->input('tanggal_mulai') . ' ' . $request->input('jam_mulai');
+    $tanggalMulai = $request->input('tanggal_mulai');
+    $jamMulai = $request->input('jam_mulai');
 
-        // Ambil nama lab yang sedang dipinjam pada waktu tersebut
-        $labTidakTersedia = peminjaman::where(function ($query) use ($tanggalMulai) {
-            $query->whereRaw('? BETWEEN tanggal_mulai AND tanggal_selesai', [$tanggalMulai]);
-        })->pluck('nama_lab');
+    // Ambil nama lab yang sedang dipinjam pada tanggal dan waktu tersebut
+    $labTidakTersedia = peminjaman::where('tanggal_mulai', '<=', $tanggalMulai)
+        ->where('tanggal_selesai', '>=', $tanggalMulai)
+        ->where(function ($query) use ($jamMulai) {
+            $query->where(function ($subQuery) use ($jamMulai) {
+                $subQuery->where('jam_mulai', '<=', $jamMulai)
+                         ->where('jam_selesai', '>=', $jamMulai);
+            });
+        })
+        ->where('status', '=', 'pinjam') // Hanya cek status "pinjam"
+        ->pluck('nama_lab');
 
-        // Daftar semua lab
-        $allLabs = ['Lab Testing', 'Lab Artificial Intelligence', 'Lab Jaringan Komputer', 'Lab Pemrograman Lanjut', 'Lab Software Development', 'Lab Multimedia', 'Lab Basis Data', 'Lab Sistem Informasi', 'Lab Internet Of Things', 'Lab Sistem Keamanan'];
+    // Daftar semua lab
+    $allLabs = ['Lab Testing', 'Lab Artificial Intelligence', 'Lab Jaringan Komputer', 'Lab Pemrograman Lanjut', 'Lab Software Development', 'Lab Multimedia', 'Lab Basis Data', 'Lab Sistem Informasi', 'Lab Internet Of Things', 'Lab Sistem Keamanan'];
 
-        // Hitung lab yang tersedia
-        $availableLabs = array_diff($allLabs, $labTidakTersedia->toArray());
+    // Hitung lab yang tersedia
+    $availableLabs = array_diff($allLabs, $labTidakTersedia->toArray());
 
-        return view('mahasiswa.labtersedia', compact('availableLabs', 'tanggalMulai'));
-    }
+    return view('mahasiswa.labtersedia', compact('availableLabs', 'tanggalMulai', 'jamMulai'));
+}
+
 }

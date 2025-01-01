@@ -6,7 +6,8 @@
 @section('konten')
     <div class="container">
         <h1>Lab yang Tersedia</h1>
-        <p>Untuk waktu: {{ date('d M Y H:i', strtotime($tanggalMulai)) }}</p>
+        <p>Untuk waktu: {{ date('d M Y', strtotime($tanggalMulai)) }} {{ $jamMulai }}</p>
+
 
         @if (!empty($availableLabs))
             <table class="table table-bordered">
