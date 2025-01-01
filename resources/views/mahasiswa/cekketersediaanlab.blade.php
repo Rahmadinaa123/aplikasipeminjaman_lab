@@ -1,5 +1,5 @@
 @extends('layouts.mahasiswa.app', [
-    'title' => 'Cek Keyersediaan Lab',
+    'title' => 'Cek Ketersediaan Lab',
     'contentTitle' => 'Dashboard',
 ])
 
