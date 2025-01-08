@@ -84,15 +84,15 @@ jobs:
 
       - name: Print environment variables for debugging
         run: |
-          echo "FTP_SERVER:"
-          echo "FTP_USERNAME:"
+          echo "FTP_SERVER: ftp.bengkaliskab.org"
+          echo "FTP_USERNAME : sipela@reservasilab.bengkaliskab.org"
         env:
-          FTP_SERVER: ubuntu
-          FTP_USERNAME:
+          FTP_SERVER: ftp.bengkaliskab.org
+          FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
 
       - name: Test FTP Connection
         run: |
-          nc -zv ftp.siforta.my.id 21
+          nc -zv ftp.bengkaliskab.org 21
       - name: Deploy to server via FTP #tess
         run: |
           lftp -f "
@@ -103,6 +103,6 @@ jobs:
           bye
           "
         env:
-          FTP_SERVER:
-          FTP_USERNAME: 
-          FTP_PASSWORD:
+          FTP_SERVER: ftp.bengkaliskab.org
+          FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
+          FTP_PASSWORD: Sipela123
