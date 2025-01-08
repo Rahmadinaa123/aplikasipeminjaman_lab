@@ -55,7 +55,7 @@
                             <td>{{ $item->keperluan }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="/laboran/laporan_akhir/detail/{{ $item->id }}"><i
+                                <a class="btn btn-info btn-sm" href="/kalab/laporan_akhir/detail/{{ $item->id }}"><i
                                         class="bi bi-eye"></i> Detail</a>
                             </td>
                         </tr>

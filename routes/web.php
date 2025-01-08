@@ -150,6 +150,7 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
    Route::get('kalab/laporan_akhir/kalabpeminjamaninventaris/cetak', [KalabLaporanAkhirController::class, 'inventaris'])->name('kalab.laporan_akhir_inventaris');
    Route::get('kalab/laporan_akhir/laporanpeminjamanlab/cetak', [KalabLaporanAkhirController::class, 'cetaklaporanpeminjamanlab'])->name('kalab.cetak.laporan_akhir');
    Route::get('kalab/laporan_akhir/laporanpeminjamaninventaris/cetak', [KalabLaporanAkhirController::class, 'cetaklaporanpeminjamaninventaris'])->name('kalab.cetak.laporan_akhir');
+   Route::get('kalab/laporan_akhir/detail/{id}', [KalabLaporanAkhirController::class, 'detail'])->name('kalab.laporan_akhir.detail');
 });
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');

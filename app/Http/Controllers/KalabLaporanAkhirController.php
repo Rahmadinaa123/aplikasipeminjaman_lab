@@ -28,5 +28,10 @@ public function cetaklaporanpeminjamaninventaris() {
     $data = peminjamanInventarisLab::where('status', 'selesai')->get();
     return view('kalab.laporan_akhir.cetaklaporanpeminjamaninventaris', compact('data'));
 }
+public function detail($id) {
+        $data = peminjaman::find($id);
+        return view('kalab.laporan_akhir.detail', compact('data'));
+    }
+
     
 }
