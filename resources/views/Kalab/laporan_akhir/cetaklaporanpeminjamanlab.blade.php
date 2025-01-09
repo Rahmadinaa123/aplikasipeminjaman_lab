@@ -65,6 +65,7 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>NIM</th>
+                <th>Prodi</th>
                 <th>Semester</th>
                 <th>Tanggal</th>
                 <th>Keperluan</th>
@@ -79,6 +80,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $item['username'] }}</td>
                     <td>{{ $item['nim'] }}</td>
+                    <td>{{ $item['prodi'] }}</td>
                     <td>{{ $item['semester'] }}</td>
                     <td>{{ $item['tanggal_mulai'] }} - {{ $item['tanggal_selesai'] }}</td>
                     <td>{{ $item['keperluan'] }}</td>

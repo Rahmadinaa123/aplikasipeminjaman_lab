@@ -72,6 +72,7 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>NIM</th>
+                <th>Prodi</th>
                 <th>Nama Barang</th>
                 <th>Tanggal Peminjaman</th>
                 <th>Tanggal Pengembalian</th>
@@ -87,6 +88,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $item['username'] }}</td>
                     <td>{{ $item['nim'] }}</td>
+                    <td>{{ $item['prodi'] }}</td>
                     <td>{{ $item['nama_barang'] }}</td>
                     <td>{{ \Carbon\Carbon::parse($item['tanggal_pinjam'])->format('d-m-Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($item['tanggal_kembali'])->format('d-m-Y') }}</td>

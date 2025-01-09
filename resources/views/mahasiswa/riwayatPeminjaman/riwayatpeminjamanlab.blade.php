@@ -14,9 +14,9 @@
                     <th class="" scope="col">No</th>
                     <th class="col-md-" scope="col">Nama Peminjam</th>
                     <th scope="col">NIM</th>
+                    <th scope="col">Nama Lab</th>
                     <th scope="col-md-3">Tanggal Peminjaman</th>
                     <th scope="col">Jam Pemakaian</th>
-                    <th scope="col">Nama Lab</th>
                     <th scope="col">Keperluan</th>
                     <th scope="col">Status</th>
                 </tr>
@@ -31,13 +31,13 @@
                             <td class="">{{ $no++ }}</td> <!-- Nomor urut -->
                             <td>{{ $item->username }}</td> <!-- Nama peminjam -->
                             <td>{{ $item->nim }}</td> <!-- NIM peminjam -->
+                            <td>{{ $item->nama_lab }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }} -
                                 {{ \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}</td>
                             <!-- Tanggal mulai -->
                             <td>{{ \Carbon\Carbon::parse($item->jam_mulai)->format('H:i') }} -
                                 {{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }}</td>
                             <!-- Jam pemakaian -->
-                            <td>{{ $item->nama_lab }}</td>
                             <td>{{ $item->keperluan }}</td> <!-- Keperluan -->
                             <td>{{ $item->status }}</td>
                         </tr>

@@ -26,7 +26,7 @@
                                             {{ $user->username }}</option>
                                     @endforeach
                                 </select>
-                                <input type="text" name="id_user" id="id_user" value="{{ old('id_user') }}">
+                                <input type="hidden" name="id_user" id="id_user" value="{{ old('id_user') }}">
                                 <!-- hidden input untuk id_user -->
                                 <span class="text-danger">
                                     @error('id_user')
