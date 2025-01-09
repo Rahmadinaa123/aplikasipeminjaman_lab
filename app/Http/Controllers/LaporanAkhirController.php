@@ -24,6 +24,10 @@ public function detail($id) {
         $data = peminjaman::find($id);
         return view('laboran.laporan_akhir.detail', compact('data'));
     }
+public function detailinventaris($id) {
+    $data = peminjamanInventarisLab::find($id);
+    return view('laboran.laporan_akhir.detailinventaris', compact('data'));
+}
 
 public function cetaklaporanpeminjamanlab() {
     // Ambil data peminjaman yang hanya memiliki status 'selesai'

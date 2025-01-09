@@ -32,6 +32,9 @@ public function detail($id) {
         $data = peminjaman::find($id);
         return view('kalab.laporan_akhir.detail', compact('data'));
     }
-
+public function detailinventaris($id) {
+    $data = peminjamanInventarisLab::find($id);
+    return view('kalab.laporan_akhir.detailinventaris', compact('data'));
+}
     
 }
