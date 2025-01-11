@@ -12,11 +12,11 @@ use App\Models\user;
 class LoginRegisterController extends Controller
 {
     public function register() {
-        return view('auth.register');
+        return view('Auth.register');
     }
     
     public function login() {
-        return view('auth.login');
+        return view('Auth.login');
     }
 
     public function postRegister(Request $request) {
