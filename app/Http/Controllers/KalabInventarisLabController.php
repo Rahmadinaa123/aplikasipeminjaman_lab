@@ -9,7 +9,7 @@ class KalabInventarisLabController extends Controller
       //halaman Inventaris Lab
     public function index() {
         $data=inventarisLab::all();
-        return view('Kalab.inventaris_Lab.index', compact('data'));
+        return view('Kalab.inventaris_lab.index', compact('data'));
    }
 
    public function detail($id) {

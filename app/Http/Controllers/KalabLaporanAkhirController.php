@@ -15,7 +15,7 @@ class KalabLaporanAkhirController extends Controller
 public function inventaris() {
     // Ambil data peminjaman yang hanya memiliki status 'selesai'
     $data = peminjamanInventarisLab::where('status', 'selesai')->get();
-    return view('Kalab.laporan_akhir.laporanInventaris', compact('data'));
+    return view('Kalab.laporan_akhir.laporaninventaris', compact('data'));
 }
 public function cetaklaporanpeminjamanlab() {
     // Ambil data peminjaman yang hanya memiliki status 'selesai'

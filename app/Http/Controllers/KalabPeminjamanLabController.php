@@ -62,7 +62,7 @@ class KalabPeminjamanLabController extends Controller
 
         // Mengecek apakah proses simpan berhasil
     if ($peminjaman_lab) {
-        return redirect('/Kalab/peminjaman_lab')->with('success', 'Data berhasil disimpan!');
+        return redirect('/kalab/peminjaman_lab')->with('success', 'Data berhasil disimpan!');
     } else {
         return back()->with('failed', 'Maaf, terjadi kesalahan, coba kembali beberapa saat!');
     }

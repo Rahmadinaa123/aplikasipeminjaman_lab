@@ -63,7 +63,7 @@ class KalabPeminjamanInventarisController extends Controller
 
     // Redirect dengan pesan keberhasilan atau kegagalan
     if ($peminjaman_inventaris) {
-        return redirect('/Kalab/peminjaman_inventaris')->with('success', 'Data Peminjaman Inventaris berhasil diupdate!');
+        return redirect('/kalab/peminjaman_inventaris')->with('success', 'Data Peminjaman Inventaris berhasil diupdate!');
     } else {
         return back()->with('failed', 'Data gagal diupdate!');
     }
