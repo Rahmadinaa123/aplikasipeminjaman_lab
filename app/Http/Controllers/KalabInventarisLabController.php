@@ -9,11 +9,11 @@ class KalabInventarisLabController extends Controller
       //halaman Inventaris Lab
     public function index() {
         $data=inventarisLab::all();
-        return view('Kalab.inventaris_Lab.Index', compact('data'));
+        return view('Kalab.inventaris_Lab.index', compact('data'));
    }
 
    public function detail($id) {
     $data = InventarisLab::find($id);
-    return view('kalab.inventaris_lab.detail', compact('data'));
+    return view('Kalab.inventaris_lab.detail', compact('data'));
 }
 }

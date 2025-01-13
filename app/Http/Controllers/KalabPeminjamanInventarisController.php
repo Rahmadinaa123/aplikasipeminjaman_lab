@@ -15,16 +15,16 @@ class KalabPeminjamanInventarisController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'pending']
         ])->count();
-        return view('Kalab.peminjaman_inventaris.Index', compact('data','peminjamanPending'));
+        return view('Kalab.peminjaman_inventaris.index', compact('data','peminjamanPending'));
    }
     public function detail($id) {
         $data = PeminjamanInventarisLab::find($id);
-        return view('kalab.peminjaman_inventaris.detail', compact('data'));
+        return view('Kalab.peminjaman_inventaris.detail', compact('data'));
     }
     public function editpeminjamanInventaris($id) {
         $peminjaman = PeminjamanInventarisLab::find($id);
         $inventaris=inventarisLab::all();
-        return view('kalab.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
+        return view('Kalab.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
     }
     public function postEditPeminjamanInventaris(Request $request, $id)
 {
@@ -63,7 +63,7 @@ class KalabPeminjamanInventarisController extends Controller
 
     // Redirect dengan pesan keberhasilan atau kegagalan
     if ($peminjaman_inventaris) {
-        return redirect('/kalab/peminjaman_inventaris')->with('success', 'Data Peminjaman Inventaris berhasil diupdate!');
+        return redirect('/Kalab/peminjaman_inventaris')->with('success', 'Data Peminjaman Inventaris berhasil diupdate!');
     } else {
         return back()->with('failed', 'Data gagal diupdate!');
     }

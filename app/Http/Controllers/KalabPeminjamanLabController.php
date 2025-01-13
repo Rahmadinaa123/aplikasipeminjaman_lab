@@ -14,16 +14,16 @@ class KalabPeminjamanLabController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'pending']
         ])->count();
-        return view('kalab.peminjaman_lab.index', compact('data','peminjamanPending'));
+        return view('Kalab.peminjaman_lab.index', compact('data','peminjamanPending'));
    }
 
    public function detail($id) {
         $data = peminjaman::find($id);
-        return view('kalab.peminjaman_lab.detail', compact('data'));
+        return view('Kalab.peminjaman_lab.detail', compact('data'));
     }
      public function editPeminjamanLab($id) {
         $data = peminjaman::find($id);
-        return view('kalab.peminjaman_lab.edit', compact('data'));
+        return view('Kalab.peminjaman_lab.edit', compact('data'));
     }
      public function postEditPeminjamanLab(Request $request, $id)
     {
@@ -62,7 +62,7 @@ class KalabPeminjamanLabController extends Controller
 
         // Mengecek apakah proses simpan berhasil
     if ($peminjaman_lab) {
-        return redirect('/kalab/peminjaman_lab')->with('success', 'Data berhasil disimpan!');
+        return redirect('/Kalab/peminjaman_lab')->with('success', 'Data berhasil disimpan!');
     } else {
         return back()->with('failed', 'Maaf, terjadi kesalahan, coba kembali beberapa saat!');
     }

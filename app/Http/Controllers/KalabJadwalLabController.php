@@ -9,6 +9,6 @@ class KalabJadwalLabController extends Controller
      //halaman Jadwal Laboratorium
     public function index() {
         $data=jadwalLab::all();
-        return view('Kalab.jadwal_lab.Index', compact('data'));
+        return view('Kalab.jadwal_lab.index', compact('data'));
 }
 }

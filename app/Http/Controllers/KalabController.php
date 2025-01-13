@@ -28,7 +28,7 @@ class KalabController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'selesai'],
         ])->count();
-        return view('Kalab.Index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan','jadwal','inventaris','peminjamanPending'));
+        return view('Kalab.index', compact('data','user','peminjaman','peminjamanInventarisLab','laporan','jadwal','inventaris','peminjamanPending'));
    }
     public function profil() {
         $data=User::all();
