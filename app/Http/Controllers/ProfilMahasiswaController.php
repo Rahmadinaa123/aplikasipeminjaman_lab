@@ -10,12 +10,12 @@ class ProfilMahasiswaController extends Controller
 {
     public function profil() {
         $data=User::all();
-        return view('Mahasiswa.profil.profil', compact('data'));
+        return view('mahasiswa.profil.profil', compact('data'));
    }
 
    public function editprofil() {
         $data=User::all();
-        return view('Mahasiswa.profil.editprofil', compact('data'));
+        return view('mahasiswa.profil.editprofil', compact('data'));
    }
    public function postUpdateProfil(Request $request)
     {

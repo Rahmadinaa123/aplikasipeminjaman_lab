@@ -11,7 +11,7 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
     public function index(Request $request) {
         $labName = $request->query('lab'); // Menangkap parameter lab dari URL
         $inventaris = InventarisLab::where('nama_lab', $labName)->get();
-        return view('Mahasiswa.peminjamaninventaris', compact('labName','inventaris'));
+        return view('mahasiswa.peminjamaninventaris', compact('labName','inventaris'));
    }
    
     public function postPeminjamanInventarisLab(Request $request) {

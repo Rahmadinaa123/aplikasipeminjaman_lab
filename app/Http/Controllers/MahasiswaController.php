@@ -10,11 +10,11 @@ class MahasiswaController extends Controller
 {
      public function index() {
         $data=User::all();
-        return view('Mahasiswa.Index', compact('data'));
+        return view('mahasiswa.index', compact('data'));
    }
 
    public function daftarLab() {
-        return view('Mahasiswa.daftarlab');
+        return view('mahasiswa.daftarlab');
    }
 
    public function pinjamLab(Request $request)
@@ -25,18 +25,18 @@ class MahasiswaController extends Controller
    
    public function profil() {
         $data=User::all();
-        return view('Mahasiswa.profil.profil', compact('data'));
+        return view('mahasiswa.profil.profil', compact('data'));
    }
     public function jadwal() {
         $data=User::all();
-        return view('Mahasiswa.jadwal', compact('data'));
+        return view('mahasiswa.jadwal', compact('data'));
    }
     public function riwayat() {
         $data=User::all();
-        return view('Mahasiswa.riwayat', compact('data'));
+        return view('mahasiswa.riwayat', compact('data'));
    }
 
    public function ceklab() {
-        return view('Mahasiswa.cekketersediaanlab');
+        return view('mahasiswa.cekketersediaanlab');
    }
 }
