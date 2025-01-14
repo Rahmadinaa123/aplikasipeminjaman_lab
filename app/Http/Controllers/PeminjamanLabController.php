@@ -18,12 +18,12 @@ class PeminjamanLabController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'pending']
         ])->count();
-        return view('Laboran.peminjaman_Lab.Index', compact('data','peminjamanPending'));
+        return view('Laboran.peminjaman_lab.index', compact('data','peminjamanPending'));
    }
     //halaman Peminjaman Lab
     public function addPeminjaman() {
         $users=User::all();
-        return view('Laboran.peminjaman_Lab.tambahdata', compact('users'));
+        return view('Laboran.peminjaman_lab.tambahdata', compact('users'));
    }
     public function postPeminjamanLab(Request $request) {
      $request->validate([
@@ -73,7 +73,7 @@ class PeminjamanLabController extends Controller
 
     public function editPeminjamanLab($id) {
         $data = peminjaman::find($id);
-        return view('laboran.peminjaman_lab.edit', compact('data'));
+        return view('Laboran.peminjaman_lab.edit', compact('data'));
     }
      public function postEditPeminjamanLab(Request $request, $id)
     {
@@ -119,7 +119,7 @@ class PeminjamanLabController extends Controller
     }
      public function detail($id) {
         $data = peminjaman::find($id);
-        return view('laboran.peminjaman_lab.detail', compact('data'));
+        return view('Laboran.peminjaman_lab.detail', compact('data'));
     }
 
     public function deletePeminjamanLab($id)

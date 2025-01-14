@@ -12,7 +12,7 @@ class UserController extends Controller
      //halaman dashboard laboran
     public function index() {
         $data=User::where('nama_lab', Auth::user()->nama_lab)->get();
-        return view('Laboran.user.Index', compact('data'));
+        return view('Laboran.user.index', compact('data'));
    }
 
    public function addUser() {
@@ -51,14 +51,14 @@ class UserController extends Controller
     }
 }
 
-     public function updateUser($id) {
+   public function updateUser($id) {
           $data = User::find($id);
           return view('Laboran.user.edit', compact('data'));
   }
 
   public function editUser($id) {
         $data = User::find($id);
-        return view('laboran.user.edit', compact('data'));
+        return view('Laboran.user.edit', compact('data'));
     }
 
     public function postEditUser(Request $request, $id)
@@ -96,7 +96,7 @@ class UserController extends Controller
 
     public function detail($id) {
         $data = User::find($id);
-        return view('laboran.user.detail', compact('data'));
+        return view('Laboran.user.detail', compact('data'));
     }
 
   public function deleteUser($id)

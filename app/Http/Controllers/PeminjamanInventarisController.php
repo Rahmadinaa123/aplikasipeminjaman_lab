@@ -16,7 +16,7 @@ class PeminjamanInventarisController extends Controller
             ['nama_lab', '=', Auth::user()->nama_lab],
             ['status', '=', 'pending']
         ])->count();
-        return view('Laboran.peminjaman_inventaris.Index', compact('data', 'peminjamanPending'));
+        return view('Laboran.peminjaman_inventaris.index', compact('data', 'peminjamanPending'));
    }
 
     //halaman Peminjaman Inventaris Lab
@@ -74,7 +74,7 @@ class PeminjamanInventarisController extends Controller
  public function editPeminjamanInventaris($id) {
         $peminjaman = peminjamanInventarisLab::find($id);
         $inventaris=inventarisLab::all();
-        return view('laboran.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
+        return view('Laboran.peminjaman_inventaris.edit', compact('peminjaman','inventaris'));
     }
 
     public function postEditPeminjamanInventaris(Request $request, $id)
@@ -133,7 +133,7 @@ public function deletePeminjamanInventaris($id)
     }
 public function detail($id) {
     $data = PeminjamanInventarisLab::find($id);
-    return view('laboran.peminjaman_inventaris.detail', compact('data'));
+    return view('Laboran.peminjaman_inventaris.detail', compact('data'));
 }
 
 }

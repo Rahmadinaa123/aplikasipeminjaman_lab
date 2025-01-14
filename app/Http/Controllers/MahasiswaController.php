@@ -20,7 +20,7 @@ class MahasiswaController extends Controller
    public function pinjamLab(Request $request)
 {
     $labName = $request->query('lab'); // Menangkap parameter lab dari URL
-    return view('mahasiswa.pinjamLab', compact('labName'));
+    return view('mahasiswa.pinjamlab', compact('labName'));
 }
    
    public function profil() {

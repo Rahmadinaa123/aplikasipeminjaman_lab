@@ -11,7 +11,7 @@ class InventarisLabController extends Controller
      //halaman Inventaris Lab
     public function index() {
         $data=inventarisLab::all();
-        return view('Laboran.inventaris_Lab.Index', compact('data'));
+        return view('Laboran.inventaris_lab.index', compact('data'));
    }
    
     //halaman Inventaris lab
@@ -57,7 +57,7 @@ class InventarisLabController extends Controller
 
 public function editInventarisLab($id) {
     $inventaris = InventarisLab::find($id);
-    return view('laboran.inventaris_lab.edit', compact('inventaris'));
+    return view('Laboran.inventaris_lab.edit', compact('inventaris'));
 }
 
 public function postEditInventarisLab(Request $request, $id)
@@ -95,7 +95,7 @@ public function postEditInventarisLab(Request $request, $id)
 
 public function detail($id) {
     $data = InventarisLab::find($id);
-    return view('laboran.inventaris_lab.detail', compact('data'));
+    return view('Laboran.inventaris_lab.detail', compact('data'));
 }
 
 public function deleteInventarisLab($id)

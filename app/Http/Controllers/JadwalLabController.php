@@ -12,12 +12,12 @@ class JadwalLabController extends Controller
      //halaman Jadwal Laboratorium
     public function index() {
         $data=jadwalLab::all();
-        return view('Laboran.jadwal_lab.Index', compact('data'));
+        return view('Laboran.jadwal_lab.index', compact('data'));
    }
    //halaman tambah data jadwal Lab
     public function addJadwalLab() {
         $users=User::all();
-        return view('Laboran.jadwal_Lab.tambahdata', compact('users'));
+        return view('Laboran.jadwal_lab.tambahdata', compact('users'));
    }
 
    public function mahasiswajadwal(Request $request) {
@@ -75,7 +75,7 @@ public function postJadwalLab(Request $request)
 
 public function editJadwalLab($id) {
     $data = JadwalLab::find($id);
-    return view('laboran.jadwal_lab.edit', compact('data'));
+    return view('Laboran.jadwal_lab.edit', compact('data'));
 }
 
 public function postEditJadwalLab(Request $request, $id)
