@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="row gy-4 justify-content-center justify-content-lg-between">
                     <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                        <h1 data-aos="fade-up">Selamat Datang di SIPELA<br>Sistem Peminjaman Laboran Teknik Informatika
+                        <h1 data-aos="fade-up">Welcome To SIPELA<br>Sistem Peminjaman Laboran Teknik Informatika
                             Politeknik Negeri
                             Bengkalis</h1>
                         <p data-aos="fade-up" data-aos-delay="100">Siap untuk menggunakan laboratorium dengan lebih
