@@ -124,14 +124,15 @@ jobs:
                 echo "Mengunggah file: $file ke $remote_path"
 
                 # Upload file menggunakan lftp
-                lftp -f "
-                  set ftp:ssl-allow no
-                  open $FTP_SERVER
-                  user $FTP_USERNAME $FTP_PASSWORD
-                  mkdir -p \"$remote_dir\"  # Membuat direktori tujuan
-                  put \"$file\" -o \"$remote_path\"  # Mengunggah file
-                  bye
+                lftp -e "
+                  set ftp:ssl-allow no;
+                  open $FTP_SERVER;
+                  user $FTP_USERNAME $FTP_PASSWORD;
+                  mkdir -p \"$remote_dir\";  # Membuat direktori tujuan jika belum ada
+                  put \"$file\" -o \"$remote_path\";  # Mengunggah file
+                  bye;
                 "
+
               else
                 echo "File tidak ditemukan: $file"
               fi
