@@ -88,7 +88,7 @@ jobs:
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
 
       - name: Test FTP Connection
-        run: nc -zv $FTP_SERVER 21
+        run: nc -zv ftp.bengkaliskab.org 21
 
       - name: Deploy to server via FTP
         run: |
