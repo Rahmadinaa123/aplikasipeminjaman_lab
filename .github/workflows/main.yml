@@ -118,7 +118,7 @@ jobs:
 
               # Periksa apakah file ada
               if [ -f "$file" ]; then
-                remote_path="/path/on/ftp/server/$file"
+                remote_path="./ /path/on/ftp/server/$file"
                 remote_dir=$(dirname "$remote_path")
 
                 echo "Mengunggah file: $file ke $remote_path"
