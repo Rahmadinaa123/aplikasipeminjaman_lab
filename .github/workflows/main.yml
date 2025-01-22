@@ -110,30 +110,18 @@ jobs:
 
             # Kirim file yang diubah ke FTP
             while IFS= read -r file; do
-              remote_path="/path/on/ftp/server/$file"
-
-              # Menangani karakter khusus di file path dengan mengutip path
-              remote_dir=$(dirname "$remote_path")
-
-              # Jika file yang diubah adalah file dan bukan direktori, upload dengan put
+              # Pastikan hanya jalur file yang valid diproses
               if [ -f "$file" ]; then
-                # Membuat direktori jika tidak ada
+                remote_path="/path/on/ftp/server/$file"
+                remote_dir=$(dirname "$remote_path")
+
+                # Upload file menggunakan lftp
                 lftp -f "
                   set ftp:ssl-allow no
                   open $FTP_SERVER
                   user $FTP_USERNAME $FTP_PASSWORD
-                  mkdir -p '$remote_dir'  # Membuat direktori tujuan jika belum ada
-                  put '$file' -o '$remote_path'  # Mengunggah file ke lokasi yang benar
-                  bye
-                "
-              # Jika itu adalah direktori, lakukan mirror
-              elif [ -d "$file" ]; then
-                remote_dir="/path/on/ftp/server/$file"
-                lftp -f "
-                  set ftp:ssl-allow no
-                  open $FTP_SERVER
-                  user $FTP_USERNAME $FTP_PASSWORD
-                  mirror --reverse --only-newer --delete --verbose '$file' '$remote_dir'  # Sinkronisasi direktori
+                  mkdir -p '$remote_dir'  # Membuat direktori tujuan
+                  put '$file' -o '$remote_path'  # Mengunggah file
                   bye
                 "
               fi
@@ -141,6 +129,20 @@ jobs:
           else
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
           fi
+
+          # Bersihkan direktori yang tidak relevan di server FTP
+          lftp -f "
+            set ftp:ssl-allow no
+            open $FTP_SERVER
+            user $FTP_USERNAME $FTP_PASSWORD
+            rm -r '/path/on/ftp/server/#'
+            rm -r '/path/on/ftp/server/ada'
+            rm -r '/path/on/ftp/server/belum'
+            rm -r '/path/on/ftp/server/direktori'
+            rm -r '/path/on/ftp/server/jika'
+            rm -r '/path/on/ftp/server/tujuan'
+            bye
+          "
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
