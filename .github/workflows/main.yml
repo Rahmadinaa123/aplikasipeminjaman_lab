@@ -128,8 +128,13 @@ jobs:
                   set ftp:ssl-allow no;
                   open $FTP_SERVER;
                   user $FTP_USERNAME $FTP_PASSWORD;
+                  # Hapus file lama jika ada
                   rm -f \"$remote_path\";  # Hapus file lama
-                  mkdir -p \"$remote_dir\";  # Membuat direktori jika belum ada
+                  # Periksa dan hapus direktori jika ada
+                  # Hapus direktori jika ada file di dalamnya
+                  rm -rf \"$remote_dir\"/*;
+                  # Membuat direktori jika belum ada
+                  mkdir -p \"$remote_dir\";
                   put \"$file\" -o \"$remote_path\";  # Mengunggah file baru
                   bye;
                 "
@@ -147,10 +152,10 @@ jobs:
             open $FTP_SERVER
             user $FTP_USERNAME $FTP_PASSWORD
             # Hapus direktori yang tidak relevan
-            rm -r '/path/on/ftp/server/#'
-            rm -r '/path/on/ftp/server/Membuat'
-            rm -r '/path/on/ftp/server/direktori'
-            rm -r '/path/on/ftp/server/tujuan'
+            rm -rf '/path/on/ftp/server/#'
+            rm -rf '/path/on/ftp/server/Membuat'
+            rm -rf '/path/on/ftp/server/direktori'
+            rm -rf '/path/on/ftp/server/tujuan'
             bye
           "
         env:
