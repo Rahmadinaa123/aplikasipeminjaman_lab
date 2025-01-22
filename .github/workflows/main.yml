@@ -128,10 +128,10 @@ jobs:
                   set ftp:ssl-allow no
                   open $FTP_SERVER
                   user $FTP_USERNAME $FTP_PASSWORD
+                  # Buat direktori hanya jika tidak ada
+                  mkdir -p \"$remote_dir\"
                   # Hapus file lama jika ada
-                  rm -f \"$remote_path\" || true
-                  # Pastikan direktori tujuan ada
-                  mkdir -p \"$remote_dir\" || true
+                  rm \"$remote_path\" || echo 'File lama tidak ada, melanjutkan...'
                   # Unggah file
                   put \"$file\" -o \"$remote_path\"
                   bye
@@ -143,8 +143,6 @@ jobs:
           else
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
           fi
-            bye
-          "
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
