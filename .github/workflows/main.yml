@@ -128,15 +128,11 @@ jobs:
                   set ftp:ssl-allow no;
                   open $FTP_SERVER;
                   user $FTP_USERNAME $FTP_PASSWORD;
-                  # Periksa apakah direktori sudah ada
-                  if [ ! -d \"$remote_dir\" ]; then
-                    mkdir -p \"$remote_dir\";  
-                  fi
-                  put \"$file\" -o \"$remote_path\";  
+                  # Membuat direktori hanya jika belum ada
+                  mkdir -p \"$remote_dir\";
+                  put \"$file\" -o \"$remote_path\";
                   bye;
                 "
-
-
               else
                 echo "File tidak ditemukan: $file"
               fi
@@ -145,11 +141,12 @@ jobs:
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
           fi
 
-          # Bersihkan direktori yang tidak relevan di server FTP
+          # Hapus direktori yang tidak relevan di server FTP
           lftp -f "
             set ftp:ssl-allow no
             open $FTP_SERVER
             user $FTP_USERNAME $FTP_PASSWORD
+            # Hapus direktori yang tidak relevan
             rm -r '/path/on/ftp/server/#'
             rm -r '/path/on/ftp/server/Membuat'
             rm -r '/path/on/ftp/server/direktori'
