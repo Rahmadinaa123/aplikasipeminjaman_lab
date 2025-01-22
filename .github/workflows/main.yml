@@ -110,16 +110,30 @@ jobs:
             
             # Kirim file yang diubah ke FTP
             cat changed_files.txt | while read file; do
-              # Pastikan direktori tujuan ada
-              remote_dir="/path/on/ftp/server/$(dirname "$file")"
-              lftp -f "
-                set ftp:ssl-allow no
-                open $FTP_SERVER
-                user $FTP_USERNAME $FTP_PASSWORD
-                mkdir -p $remote_dir  # Membuat direktori tujuan jika belum ada
-                put $file -o $remote_dir/$(basename "$file")  # Mengunggah file
-                bye
-              "
+              remote_path="/path/on/ftp/server/$file"
+              
+              # Jika file yang diubah adalah file dan bukan direktori, upload dengan put
+              if [ -f "$file" ]; then
+                remote_dir=$(dirname "$remote_path")
+                lftp -f "
+                  set ftp:ssl-allow no
+                  open $FTP_SERVER
+                  user $FTP_USERNAME $FTP_PASSWORD
+                  mkdir -p $remote_dir  # Membuat direktori tujuan jika belum ada
+                  put $file -o $remote_path  # Mengunggah file ke lokasi yang benar
+                  bye
+                "
+              # Jika itu adalah direktori, lakukan mirror
+              elif [ -d "$file" ]; then
+                remote_dir="/path/on/ftp/server/$file"
+                lftp -f "
+                  set ftp:ssl-allow no
+                  open $FTP_SERVER
+                  user $FTP_USERNAME $FTP_PASSWORD
+                  mirror --reverse --only-newer --delete --verbose $file $remote_dir  # Sinkronisasi direktori
+                  bye
+                "
+              fi
             done
           else
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
