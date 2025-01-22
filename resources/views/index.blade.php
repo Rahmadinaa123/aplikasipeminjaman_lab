@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <!-- tes server perubahan ke server index -->
+    <!-- tes server perubahan ke server -->
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
