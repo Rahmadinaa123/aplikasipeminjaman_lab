@@ -107,14 +107,20 @@ jobs:
           # Periksa apakah ada file yang diubah
           if [ -s changed_files.txt ]; then
             echo "File yang diubah ditemukan. Mengirim ke FTP."
+            
             # Kirim file yang diubah ke FTP
-            cat changed_files.txt | xargs -I {} lftp -f "
-            set ftp:ssl-allow no
-            open $FTP_SERVER
-            user $FTP_USERNAME $FTP_PASSWORD
-            mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
-            bye
-            "
+            cat changed_files.txt | while read file; do
+              # Pastikan direktori tujuan ada
+              remote_dir="/path/on/ftp/server/$(dirname "$file")"
+              lftp -f "
+                set ftp:ssl-allow no
+                open $FTP_SERVER
+                user $FTP_USERNAME $FTP_PASSWORD
+                mkdir -p $remote_dir  # Membuat direktori tujuan jika belum ada
+                put $file -o $remote_dir/$(basename "$file")  # Mengunggah file
+                bye
+              "
+            done
           else
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
           fi
