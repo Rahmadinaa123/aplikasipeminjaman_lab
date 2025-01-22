@@ -128,10 +128,14 @@ jobs:
                   set ftp:ssl-allow no;
                   open $FTP_SERVER;
                   user $FTP_USERNAME $FTP_PASSWORD;
-                  mkdir -p \"$remote_dir\";  # Membuat direktori tujuan jika belum ada
-                  put \"$file\" -o \"$remote_path\";  # Mengunggah file
+                  # Periksa apakah direktori sudah ada
+                  if [ ! -d \"$remote_dir\" ]; then
+                    mkdir -p \"$remote_dir\";  
+                  fi
+                  put \"$file\" -o \"$remote_path\";  
                   bye;
                 "
+
 
               else
                 echo "File tidak ditemukan: $file"
