@@ -90,75 +90,72 @@ jobs:
       - name: Test FTP Connection
         run: nc -zv ftp.bengkaliskab.org 21
 
-      - name: Deploy to server via FTP
-        run: |
-          # Checkout history penuh
-          git fetch --prune --unshallow
+      name: Deploy to server via FTP
+      run: |
+        # Checkout history penuh
+        git fetch --prune --unshallow
 
-          # Periksa apakah ada commit sebelumnya
-          if git rev-parse --verify HEAD^ &>/dev/null; then
-            echo "Commit sebelumnya ditemukan, melanjutkan dengan git diff."
-            git diff --name-only HEAD^..HEAD > changed_files.txt
-          else
-            echo "Tidak ada commit sebelumnya, menggunakan commit saat ini."
-            git diff --name-only HEAD > changed_files.txt
-          fi
+        # Periksa apakah ada commit sebelumnya
+        if git rev-parse --verify HEAD^ &>/dev/null; then
+          echo "Commit sebelumnya ditemukan, melanjutkan dengan git diff."
+          git diff --name-only HEAD^..HEAD > changed_files.txt
+        else
+          echo "Tidak ada commit sebelumnya, menggunakan commit saat ini."
+          git diff --name-only HEAD > changed_files.txt
+        fi
 
-          # Periksa apakah ada file yang diubah
-          if [ -s changed_files.txt ]; then
-            echo "File yang diubah ditemukan. Mengirim ke FTP."
+        # Periksa apakah ada file yang diubah
+        if [ -s changed_files.txt ]; then
+          echo "File yang diubah ditemukan. Mengirim ke FTP."
 
-            # Kirim file yang diubah ke FTP
-            while IFS= read -r file; do
-              # Abaikan jika "file" adalah direktori
-              if [ -d "$file" ]; then
-                echo "Lewati direktori: $file"
-                continue
-              fi
+          # Kirim file yang diubah ke FTP
+          while IFS= read -r file; do
+            # Abaikan jika "file" adalah direktori
+            if [ -d "$file" ]; then
+              echo "Lewati direktori: $file"
+              continue
+            fi
 
-              # Periksa apakah file ada
-              if [ -f "$file" ]; then
-                remote_path="/path/on/ftp/server/$file"
-                remote_dir=$(dirname "$remote_path")
+            # Periksa apakah file ada
+            if [ -f "$file" ]; then
+              remote_path="/path/on/ftp/server/$file"
+              remote_dir=$(dirname "$remote_path")
 
-                echo "Mengunggah file: $file ke $remote_path"
+              echo "Mengunggah file: $file ke $remote_path"
 
+              # Gunakan lftp untuk memastikan file lama dihapus sebelum mengunggah
+              lftp -e "
+                set ftp:ssl-allow no;
+                open $FTP_SERVER;
+                user $FTP_USERNAME $FTP_PASSWORD;
                 # Hapus file lama jika ada
-                lftp -e "
-                  set ftp:ssl-allow no;
-                  open $FTP_SERVER;
-                  user $FTP_USERNAME $FTP_PASSWORD;
-                  # Hapus file lama jika ada
-                  rm -f \"$remote_path\";  # Hapus file lama
-                  # Periksa dan hapus direktori jika ada
-                  # Hapus direktori jika ada file di dalamnya
-                  rm -rf \"$remote_dir\"/*;
-                  # Membuat direktori jika belum ada
-                  mkdir -p \"$remote_dir\";
-                  put \"$file\" -o \"$remote_path\";  # Mengunggah file baru
-                  bye;
-                "
-              else
-                echo "File tidak ditemukan: $file"
-              fi
-            done < changed_files.txt
-          else
-            echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
-          fi
+                cls -1 \"$remote_path\" && rm \"$remote_path\" || echo 'Tidak ada file lama untuk dihapus.';
+                # Pastikan direktori tujuan bersih
+                mkdir -p \"$remote_dir\" || true;  # Abaikan error jika direktori sudah ada
+                put \"$file\" -o \"$remote_path\";  # Unggah file baru
+                bye;
+              "
+            else
+              echo "File tidak ditemukan: $file"
+            fi
+          done < changed_files.txt
+        else
+          echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
+        fi
 
-          # Hapus direktori yang tidak relevan di server FTP
-          lftp -f "
-            set ftp:ssl-allow no
-            open $FTP_SERVER
-            user $FTP_USERNAME $FTP_PASSWORD
-            # Hapus direktori yang tidak relevan
-            rm -rf '/path/on/ftp/server/#'
-            rm -rf '/path/on/ftp/server/Membuat'
-            rm -rf '/path/on/ftp/server/direktori'
-            rm -rf '/path/on/ftp/server/tujuan'
-            bye
-          "
-        env:
-          FTP_SERVER: ftp.bengkaliskab.org
-          FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
-          FTP_PASSWORD: Sipela123
+        # Hapus direktori yang tidak relevan di server FTP
+        lftp -f "
+          set ftp:ssl-allow no
+          open $FTP_SERVER
+          user $FTP_USERNAME $FTP_PASSWORD
+          # Hapus direktori yang tidak relevan
+          rm -rf '/path/on/ftp/server/#'
+          rm -rf '/path/on/ftp/server/Membuat'
+          rm -rf '/path/on/ftp/server/direktori'
+          rm -rf '/path/on/ftp/server/tujuan'
+          bye
+        "
+      env:
+        FTP_SERVER: ftp.bengkaliskab.org
+        FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
+        FTP_PASSWORD: Sipela123
