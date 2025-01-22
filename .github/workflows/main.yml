@@ -110,20 +110,30 @@ jobs:
 
             # Kirim file yang diubah ke FTP
             while IFS= read -r file; do
-              # Pastikan hanya jalur file yang valid diproses
+              # Abaikan jika "file" adalah direktori
+              if [ -d "$file" ]; then
+                echo "Lewati direktori: $file"
+                continue
+              fi
+
+              # Periksa apakah file ada
               if [ -f "$file" ]; then
                 remote_path="/path/on/ftp/server/$file"
                 remote_dir=$(dirname "$remote_path")
+
+                echo "Mengunggah file: $file ke $remote_path"
 
                 # Upload file menggunakan lftp
                 lftp -f "
                   set ftp:ssl-allow no
                   open $FTP_SERVER
                   user $FTP_USERNAME $FTP_PASSWORD
-                  mkdir -p '$remote_dir'  # Membuat direktori tujuan
-                  put '$file' -o '$remote_path'  # Mengunggah file
+                  mkdir -p \"$remote_dir\"  # Membuat direktori tujuan
+                  put \"$file\" -o \"$remote_path\"  # Mengunggah file
                   bye
                 "
+              else
+                echo "File tidak ditemukan: $file"
               fi
             done < changed_files.txt
           else
@@ -136,10 +146,8 @@ jobs:
             open $FTP_SERVER
             user $FTP_USERNAME $FTP_PASSWORD
             rm -r '/path/on/ftp/server/#'
-            rm -r '/path/on/ftp/server/ada'
-            rm -r '/path/on/ftp/server/belum'
+            rm -r '/path/on/ftp/server/Membuat'
             rm -r '/path/on/ftp/server/direktori'
-            rm -r '/path/on/ftp/server/jika'
             rm -r '/path/on/ftp/server/tujuan'
             bye
           "
