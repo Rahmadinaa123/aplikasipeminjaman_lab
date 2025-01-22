@@ -92,29 +92,23 @@ jobs:
 
       - name: Deploy to server via FTP
         run: |
-          # Tentukan rentang commit untuk diff
-          COMMIT_RANGE=${GITHUB_SHA}^..${GITHUB_SHA}
-
-          # Jika tidak ada commit sebelumnya, gunakan HEAD~1..HEAD
-          if ! git rev-parse --verify $COMMIT_RANGE >/dev/null 2>&1; then
-            COMMIT_RANGE=HEAD~1..HEAD
-          fi
-
-          # Hanya file yang diubah yang akan di-upload
-          git diff --name-only $COMMIT_RANGE > changed_files.txt
-
-          # Pastikan ada file yang diubah, baru lanjutkan upload
-          if [ -s changed_files.txt ]; then
-            cat changed_files.txt | xargs -I {} lftp -f "
-            set ftp:ssl-allow no
-            open $FTP_SERVER
-            user $FTP_USERNAME $FTP_PASSWORD
-            mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
-            bye
-            "
+          # Periksa apakah ada commit sebelumnya
+          if git rev-parse --verify HEAD^ &>/dev/null; then
+            # Jika ada commit sebelumnya, gunakan git diff untuk perubahan
+            git diff --name-only HEAD^..HEAD > changed_files.txt
           else
-            echo "Tidak ada file yang diubah, proses deploy dibatalkan."
+            # Jika tidak ada commit sebelumnya, gunakan git diff untuk commit saat ini
+            git diff --name-only HEAD > changed_files.txt
           fi
+
+          # Kirim file yang diubah ke FTP
+          cat changed_files.txt | xargs -I {} lftp -f "
+          set ftp:ssl-allow no
+          open $FTP_SERVER
+          user $FTP_USERNAME $FTP_PASSWORD
+          mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
+          bye
+          "
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
