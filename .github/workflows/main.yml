@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"] # Menjalankan pipeline pada push ke branch master
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"] # Menjalankan pipeline saat ada pull request ke branch master
 
 jobs:
   build:
@@ -22,15 +22,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 # Mengambil kode dari repositori
 
       - name: Install lftp
-        run: sudo apt-get install -y lftp
+        run: sudo apt-get install -y lftp # Menginstal lftp untuk proses deployment FTP
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: "8.1"
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-scripts --no-progress
@@ -48,9 +48,6 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
 
-      - name: Check existing tables
-        run: |
-          mysql -h 127.0.0.1 -u root -proot -e "USE test_db; SHOW TABLES;"
       - name: Run Laravel migrations
         run: php artisan migrate --env=testing
         env:
@@ -84,22 +81,25 @@ jobs:
 
       - name: Print environment variables for debugging
         run: |
-          echo "FTP_SERVER: ftp.bengkaliskab.org"
-          echo "FTP_USERNAME : sipela@reservasilab.bengkaliskab.org"
+          echo "FTP_SERVER: $FTP_SERVER"
+          echo "FTP_USERNAME : $FTP_USERNAME"
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
 
       - name: Test FTP Connection
+        run: nc -zv $FTP_SERVER 21
+
+      - name: Deploy to server via FTP
         run: |
-          nc -zv ftp.bengkaliskab.org 21
-      - name: Deploy to server via FTP #tess
-        run: |
-          lftp -f "
+          # Hanya meng-upload file yang diubah
+          git diff --name-only $GITHUB_SHA^..$GITHUB_SHA > changed_files.txt
+          # Filter file yang diubah dan kirim ke FTP
+          cat changed_files.txt | xargs -I {} lftp -f "
           set ftp:ssl-allow no
           open $FTP_SERVER
           user $FTP_USERNAME $FTP_PASSWORD
-          mirror --reverse --delete --verbose ./ /path/on/ftp/server
+          mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
           bye
           "
         env:
