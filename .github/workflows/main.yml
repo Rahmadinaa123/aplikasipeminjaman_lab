@@ -124,12 +124,16 @@ jobs:
                 echo "Mengunggah file: $file ke $remote_path"
 
                 # Upload file menggunakan lftp
-                lftp -f "
+                lftp -e "
                   set ftp:ssl-allow no
                   open $FTP_SERVER
                   user $FTP_USERNAME $FTP_PASSWORD
-                  mkdir -p \"$remote_dir\"  # Membuat direktori tujuan
-                  put \"$file\" -o \"$remote_path\"  # Mengunggah file
+                  # Hapus file lama jika ada
+                  rm -f \"$remote_path\" || true
+                  # Pastikan direktori tujuan ada
+                  mkdir -p \"$remote_dir\" || true
+                  # Unggah file
+                  put \"$file\" -o \"$remote_path\"
                   bye
                 "
               else
@@ -139,16 +143,6 @@ jobs:
           else
             echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
           fi
-
-          # Bersihkan direktori yang tidak relevan di server FTP
-          lftp -f "
-            set ftp:ssl-allow no
-            open $FTP_SERVER
-            user $FTP_USERNAME $FTP_PASSWORD
-            rm -r '/path/on/ftp/server/#'
-            rm -r '/path/on/ftp/server/Membuat'
-            rm -r '/path/on/ftp/server/direktori'
-            rm -r '/path/on/ftp/server/tujuan'
             bye
           "
         env:
