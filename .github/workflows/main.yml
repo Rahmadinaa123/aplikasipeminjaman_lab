@@ -118,7 +118,7 @@ jobs:
 
               # Periksa apakah file ada
               if [ -f "$file" ]; then
-                remote_path="./ /path/on/ftp/server/$file"
+                remote_path="/path/on/ftp/server/$file"
                 remote_dir=$(dirname "$remote_path")
 
                 echo "Mengunggah file: $file ke $remote_path"
@@ -128,10 +128,19 @@ jobs:
                   set ftp:ssl-allow no
                   open $FTP_SERVER
                   user $FTP_USERNAME $FTP_PASSWORD
-                  # Buat direktori hanya jika tidak ada
-                  mkdir -p \"$remote_dir\"
+                  
+                  # Periksa apakah direktori sudah ada, jika tidak buat
+                  if ! ls $remote_dir; then
+                    echo 'Membuat direktori: $remote_dir'
+                    mkdir -p \"$remote_dir\"
+                  fi
+
                   # Hapus file lama jika ada
-                  rm \"$remote_path\" || echo 'File lama tidak ada, melanjutkan...'
+                  if ls \"$remote_path\"; then
+                    echo 'Menghapus file lama: $remote_path'
+                    rm \"$remote_path\" || echo 'File lama tidak ada, melanjutkan...'
+                  fi
+                  
                   # Unggah file
                   put \"$file\" -o \"$remote_path\"
                   bye
