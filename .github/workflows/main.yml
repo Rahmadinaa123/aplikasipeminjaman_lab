@@ -94,21 +94,27 @@ jobs:
         run: |
           # Periksa apakah ada commit sebelumnya
           if git rev-parse --verify HEAD^ &>/dev/null; then
-            # Jika ada commit sebelumnya, gunakan git diff untuk perubahan
+            echo "Commit sebelumnya ditemukan, melanjutkan dengan git diff."
             git diff --name-only HEAD^..HEAD > changed_files.txt
           else
-            # Jika tidak ada commit sebelumnya, gunakan git diff untuk commit saat ini
+            echo "Tidak ada commit sebelumnya, menggunakan commit saat ini."
             git diff --name-only HEAD > changed_files.txt
           fi
 
-          # Kirim file yang diubah ke FTP
-          cat changed_files.txt | xargs -I {} lftp -f "
-          set ftp:ssl-allow no
-          open $FTP_SERVER
-          user $FTP_USERNAME $FTP_PASSWORD
-          mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
-          bye
-          "
+          # Periksa apakah ada file yang diubah
+          if [ -s changed_files.txt ]; then
+            echo "File yang diubah ditemukan. Mengirim ke FTP."
+            # Kirim file yang diubah ke FTP
+            cat changed_files.txt | xargs -I {} lftp -f "
+            set ftp:ssl-allow no
+            open $FTP_SERVER
+            user $FTP_USERNAME $FTP_PASSWORD
+            mirror --reverse --only-newer --delete --verbose ./{} /path/on/ftp/server/{}
+            bye
+            "
+          else
+            echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
+          fi
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
