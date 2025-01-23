@@ -131,6 +131,7 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
    Route::get('kalab/peminjaman_lab/edit/{id}', [KalabPeminjamanLabController::class, 'updatePeminjamanLab'])->name('kalab.PeminjamanLab.edit');
    Route::get('kalab/editPeminjamanLab/{id}', [KalabPeminjamanLabController::class, 'editPeminjamanLab'])->name('editPeminjamanLab');
    Route::post('/posteditPeminjamanLab/{id}', [KalabPeminjamanLabController::class, 'postEditPeminjamanLab'])->name('postEditPeminjamanLab');
+   Route::put('/kalab/updateStatus/{id}', [KalabPeminjamanLabController::class, 'updateStatus'])->name('updateStatus');
    Route::get('kalab/peminjaman_lab/detail/{id}', [KalabPeminjamanLabController::class, 'detail'])->name('kalab.peminjaman_lab.detail');
 
   //inventarislab 
@@ -145,6 +146,7 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
    Route::get('kalab/peminjaman_inventaris/edit/{id}', [KalabPeminjamanLabController::class, 'updatePeminjamanLab'])->name('kalab.PeminjamanLab.edit');
    Route::get('kalab/peminjaman_inventaris/edit/{id}', [KalabPeminjamanInventarisController::class, 'editPeminjamanInventaris'])->name('editPeminjamanInventaris');
    Route::put('/postEditPeminjaman/inventaris/{id}', [KalabPeminjamanInventarisController::class, 'postEditPeminjamanInventaris'])->name('postEditPeminjamanInventaris');
+   Route::put('/kalab/updateStatus/PeminjamanInventaris/{id}', [KalabPeminjamanInventarisController::class, 'updateStatus'])->name('updateStatus');
    Route::get('kalab/peminjaman_inventaris/detail/{id}', [KalabPeminjamanInventarisController::class, 'detail'])->name('kalab.peminjaman_inventaris.detail');
 
    Route::get('kalab/laporan_akhir', [KalabLaporanAkhirController::class, 'index'])->name('kalab.laporan_akhir');
