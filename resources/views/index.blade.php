@@ -92,7 +92,7 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>About Us<br></h2>
-                <p><span>Loratorium</span> <span class="description-title">Teknik Informatika</span></p>
+                <p><span>Labooratorium</span> <span class="description-title">Teknik Informatika</span></p>
             </div><!-- End Section Title -->
 
             <div class="container">

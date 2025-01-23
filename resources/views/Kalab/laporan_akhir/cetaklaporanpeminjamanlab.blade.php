@@ -5,48 +5,48 @@
     <meta charset="UTF-8">
     <title>Cetak Laporan Peminjaman</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12pt;
-            margin: 20px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        margin: 20px;
+    }
 
-        h2,
-        h3,
-        p {
-            text-align: center;
-        }
+    h2,
+    h3,
+    p {
+        text-align: center;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
 
-        th {
-            background-color: #f2f2f2;
-            padding: 8px;
-            text-align: center;
-        }
+    th {
+        background-color: #f2f2f2;
+        padding: 8px;
+        text-align: center;
+    }
 
-        td {
-            padding: 8px;
-        }
+    td {
+        padding: 8px;
+    }
 
-        .footer {
-            margin-top: 50px;
-            float: right;
-            text-align: right;
-            margin-right: 20px;
-            /* Tambahkan margin agar ada jarak dari sisi kanan */
-        }
-        }
+    .footer {
+        margin-top: 50px;
+        float: right;
+        text-align: right;
+        margin-right: 20px;
+        /* Tambahkan margin agar ada jarak dari sisi kanan */
+    }
+    }
     </style>
 </head>
 
@@ -76,16 +76,18 @@
         <tbody>
             @php $no = 1; @endphp
             @foreach ($data as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item['username'] }}</td>
-                    <td>{{ $item['nim'] }}</td>
-                    <td>{{ $item['prodi'] }}</td>
-                    <td>{{ $item['semester'] }}</td>
-                    <td>{{ $item['tanggal_mulai'] }} - {{ $item['tanggal_selesai'] }}</td>
-                    <td>{{ $item['keperluan'] }}</td>
-                    <td>{{ $item['status'] }}</td>
-                </tr>
+            @if ($item->nama_lab == Auth::user()->nama_lab)
+            <tr>
+                <td>{{ $no++ }}</td>
+                <td>{{ $item['username'] }}</td>
+                <td>{{ $item['nim'] }}</td>
+                <td>{{ $item['prodi'] }}</td>
+                <td>{{ $item['semester'] }}</td>
+                <td>{{ $item['tanggal_mulai'] }} - {{ $item['tanggal_selesai'] }}</td>
+                <td>{{ $item['keperluan'] }}</td>
+                <td>{{ $item['status'] }}</td>
+            </tr>
+            @endif
             @endforeach
         </tbody>
     </table>

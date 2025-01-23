@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: ["master"] # Menjalankan pipeline pada push ke branch master
+    branches: ["master"]
   pull_request:
-    branches: ["master"] # Menjalankan pipeline saat ada pull request ke branch master
+    branches: ["master"]
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:5.7a
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3 # Mengambil kode dari repositori
+        uses: actions/checkout@v3
 
       - name: Install lftp
-        run: sudo apt-get install -y lftp # Menginstal lftp untuk proses deployment FTP
+        run: sudo apt-get install -y lftp
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -48,6 +48,9 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
 
+      - name: Check existing tables
+        run: |
+          mysql -h 127.0.0.1 -u root -proot -e "USE test_db; SHOW TABLES;"
       - name: Run Laravel migrations
         run: php artisan migrate --env=testing
         env:
@@ -81,77 +84,24 @@ jobs:
 
       - name: Print environment variables for debugging
         run: |
-          echo "FTP_SERVER: $FTP_SERVER"
-          echo "FTP_USERNAME : $FTP_USERNAME"
+          echo "FTP_SERVER: ftp.bengkaliskab.org"
+          echo "FTP_USERNAME : sipela@reservasilab.bengkaliskab.org"
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
 
       - name: Test FTP Connection
-        run: nc -zv ftp.bengkaliskab.org 21
-
-      - name: Deploy to server via FTP
         run: |
-          # Checkout history penuh
-          git fetch --prune --unshallow
-
-          # Periksa apakah ada commit sebelumnya
-          if git rev-parse --verify HEAD^ &>/dev/null; then
-            echo "Commit sebelumnya ditemukan, melanjutkan dengan git diff."
-            git diff --name-only HEAD^..HEAD > changed_files.txt
-          else
-            echo "Tidak ada commit sebelumnya, menggunakan commit saat ini."
-            git diff --name-only HEAD > changed_files.txt
-          fi
-
-          # Periksa apakah ada file yang diubah
-          if [ -s changed_files.txt ]; then
-            echo "File yang diubah ditemukan. Mengirim ke FTP."
-
-            # Kirim file yang diubah ke FTP
-            while IFS= read -r file; do
-              # Abaikan jika "file" adalah direktori
-              if [ -d "$file" ]; then
-                echo "Lewati direktori: $file"
-                continue
-              fi
-
-              # Periksa apakah file ada
-              if [ -f "$file" ]; then
-                remote_path="/path/on/ftp/server/$file"
-                remote_dir=$(dirname "$remote_path")
-
-                echo "Mengunggah file: $file ke $remote_path"
-
-                # Upload file menggunakan lftp
-                lftp -e "
-                  set ftp:ssl-allow no
-                  open $FTP_SERVER
-                  user $FTP_USERNAME $FTP_PASSWORD
-                  
-                  # Periksa apakah direktori sudah ada, jika tidak buat
-                  if ! ls $remote_dir; then
-                    echo 'Membuat direktori: $remote_dir'
-                    mkdir -p \"$remote_dir\"
-                  fi
-
-                  # Hapus file lama jika ada
-                  if ls \"$remote_path\"; then
-                    echo 'Menghapus file lama: $remote_path'
-                    rm \"$remote_path\" || echo 'File lama tidak ada, melanjutkan...'
-                  fi
-                  
-                  # Unggah file
-                  put \"$file\" -o \"$remote_path\"
-                  bye
-                "
-              else
-                echo "File tidak ditemukan: $file"
-              fi
-            done < changed_files.txt
-          else
-            echo "Tidak ada perubahan file, tidak ada yang dikirim ke FTP."
-          fi
+          nc -zv ftp.bengkaliskab.org 21
+      - name: Deploy to server via FTP #tess
+        run: |
+          lftp -f "
+          set ftp:ssl-allow no
+          open $FTP_SERVER
+          user $FTP_USERNAME $FTP_PASSWORD
+          mirror --reverse --delete --verbose ./ /path/on/ftp/server
+          bye
+          "
         env:
           FTP_SERVER: ftp.bengkaliskab.org
           FTP_USERNAME: sipela@reservasilab.bengkaliskab.org
