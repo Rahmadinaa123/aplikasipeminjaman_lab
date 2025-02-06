@@ -16,8 +16,6 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h3>Data Laporan Peminjaman Inventaris</h3>
-        <a class="btn btn-primary" href="/kalab/laporan_akhir/laporanpeminjamaninventaris/cetak">
-            <i class="bi bi-printer"></i> Cetak
         </a>
     </div>
     <br>

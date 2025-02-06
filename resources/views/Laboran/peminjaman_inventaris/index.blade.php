@@ -49,8 +49,6 @@
                     <td>
                         <a class="btn btn-outline-success"
                             href="/laboran/peminjaman_inventaris/detail/{{ $item->id }}">Detail</a>
-                        <a class="btn btn-outline-warning"
-                            href="/laboran/peminjaman_inventaris/edit/{{ $item->id }}">Edit</a>
                         <a class="btn btn-outline-danger" href="/deletePeminjamanInventarisLab/{{ $item->id }}"
                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                     </td>

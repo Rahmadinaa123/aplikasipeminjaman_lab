@@ -40,6 +40,15 @@
                                     @enderror
                                 </span>
                             </div>
+                            <div class="form-group mt-4">
+                                <label class="text-secondary mb-2">Tanggal</label>
+                                <input type="date" class="form-control border-secondary" name="tanggal"
+                                    value="{{ old('tanggal', $data->tanggal) }}" required>
+                                @error('tanggal')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
 
                             <!-- Jam Mulai -->
                             <div class="form-group mt-4">
@@ -110,7 +119,7 @@
             'Lab Testing',
             'Lab Jaringan Komputer',
             'Lab
-                                            Artificial Intelligence',
+                                                    Artificial Intelligence',
             'Lab Pemrograman',
         ] as $lab)
                                         <option value="{{ $lab }}"

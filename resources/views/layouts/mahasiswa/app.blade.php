@@ -16,7 +16,7 @@
         }
 
         body {
-            background-color: rgba(4, 222, 255, 0.107);
+            background-color: rgba(77, 138, 235, 0.578);
         }
 
         .container {
@@ -33,7 +33,7 @@
             bottom: 0;
             padding: 10px width: 100%;
             height: 50px;
-            background-color: #56bae4;
+            background-color: rgba(77, 138, 235, 0.578);
             /* Adjust the height */
         }
     </style>

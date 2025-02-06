@@ -8,46 +8,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #9dd9f3;
-        }
+    body {
+        background-color: #9dd9f3;
+    }
 
-        .login-box {
-            width: 600px;
-            height: auto;
-            margin-top: 20px;
-            margin-bottom: 40px;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+    .login-box {
+        width: 600px;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .login-btn {
-            background-color: #4F54F1;
-            color: white;
-        }
+    .login-btn {
+        background-color: #4F54F1;
+        color: white;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #56bae4;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #56bae4;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
 
-        .text-danger {
-            font-size: 0.875rem;
-            /* Ukuran font yang lebih kecil */
-            margin-top: 5px;
-            /* Jarak antara input dan pesan error */
-        }
+    .text-danger {
+        font-size: 0.875rem;
+        /* Ukuran font yang lebih kecil */
+        margin-top: 5px;
+        /* Jarak antara input dan pesan error */
+    }
 
-        input.is-invalid {
-            border-color: red;
-            /* Memberikan border merah pada input yang error */
-        }
+    input.is-invalid {
+        border-color: red;
+        /* Memberikan border merah pada input yang error */
+    }
     </style>
 </head>
 
@@ -56,19 +56,19 @@
     <div class="container d-flex justify-content-center align-items-center">
         <div class="login-box">
             <a class="btn btn-outline-primary" href="/"">
-                <i class="bi bi-arrow-left"></i> Kembali
+                <i class=" bi bi-arrow-left"></i> Kembali
             </a>
             @if (Session::get('failed'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Login Gagal!</strong> {{ Session::get('failed') }}
-                    <button type="button" class="btn-close" data-bs- dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Login Gagal!</strong> {{ Session::get('failed') }}
+                <button type="button" class="btn-close" data-bs- dismiss="alert" aria-label="Close"></button>
+            </div>
             @endif
             @if (Session::get('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Berhasil!</strong> {{ Session::get('success') }}
-                    <button type="button" class="btn-close" data-bs- dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Berhasil!</strong> {{ Session::get('success') }}
+                <button type="button" class="btn-close" data-bs- dismiss="alert" aria-label="Close"></button>
+            </div>
             @endif
             <h2 class="text-center mb-4" style="color: #8A7FCB;">REGISTER</h2>
             <form action="{{ route('postRegister') }}" method="POST" class="register-form">
@@ -81,7 +81,7 @@
                         name="username" placeholder="Username">
                     <span class="text-danger">
                         @error('username')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
@@ -89,11 +89,11 @@
                 <!-- Nim -->
                 <div class="mb-3 form-group">
                     <label for="nim" class="form-label">Nim</label>
-                    <input type="number" class="form-control @error('nim') is-invalid @enderror" id="nim"
-                        name="nim" placeholder="NIM">
+                    <input type="number" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim"
+                        placeholder="NIM">
                     <span class="text-danger">
                         @error('nim')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
@@ -111,7 +111,7 @@
                         </select>
                         <span class="text-danger">
                             @error('prodi')
-                                {{ $message }}
+                            {{ $message }}
                             @enderror
                         </span>
                     </div>
@@ -119,12 +119,12 @@
 
                 <!-- Semester -->
                 <div class="mb-3 form-group">
-                    <label for="semester" class="form-label">Semester</label>
-                    <input type="number" class="form-control @error('semester') is-invalid @enderror" id="semester"
-                        name="semester" placeholder="Semester">
+                    <label for="semester" class="form-label">Semester/Kelas</label>
+                    <input type="text" class="form-control @error('semester') is-invalid @enderror" id="semester"
+                        name="semester" placeholder="Semester/kelas Contoh : 3A">
                     <span class="text-danger">
                         @error('semester')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
@@ -136,7 +136,7 @@
                         name="no_hp" placeholder="Nomor hp">
                     <span class="text-danger">
                         @error('no_hp')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
@@ -148,7 +148,7 @@
                         name="email" placeholder="Email">
                     <span class="text-danger">
                         @error('email')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
@@ -160,15 +160,14 @@
                         name="password" placeholder="Password">
                     <span class="text-danger">
                         @error('password')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
                     </span>
                 </div>
 
                 <!-- Tombol Submit -->
                 <div class="form-group">
-                    <input type="submit" name="signup" id="signup" class="form-submit btn btn-primary"
-                        value="Register">
+                    <input type="submit" name="signup" id="signup" class="form-submit btn btn-primary" value="Register">
                 </div>
 
                 <!-- Sudah Punya Akun -->

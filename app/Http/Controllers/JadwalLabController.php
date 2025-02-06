@@ -39,7 +39,8 @@ class JadwalLabController extends Controller
 public function postJadwalLab(Request $request)
 {
     $request->validate([
-        'hari' => 'required|string',              
+        'hari' => 'required|string', 
+        'tanggal' => 'required',             
         'jam_mulai' => 'required|date_format:H:i', 
         'jam_selesai' => 'required|date_format:H:i', 
         'kelas' => 'required|string',             
@@ -54,6 +55,7 @@ public function postJadwalLab(Request $request)
 
     // Mengisi data berdasarkan input dari form
     $jadwal_lab->hari = $request->hari;
+    $jadwal_lab->tanggal = $request->tanggal;
     $jadwal_lab->jam_mulai = $request->jam_mulai;
     $jadwal_lab->jam_selesai = $request->jam_selesai;
     $jadwal_lab->kelas = $request->kelas;
@@ -83,6 +85,7 @@ public function postEditJadwalLab(Request $request, $id)
     // Validasi input
     $request->validate([
         'hari' => 'required|string',               // Hari
+        'tanggal' => 'required', 
         'jam_mulai' => 'required|date_format:H:i', // Jam mulai (format HH:mm)
         'jam_selesai' => 'required|date_format:H:i|after:jam_mulai', // Jam selesai (harus setelah jam mulai)
         'kelas' => 'required|string',             // Kelas
@@ -101,6 +104,7 @@ public function postEditJadwalLab(Request $request, $id)
 
     // Memperbarui data jadwal
     $jadwal_lab->hari = $request->hari;
+    $jadwal_lab->tanggal = $request->tanggal;
     $jadwal_lab->jam_mulai = $request->jam_mulai;
     $jadwal_lab->jam_selesai = $request->jam_selesai;
     $jadwal_lab->kelas = $request->kelas;

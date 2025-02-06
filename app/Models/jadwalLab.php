@@ -10,6 +10,6 @@ class jadwalLab extends Model
     use HasFactory;
     protected $table = 'jadwal_labs';
     protected $fillable = [
-        'hari', 'jam_mulai', 'jam_selesai', 'kelas', 'prodi', 'nama_lab', 'mata_kuliah', 'dosen'
+        'hari', 'tanggal', 'jam_mulai', 'jam_selesai', 'kelas', 'prodi', 'nama_lab', 'mata_kuliah', 'dosen'
     ];
 }
