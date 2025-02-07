@@ -2,6 +2,7 @@
     'title' => 'Detail Data Inventaris',
 ])
 
+{{-- tes deploy --}}
 
 @section('konten')
     <div class="row">
