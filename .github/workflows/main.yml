@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: "8.1"
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-scripts --no-progress
@@ -93,13 +93,17 @@ jobs:
       - name: Test FTP Connection
         run: |
           nc -zv ftp.bengkaliskab.org 21
-      - name: Deploy to server via FTP #tess
+      - name: Deploy to server via FTP
         run: |
           lftp -f "
           set ftp:ssl-allow no
           open $FTP_SERVER
           user $FTP_USERNAME $FTP_PASSWORD
-          mirror --reverse --delete --verbose ./ /path/on/ftp/server
+          mirror --reverse --delete --verbose ./ /path/on/ftp/server \
+          --exclude vendor/ \
+          --exclude bootstrap/ \
+          --exclude config/ \
+          --exclude public/
           bye
           "
         env:
