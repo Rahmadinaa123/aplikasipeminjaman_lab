@@ -100,9 +100,11 @@ jobs:
           open $FTP_SERVER
           user $FTP_USERNAME $FTP_PASSWORD
           mirror --reverse --delete --verbose ./ /path/on/ftp/server \
+          --exclude git/ \
           --exclude vendor/ \
           --exclude bootstrap/ \
           --exclude config/ \
+          --exclude env/ \
           --exclude public/
           bye
           "
