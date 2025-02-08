@@ -23,7 +23,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Nim</th>
-                    <th scope="col">Nama barang</th>
+                    <th scope="col">Nama Barang</th>
                     <th scope="col">Tanggal Peminjaman</th>
                     <th scope="col">Keperluan</th>
                     <th scope="col">Status</th>
