@@ -159,4 +159,6 @@ Route::group(['middleware' => ['auth', 'checklevel:ketua laboran']], function ()
 
 
 // Route::get('/registrasi', [LoginRegisterController::class, 'register'])->name('auth.register');
-// Route::get('login', [LoginRegisterController::class, 'login'])->name('auth.login');
+// Route::get('login', [LoginRegisterController::class, 'login'])->name('auth.login');Route::get('/error', function () {
+    return "Hello World"
+});
