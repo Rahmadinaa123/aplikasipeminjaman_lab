@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth', 'checklevel:laboran']], function () {
    Route::get('laboran/jadwal_lab/editJadwalLab/{id}', [JadwalLabController::class, 'editJadwalLab'])->name('editJadwalLab');
    Route::put('/postEditJadwalLab/{id}', [JadwalLabController::class, 'postEditJadwalLab'])->name('postEditJadwalLab');
    Route::get('/deleteJadwalLab/{id}', [JadwalLabController::class, 'deleteJadwalLab'])->name('deleteJadwalLab');
+   Route::get('laboran/JadwalLab/cetakjadwal', [JadwalLabController::class, 'cetakjadwal'])->name('laboran.cetak.JadwalLab');
 
    //laporan akhir
    Route::get('laboran/laporan_akhir', [LaporanAkhirController::class, 'index'])->name('laboran.laporan_akhir');

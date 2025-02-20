@@ -133,6 +133,12 @@ public function deleteJadwalLab($id)
         } else {
             return back()->with('failed', 'Gagal menghapus data Jadwal Lab!');
         }
+        
     }
+    public function cetakjadwal() {
+    // Ambil data peminjaman yang hanya memiliki status 'selesai'
+    $data = jadwalLab::all();
+    return view('Laboran.jadwal_lab.cetakjadwal', compact('data'));
+}
 
 }
