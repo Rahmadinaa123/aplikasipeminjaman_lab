@@ -232,7 +232,8 @@
                 <p>Dibuat oleh, <br> Laboran</p>
                 <br> <br>
                 <input type="text" class="editable form-control" id="laboran" value="Nama Laboran">
-                <input type="text" class="editable form-control" id="NIP_laboran" value="768687997990101">
+                <input type="text" class="editable form-control" id="NIP_laboran"
+                    value="{{ Auth::user()->nama_lab }}">
             </div>
         </div>
     </div>
