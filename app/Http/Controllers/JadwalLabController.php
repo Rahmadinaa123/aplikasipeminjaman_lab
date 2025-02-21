@@ -136,21 +136,15 @@ public function deleteJadwalLab($id)
         
     }
    public function cetakjadwal() {
-    // Ambil semua data jadwal dan urutkan berdasarkan hari serta jam_mulai
-    $data = jadwalLab::orderByRaw("
-        CASE 
-            WHEN hari = 'senin' THEN 1
-            WHEN hari = 'selasa' THEN 2
-            WHEN hari = 'rabu' THEN 3
-            WHEN hari = 'kamis' THEN 4
-            WHEN hari = 'jumat' THEN 5
-            WHEN hari = 'sabtu' THEN 6
-            WHEN hari = 'minggu' THEN 7
-            ELSE 8
-        END
-    ")->orderBy('jam_mulai')->orderBy('jam_selesai')->get();
+   $data = jadwalLab::orderByRaw("
+        FIELD(hari, 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu')
+    ")
+    ->orderBy('jam_mulai')
+    ->orderBy('jam_selesai')
+    ->get();
 
-    return view('Laboran.jadwal_lab.cetakjadwal', compact('data'));
+return view('Laboran.jadwal_lab.cetakjadwal', compact('data'));
+
 }
 
 

@@ -143,7 +143,8 @@
         <div class="row">
             <div class="col-md-6">
                 <p><strong>Laboratorium:</strong>
-                    <input type="text" class="editable form-control d-inline w-50" id="nama_lab" value="Basis Data">
+                    <input type="text" class="editable form-control d-inline w-50" id="nama_lab"
+                        value="{{ Auth::user()->nama_lab }}">
                 </p>
             </div>
 
@@ -173,25 +174,41 @@
             </thead>
             <tbody>
                 @php
+                    // Filter data yang hanya sesuai dengan nama lab user saat ini
+                    $filteredData = collect($data)
+                        ->where('nama_lab', Auth::user()->nama_lab)
+                        ->values();
+
+                    // Hitung jumlah baris per hari setelah difilter
+                    $rowspanCounts = $filteredData->countBy('hari');
+
                     $previousHari = null;
-                    $rowspanCounts = array_count_values(array_column($data->toArray(), 'hari'));
                 @endphp
 
-                @foreach ($data as $key => $item)
-                    @if ($item->nama_lab == Auth::user()->nama_lab)
-                        <tr>
-                            @if ($item->hari !== $previousHari)
-                                <td rowspan="{{ $rowspanCounts[$item->hari] }}">{{ $item->hari }}</td>
-                                @php $previousHari = $item->hari; @endphp
-                            @endif
-                            <td>{{ $item->jam_mulai }} - {{ $item->jam_selesai }}</td>
-                            <td>{{ $item->kelas }}</td>
-                            <td>{{ $item->mata_kuliah }}</td>
-                            <td>{{ $item->dosen }}</td>
-                        </tr>
-                    @endif
+                @foreach ($filteredData as $item)
+                    <tr>
+                        {{-- Jika hari sebelumnya berbeda, cetak hari dengan rowspan --}}
+                        @if ($item->hari !== $previousHari)
+                            <td rowspan="{{ $rowspanCounts[$item->hari] }}">{{ ucfirst($item->hari) }}</td>
+                            @php $previousHari = $item->hari; @endphp
+                        @endif
+
+                        {{-- Cetak data jadwal --}}
+                        <td>{{ $item->jam_mulai }} - {{ $item->jam_selesai }}</td>
+                        <td>{{ $item->kelas }}</td>
+                        <td>{{ $item->mata_kuliah }}</td>
+                        <td>{{ $item->dosen }}</td>
+                    </tr>
                 @endforeach
             </tbody>
+
+
+
+
+
+
+
+
         </table>
 
 
