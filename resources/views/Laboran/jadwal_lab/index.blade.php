@@ -20,13 +20,23 @@
         <i class="bi bi-printer"></i> Cetak
     </a>
     <div>
+        @php
+            $no = 1;
+            // Urutan hari secara manual
+            $orderHari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+
+            // Urutkan berdasarkan hari dan jam_mulai
+            $sortedData = $data->sortBy(function ($item) use ($orderHari) {
+                return [array_search(strtolower($item->hari), $orderHari), $item->jam_mulai];
+            });
+        @endphp
+
         <table class="table table-bordered table-striped table-hover" style="margin-top: 10px">
             <thead class="table-primary">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Hari</th>
-                    <th class="col-md-2" scope="col">Tanggal</th>
-                    <th scope="col">Jam Mulai</th>
+                    <th class="col-md-2" scope="col">Jam Mulai</th>
                     <th scope="col">Jam Selesai</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Prodi</th>
@@ -36,14 +46,11 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @php $no = 1; @endphp
-                @foreach ($data as $item)
-                    <!-- menampilkan mahasiswa saja -->
+                @foreach ($sortedData as $item)
                     @if ($item->nama_lab == Auth::user()->nama_lab)
                         <tr>
-                            <td class="">{{ $no++ }}</td>
-                            <td>{{ $item->hari }}</td>
-                            <td>{{ $item->tanggal }}</td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ ucfirst($item->hari) }}</td>
                             <td>{{ $item->jam_mulai }}</td>
                             <td>{{ $item->jam_selesai }}</td>
                             <td>{{ $item->kelas }}</td>
@@ -53,8 +60,7 @@
                             <td>
                                 <a class="btn btn-outline-warning"
                                     href="/laboran/jadwal_lab/editJadwalLab/{{ $item->id }}">Edit</a>
-                                <a class="btn btn-outline-danger" href="/deleteJadwalLab/{{ $item->id }}" <a
-                                    class="btn btn-outline-danger" href=""
+                                <a class="btn btn-outline-danger" href="/deleteJadwalLab/{{ $item->id }}"
                                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                             </td>
                         </tr>
@@ -62,6 +68,8 @@
                 @endforeach
             </tbody>
         </table><br>
+
+
 
     </div>
 
