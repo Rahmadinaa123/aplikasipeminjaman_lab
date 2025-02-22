@@ -106,7 +106,6 @@ jobs:
           --exclude config/ \
           --exclude storage/ \
           --exclude .env \
-          --exclude public/
           bye
           "
         env:
