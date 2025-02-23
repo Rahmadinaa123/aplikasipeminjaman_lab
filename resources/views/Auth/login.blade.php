@@ -71,7 +71,7 @@
                         </button>
                     </div>
                 </div>
-                <a type="submit" class="btn login-btn w-100">Log in</a>
+                <button type="submit" class="btn login-btn w-100">Log in</button>
             </form>
             <div class="text-center mt-3">
                 <small>Belum Punya Akun? <a href="registrasi">Registrasi Sekarang!</a></small>
