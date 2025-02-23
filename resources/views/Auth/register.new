@@ -118,19 +118,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="semester" class="form-label">Semester/Kelas</label>
-                        <input type="semester" class="form-control" id="semester" name="semester"
-                            placeholder="Semester/kelas Contoh : 3A">
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label for="no_hp" class="form-label">Nomor Hp</label>
-                        <input type="no_hp" class="form-control" id="no_hp" name="no_hp"
-                            placeholder="Masukkan Nomor Hp">
-                    </div>
-
-                    <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Masukkan Password">

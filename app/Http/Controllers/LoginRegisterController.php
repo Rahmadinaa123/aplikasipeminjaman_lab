@@ -26,7 +26,7 @@ class LoginRegisterController extends Controller
             'prodi' => 'required',
             'semester' => 'required',
             'no_hp' => 'required',
-            'email' => 'required|email:dns',
+            'email' => 'required|email:dns|unique:users,email',
             'password' => 'required|min:8|max:20',
         ]);
         
