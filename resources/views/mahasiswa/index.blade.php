@@ -6,7 +6,7 @@
 @section('konten')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center">Selamat Datang, {{ Auth::user()->username }}!</h1>
+            <h1 class="text-center">Hello, {{ Auth::user()->username }}!</h1>
             <p class="text-center">Ini adalah dashboard Anda untuk mengakses peminjaman laboratorium jurusan Teknik
                 Informatika
                 Politeknik Negeri Bengkalis.</p>
