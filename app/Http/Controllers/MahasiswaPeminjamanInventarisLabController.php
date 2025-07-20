@@ -62,8 +62,9 @@ class MahasiswaPeminjamanInventarisLabController extends Controller
 }
 
 public function riwayatpeminjamanInventarisLab() {
-        $data=peminjamanInventarisLab::all();
-        return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamaninventaris', compact('data'));
-   }
+    $data = peminjamanInventarisLab::orderBy('created_at', 'desc')->get();
+    return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamaninventaris', compact('data'));
+}
+
 
 }

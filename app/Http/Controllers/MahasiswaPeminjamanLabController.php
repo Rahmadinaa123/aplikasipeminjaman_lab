@@ -68,9 +68,10 @@ class MahasiswaPeminjamanLabController extends Controller
 }
 
     public function riwayatpeminjamanLab() {
-        $data=peminjaman::all();
-        return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamanlab', compact('data'));
-   }
+    $data = peminjaman::orderBy('created_at', 'desc')->get(); // jika pakai created_at
+    return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamanlab', compact('data'));
+}
+
 
    public function cekKetersediaanLab(Request $request)
 {
