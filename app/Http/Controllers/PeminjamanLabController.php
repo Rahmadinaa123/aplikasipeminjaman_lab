@@ -13,12 +13,14 @@ class PeminjamanLabController extends Controller
 
      //halaman Peminjaman Lab
     public function index() {
-        $data=peminjaman::all();
-        $peminjamanPending = Peminjaman::where([
-            ['nama_lab', '=', Auth::user()->nama_lab],
-            ['status', '=', 'pending']
-        ])->count();
-        return view('Laboran.peminjaman_lab.index', compact('data','peminjamanPending'));
+    $data = peminjaman::orderBy('created_at', 'desc')->get(); // Menampilkan yang terbaru dulu
+
+    $peminjamanPending = Peminjaman::where([
+        ['nama_lab', '=', Auth::user()->nama_lab],
+        ['status', '=', 'pending']
+    ])->count();
+
+    return view('Laboran.peminjaman_lab.index', compact('data', 'peminjamanPending'));
    }
     //halaman Peminjaman Lab
     public function addPeminjaman() {

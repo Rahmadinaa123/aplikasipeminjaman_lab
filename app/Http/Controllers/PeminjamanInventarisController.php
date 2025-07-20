@@ -11,12 +11,14 @@ class PeminjamanInventarisController extends Controller
 {
     //halaman Peminjaman Inventaris 
     public function index() {
-        $data=peminjamanInventarisLab::all();
-        $peminjamanPending = peminjamanInventarisLab::where([
-            ['nama_lab', '=', Auth::user()->nama_lab],
-            ['status', '=', 'pending']
-        ])->count();
-        return view('Laboran.peminjaman_inventaris.index', compact('data', 'peminjamanPending'));
+    $data = peminjamanInventarisLab::orderBy('created_at', 'desc')->get(); // Urutkan terbaru di atas
+
+    $peminjamanPending = peminjamanInventarisLab::where([
+        ['nama_lab', '=', Auth::user()->nama_lab],
+        ['status', '=', 'pending']
+    ])->count();
+
+    return view('Laboran.peminjaman_inventaris.index', compact('data', 'peminjamanPending'));
    }
 
     //halaman Peminjaman Inventaris Lab
