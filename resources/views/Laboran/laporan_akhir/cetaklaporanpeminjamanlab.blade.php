@@ -76,16 +76,18 @@
         <tbody>
             @php $no = 1; @endphp
             @foreach ($data as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item['username'] }}</td>
-                    <td>{{ $item['nim'] }}</td>
-                    <td>{{ $item['prodi'] }}</td>
-                    <td>{{ $item['semester'] }}</td>
-                    <td>{{ $item['tanggal_mulai'] }} - {{ $item['tanggal_selesai'] }}</td>
-                    <td>{{ $item['keperluan'] }}</td>
-                    <td>{{ $item['status'] }}</td>
-                </tr>
+                @if ($item->nama_lab == Auth::user()->nama_lab)
+                    <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $item['username'] }}</td>
+                        <td>{{ $item['nim'] }}</td>
+                        <td>{{ $item['prodi'] }}</td>
+                        <td>{{ $item['semester'] }}</td>
+                        <td>{{ $item['tanggal_mulai'] }} - {{ $item['tanggal_selesai'] }}</td>
+                        <td>{{ $item['keperluan'] }}</td>
+                        <td>{{ $item['status'] }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>

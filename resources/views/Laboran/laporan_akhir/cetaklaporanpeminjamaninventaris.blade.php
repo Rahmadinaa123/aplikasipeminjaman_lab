@@ -84,17 +84,19 @@
         <tbody>
             @php $no = 1; @endphp
             @foreach ($data as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $item['username'] }}</td>
-                    <td>{{ $item['nim'] }}</td>
-                    <td>{{ $item['prodi'] }}</td>
-                    <td>{{ $item['nama_barang'] }}</td>
-                    <td>{{ \Carbon\Carbon::parse($item['tanggal_pinjam'])->format('d-m-Y') }}</td>
-                    <td>{{ \Carbon\Carbon::parse($item['tanggal_kembali'])->format('d-m-Y') }}</td>
-                    <td>{{ $item['keperluan'] }}</td>
-                    <td>{{ $item['status'] }}</td>
-                </tr>
+                @if ($item->nama_lab == Auth::user()->nama_lab)
+                    <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $item['username'] }}</td>
+                        <td>{{ $item['nim'] }}</td>
+                        <td>{{ $item['prodi'] }}</td>
+                        <td>{{ $item['nama_barang'] }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item['tanggal_pinjam'])->format('d-m-Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item['tanggal_kembali'])->format('d-m-Y') }}</td>
+                        <td>{{ $item['keperluan'] }}</td>
+                        <td>{{ $item['status'] }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
