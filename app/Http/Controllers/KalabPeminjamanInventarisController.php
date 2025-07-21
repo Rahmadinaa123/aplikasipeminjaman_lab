@@ -10,13 +10,16 @@ class KalabPeminjamanInventarisController extends Controller
 {
      //halaman Peminjaman Inventaris 
     public function index() {
-        $data=PeminjamanInventarisLab::all();
-        $peminjamanPending = PeminjamanInventarisLab::where([
-            ['nama_lab', '=', Auth::user()->nama_lab],
-            ['status', '=', 'pending']
-        ])->count();
-        return view('Kalab.peminjaman_inventaris.index', compact('data','peminjamanPending'));
-   }
+    $data = PeminjamanInventarisLab::orderBy('created_at', 'desc')->get(); // terbaru di atas
+
+    $peminjamanPending = PeminjamanInventarisLab::where([
+        ['nama_lab', '=', Auth::user()->nama_lab],
+        ['status', '=', 'pending']
+    ])->count();
+
+    return view('Kalab.peminjaman_inventaris.index', compact('data', 'peminjamanPending'));
+}
+
     public function detail($id) {
         $data = PeminjamanInventarisLab::find($id);
         return view('Kalab.peminjaman_inventaris.detail', compact('data'));

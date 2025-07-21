@@ -9,13 +9,16 @@ class KalabPeminjamanLabController extends Controller
 {
     //halaman peminjaman lab
     public function index() {
-        $data=peminjaman::all();
-        $peminjamanPending = Peminjaman::where([
-            ['nama_lab', '=', Auth::user()->nama_lab],
-            ['status', '=', 'pending']
-        ])->count();
-        return view('Kalab.peminjaman_lab.index', compact('data','peminjamanPending'));
-   }
+    $data = peminjaman::orderBy('created_at', 'desc')->get(); // urutkan terbaru di atas
+
+    $peminjamanPending = Peminjaman::where([
+        ['nama_lab', '=', Auth::user()->nama_lab],
+        ['status', '=', 'pending']
+    ])->count();
+
+    return view('Kalab.peminjaman_lab.index', compact('data', 'peminjamanPending'));
+}
+
 
    public function detail($id) {
         $data = peminjaman::find($id);
