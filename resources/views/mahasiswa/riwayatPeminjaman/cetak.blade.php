@@ -100,7 +100,7 @@
     <div class="a4-page">
         <!-- Kop Surat -->
         <div class="kop-container">
-            <img src="/assets/img/logo_polbeng.png" class="kop-logo" alt="Logo">
+            <img src="/assets/img/logopolbeng.png" class="kop-logo" alt="Logo">
             <div class="kop-text">
                 <p style="font-size: 16px">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN,<br>RISET, DAN TEKNOLOGI</p>
                 <h3><strong>POLITEKNIK NEGERI BENGKALIS</strong></h3>
