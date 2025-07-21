@@ -21,6 +21,7 @@ class MahasiswaController extends Controller
 {
     $labName = $request->query('lab'); // Menangkap parameter lab dari URL
     return view('mahasiswa.pinjamlab', compact('labName'));
+
 }
    
    public function profil() {

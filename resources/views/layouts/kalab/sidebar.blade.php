@@ -56,7 +56,7 @@
     <li class="nav-item {{ Request::is('kalab/peminjaman_lab') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('kalab.peminjaman_lab') }}">
             <i class="fas fa-fw fa-book-open"></i>
-            <span>Data Peminjaman Laboran</span>
+            <span>Data Peminjaman Lab</span>
         </a>
 
     </li>

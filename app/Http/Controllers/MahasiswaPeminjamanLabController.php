@@ -67,12 +67,6 @@ class MahasiswaPeminjamanLabController extends Controller
     }
 }
 
-    public function riwayatpeminjamanLab() {
-    $data = peminjaman::orderBy('created_at', 'desc')->get(); // jika pakai created_at
-    return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamanlab', compact('data'));
-}
-
-
    public function cekKetersediaanLab(Request $request)
 {
     $request->validate([
@@ -132,5 +126,27 @@ public function checkAvailability(Request $request)
 
     return view('mahasiswa.labtersedia', compact('availableLabs', 'tanggalMulai', 'jamMulai'));
 }
+
+public function riwayatpeminjamanLab() {
+    $data = peminjaman::orderBy('created_at', 'desc')->get(); // jika pakai created_at
+    return view('mahasiswa.riwayatPeminjaman.riwayatpeminjamanlab', compact('data'));
+}
+
+ public function editSuratPeminjaman(Request $request, $id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        return view('mahasiswa.riwayatPeminjaman.cetak', [
+            'peminjaman' => $peminjaman,
+            'nama_lab' => $request->nama_lab,
+            'keperluan' => $request->keperluan,
+            'hari' => $request->hari,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+            'jam_mulai' => $request->jam_mulai,
+            'jam_selesai' => $request->jam_selesai,
+        ]);
+    }
+
 
 }
