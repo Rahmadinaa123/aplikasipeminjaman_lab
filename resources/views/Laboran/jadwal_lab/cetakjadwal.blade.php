@@ -201,14 +201,6 @@
                     </tr>
                 @endforeach
             </tbody>
-
-
-
-
-
-
-
-
         </table>
 
 

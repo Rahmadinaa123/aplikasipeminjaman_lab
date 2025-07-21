@@ -104,7 +104,7 @@ Route::group(['middleware' => ['auth', 'checklevel:mahasiswa']], function () {
    Route::post('/postPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'postPeminjamanLab'])->name('mahasiswa.postPeminjamanLab');   
    Route::get('mahasiswa/riwayatPeminjamanLab', [MahasiswaPeminjamanLabController::class, 'riwayatpeminjamanLab'])->name('mahasiswa.riwayatPeminjamanLab');
    // Halaman untuk edit isi surat sebelum cetak
-   Route::get('/mahasiswa/surat-peminjaman/{id}/edit', [MahasiswaPeminjamanLabController::class, 'editSuratPeminjaman'])->name('mahasiswa.editSuratPeminjaman');
+   Route::get('/mahasiswa/surat-peminjaman/{id}/cetak', [MahasiswaPeminjamanLabController::class, 'editSuratPeminjaman'])->name('mahasiswa.editSuratPeminjaman');
 
    // Proses generate tampilan cetak
    Route::post('/mahasiswa/surat-peminjaman/{id}/cetak', [MahasiswaPeminjamanLabController::class, 'cetakSuratPeminjaman'])->name('mahasiswa.cetakSuratPeminjaman');

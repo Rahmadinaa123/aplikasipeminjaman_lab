@@ -136,16 +136,7 @@ public function riwayatpeminjamanLab() {
     {
         $peminjaman = Peminjaman::findOrFail($id);
 
-        return view('mahasiswa.riwayatPeminjaman.cetak', [
-            'peminjaman' => $peminjaman,
-            'nama_lab' => $request->nama_lab,
-            'keperluan' => $request->keperluan,
-            'hari' => $request->hari,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_selesai' => $request->tanggal_selesai,
-            'jam_mulai' => $request->jam_mulai,
-            'jam_selesai' => $request->jam_selesai,
-        ]);
+        return view('mahasiswa.riwayatPeminjaman.cetak', compact('peminjaman'));
     }
 
 
